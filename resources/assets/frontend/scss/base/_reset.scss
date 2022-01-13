@@ -1,0 +1,101 @@
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+	&:active,
+	&:selected,
+	&:visited {
+		outline: none;
+	}
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus,
+.btn:focus,
+.bootstrap-select .btn:focus{
+	outline: none !important;
+}
+
+*:focus,
+:root input:focus { /*remove dot for ie8-9*/
+		outline: none;
+		border: none;
+}
+
+textarea {
+		resize: none;
+}
+
+blockquote{
+	border:none;
+}
+
+blockquote small:before{
+	content: none;
+}
+
+label, input, select, textarea, input, /*.dropdown-menu*/{
+	font-family: $basefont;
+	font-weight: 100;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+		/* display: none; <- Crashes Chrome on hover */
+		-webkit-appearance: none;
+		margin: 0;
+}
+
+/*Hide Spinner in Input Number*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+}
+
+input[type=number] {
+		-moz-appearance:textfield;
+}
+
+address { margin-bottom: 10px;}
+
+body:before,
+body:after {
+	display: table;
+	content: "";
+}
+body:after {
+	clear: both;
+}
+
+ul{
+	margin-bottom: 0;
+}
+
+li.clearfix:after {
+		display: inline;
+}
+
+
+//remove box-shadow ipad
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none; /* mobile firefox too! */
+}
+
+
+// Remove “clear field” X button for IE
+input::-ms-clear{
+  width : 0;
+  height: 0;
+}
+

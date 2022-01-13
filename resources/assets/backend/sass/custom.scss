@@ -1,0 +1,182 @@
+@import "variables";
+@import "typography";
+@import "utilities";
+@import "theme";
+@import "modal";
+@import "loading";
+@import "calendar";
+@import "table";
+@import "froala";
+@import "form";
+@import "dropzone";
+
+html,
+body {
+    font-family: $font-primary;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    background: #fff;
+}
+
+.app {
+    .contact {
+        margin-top: 10px;
+
+        > img {
+            right: 0;
+            left: auto;
+            top: -7px !important;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            width: 50px !important;
+            height: 50px !important;
+        }
+        &:after {
+            display: none;
+        }
+        .contact-container {
+            text-align: right;
+            a {
+                color: #333;
+                font-size: 22px;
+                font-weight: 400 !important;
+                margin-top: 1px !important;
+            }
+            span {
+                margin-top: -2px !important;
+                a {
+                    font-weight: 300 !important;
+                    font-size: 0.8rem;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .app-header {
+        height: 75px;
+        .app-header-buttons {
+            padding: 0;
+            margin-top: 15px;
+            .btn.btn-link,
+            .btn.btn-icon {
+                color: $color-primary;
+                span.fa {
+                    font-size: 24px;
+                    margin-left: 10px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+
+    .app-container {
+        background: #fff;
+        &.bg-solid {
+            background: #edeff0;
+        }
+    }
+
+    .app-content-bg {
+        background: url("../../backend/img/bg2.png") no-repeat fixed;
+        background-size: 100%;
+    }
+
+    .block {
+        border: 0;
+        box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.15);
+        padding: 5px;
+        > .app-heading {
+            margin-bottom: 0;
+            // display: flex;
+            padding: 15px 25px 0;
+            &.bordered {
+                border-bottom: 1px solid #e0e0e0;
+            }
+            h2 {
+                font-size: 24px;
+                font-weight: 500;
+                white-space: nowrap;
+                padding-right: 15px;
+                margin-right: 15px;
+                border-right: 1px solid $color-grey-light;
+            }
+            p {
+                color: $color-grey-light;
+                white-space: nowrap;
+                i {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+.app-sidebar {
+    border-right: 0 !important;
+    box-shadow: 4px 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+.content-area {
+    margin-left: 5px;
+}
+
+#noty_topRight_layout_container > li {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.35) !important;
+
+    .noty_message {
+        font-size: 1.1rem !important;
+    }
+}
+// .app .pagination li.active > a, .app .pagination li.active span
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
+
+.sweet-alert {
+    .sweet-content {
+        font-family: $font-primary;
+        font-size: 1.2rem;
+    }
+
+    .sweet-spacer {
+    }
+
+    .btn {
+        line-height: 18px;
+        font-family: $font-primary;
+        font-weight: 600;
+        font-size: 1rem;
+
+        &:first-of-type {
+            margin-right: 10px;
+        }
+        &:last-of-type {
+            margin-left: 10px;
+        }
+
+        &.btn-info {
+            background: #ef4836;
+            &:hover {
+                background: #b12718;
+            }
+        }
+
+        &.btn-danger {
+            background: #eee;
+            color: #333;
+            &:hover {
+                background: #ddd;
+            }
+        }
+    }
+}
+
+.v-cloak,
+[v-cloak] {
+    display: none;
+}

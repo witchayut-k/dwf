@@ -1,0 +1,52 @@
+@import "../variables";
+
+.btn-add-gallery {
+    border: 1px dashed $color-primary;
+    background-color: #fff;
+    color: #ccc;
+    height: 92px;
+    width: 182px;
+    border-radius: 5px;
+    line-height: 1;
+
+    i {
+        font-size: 32px;
+        display: block;
+    }
+}
+
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+
+    .item {
+        height: 92px;
+        width: 182px;
+        border-radius: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        background-size: cover;
+        overflow: hidden;
+        position: relative;
+
+        .btn-delete-item {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: 0;
+            background: red;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i {
+                color: #fff;
+                font-size: 9px;
+                margin-left: 1px;
+            }
+        }
+    }
+}

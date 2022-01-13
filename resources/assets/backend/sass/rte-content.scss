@@ -1,0 +1,140 @@
+@import "variables";
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: 50% 50% no-repeat;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+    font-weight: 400;
+    z-index: 1;
+    font-family: $font-primary;
+  }
+  
+  :focus {
+    outline: 0;
+  }
+  
+  b, strong {
+    font-weight: 700;
+    * {
+      font-weight: 700;
+    }
+  }
+  
+  ol, ul {
+    list-style: none;
+  }
+  
+  button {
+    font: inherit;
+  }
+  
+  input {
+    font: inherit;
+    &:not([type]), &[type=color], &[type=text], &[type=time], &[type=url], &[type=week], &[type=button], &[type=reset], &[type=submit], &[type=date], &[type=datetime], &[type=datetime-local], &[type=email], &[type=month], &[type=number], &[type=password], &[type=search], &[type=tel] {
+      font: inherit;
+    }
+  }
+  
+  pre, select, textarea {
+    font: inherit;
+  }
+  
+  .mce-container textarea {
+    display: initial !important;
+  }
+  
+  .mce-content-body {
+    font-family: $font-primary;
+    font-size: 14px;
+    color: #000;
+    padding: 25px;
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+        line-height: 1.4em;
+        margin: 20px 0 15px;
+    }
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+      font-size: 20px;
+    }   
+    h3 {
+        font-size: 18px;
+    }
+    h4 {
+        font-size: 16px;
+    }
+    h5 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    h6 {
+        font-size: 12px;
+        font-weight: 600;
+    }
+    p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        line-height: 14px;
+    }
+    ol, ul {
+        margin-left: 10px;
+        list-style-position: outside;
+        margin-bottom: 20px;
+    }
+    ol li {
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: #454545;
+    }
+    ul {
+        li {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            color: #454545;
+        }
+        list-style-type: disc;
+    }
+    ol {
+        list-style-type: decimal;
+    }
+    hr { 
+        border-top: 1px solid #000;
+    }
+    table {
+        width: 100%;
+        border-spacing: 2px;
+        border-collapse: separate;
+        tr:nth-child(even) {
+            background: #F5F5F5;
+        }
+        caption, td {
+            padding: 15px 7px;
+            font: inherit;
+        }
+        th {
+            border-bottom: 1px solid #000;
+        }
+        td {
+            padding: 0;
+        }
+    //   th {
+    //     padding: 15px 7px;
+    //     font: inherit;
+    //     font-weight: 400;
+    //     color: #666;
+    //     background-position: 100% 100%;
+    //     background-size: 2px 10px;
+    //     background-repeat: no-repeat;
+    //     &:last-child {
+    //       background: 0 0;
+    //     }
+    //   }
+    }
+  }

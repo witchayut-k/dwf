@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'sukhumvit';
+  src: url('#{$path-font}/font-face/sukhumvitset-bold-webfont.eot');
+  src: url('#{$path-font}/font-face/sukhumvitset-bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$path-font}/font-face/sukhumvitset-bold-webfont.woff2') format('woff2'),
+  url('#{$path-font}/font-face/sukhumvitset-bold-webfont.woff') format('woff'),
+  url('#{$path-font}/font-face/sukhumvitset-bold-webfont.ttf') format('truetype');
+  font-weight: $weight-bold;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'sukhumvit';
+  src: url('#{$path-font}/font-face/sukhumvitset-light-webfont.eot');
+  src: url('#{$path-font}/font-face/sukhumvitset-light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$path-font}/font-face/sukhumvitset-light-webfont.woff2') format('woff2'),
+  url('#{$path-font}/font-face/sukhumvitset-light-webfont.woff') format('woff'),
+  url('#{$path-font}/font-face/sukhumvitset-light-webfont.ttf') format('truetype');
+  font-weight: $weight-light;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'sukhumvit';
+  src: url('#{$path-font}/font-face/sukhumvitset-medium-webfont.eot');
+  src: url('#{$path-font}/font-face/sukhumvitset-medium-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$path-font}/font-face/sukhumvitset-medium-webfont.woff2') format('woff2'),
+  url('#{$path-font}/font-face/sukhumvitset-medium-webfont.woff') format('woff'),
+  url('#{$path-font}/font-face/sukhumvitset-medium-webfont.ttf') format('truetype');
+  font-weight: $weight-medium;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'sukhumvit';
+  src: url('#{$path-font}/font-face/sukhumvitset-semibold-webfont.eot');
+  src: url('#{$path-font}/font-face/sukhumvitset-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$path-font}/font-face/sukhumvitset-semibold-webfont.woff2') format('woff2'),
+  url('#{$path-font}/font-face/sukhumvitset-semibold-webfont.woff') format('woff'),
+  url('#{$path-font}/font-face/sukhumvitset-semibold-webfont.ttf') format('truetype');
+  font-weight: $weight-semibold;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'sukhumvit';
+  src: url('#{$path-font}/font-face/sukhumvitset-text-webfont.eot');
+  src: url('#{$path-font}/font-face/sukhumvitset-text-webfont.eot?#iefix') format('embedded-opentype'),
+  url('#{$path-font}/font-face/sukhumvitset-text-webfont.woff2') format('woff2'),
+  url('#{$path-font}/font-face/sukhumvitset-text-webfont.woff') format('woff'),
+  url('#{$path-font}/font-face/sukhumvitset-text-webfont.ttf') format('truetype');
+  font-weight: $weight-regular;
+  font-style: normal;
+
+}
+
+

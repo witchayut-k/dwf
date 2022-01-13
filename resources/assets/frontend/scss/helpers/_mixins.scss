@@ -1,0 +1,243 @@
+/*------------------------------------*\
+		# Scss Mixins
+\*------------------------------------*/
+
+// Make line
+@mixin line {
+	display: inline-block;
+	width: $button-size;
+	height: $button-size/10;
+	border-radius: $button-size/10;
+	transition: $transition;
+}
+
+// Font size
+@function calculateRem($size) {
+	$remSize: $size / 10;
+	@return $remSize * 1;
+}
+
+@mixin font-size($size) {
+	font-size: $size + px;
+	font-size: calculateRem($size) + rem;
+}
+
+// Placeholder text
+@mixin placeholder($color: $input-color-placeholder) {
+	// Firefox
+	&::-moz-placeholder {
+		color: $color;
+		opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+	}
+	&:-ms-input-placeholder { color: $color; } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { color: $color; } // Safari and Chrome
+}
+
+
+@mixin size($width, $height: $width) {
+			width: $width;
+			height: $height;
+}
+
+// retina
+@mixin image-2x($image, $width, $height) {
+	@media (min--moz-device-pixel-ratio: 1.3),
+				 (-o-min-device-pixel-ratio: 2.6/2),
+				 (-webkit-min-device-pixel-ratio: 1.3),
+				 (min-device-pixel-ratio: 1.3),
+				 (min-resolution: 1.3dppx) {
+		/* on retina, use image that's scaled by 2 */
+		background-image: url($image);
+		background-size: $width $height;
+	}
+}
+
+@mixin brandGradient() {
+	  background-image: linear-gradient(-198deg, #F6AE00 0%, #EA7600 97%);
+	  background-image: -moz-linear-gradient( -198deg, #F6AE00 0%, #EA7600 97%);
+	  background-image: -webkit-linear-gradient( -198deg, #F6AE00 0%, #EA7600 97%);
+	  background-image: -ms-linear-gradient( -198deg, #F6AE00 0%, #EA7600 97%);
+}
+
+@mixin brandGradient-hover() {
+	  background-image: linear-gradient(198deg, #F6AE00 0%, $buttonbackground-hover 50%);
+	  background-image: -moz-linear-gradient( 198deg, #F6AE00 0%, $buttonbackground-hover 50%);
+	  background-image: -webkit-linear-gradient( 198deg, #F6AE00 0%, $buttonbackground-hover 50%);
+	  background-image: -ms-linear-gradient( 198deg, #F6AE00 0%, $buttonbackground-hover 50%);
+}
+
+
+
+// mixins gradient
+@function convert-angle($value, $unit) {
+	$convertable-units: deg grad turn rad;
+	$conversion-factors: 1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+	@if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+		@return $value
+						 / nth($conversion-factors, index($convertable-units, unit($value)))
+						 * nth($conversion-factors, index($convertable-units, $unit));
+	}
+
+	@warn "Cannot convert `#{unit($value)}` to `#{$unit}`.";
+}
+
+/// Test if `$value` is an angle
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+	$is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+	$is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+	@return $is-direction or $is-angle;
+}
+
+
+/// Mixin printing a linear-gradient
+/// as well as a plain color fallback
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {String | List | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+	@if is-direction($direction) == false {
+		$color-stops: ($direction, $color-stops);
+		$direction: 180deg;
+	}
+
+	background: nth(nth($color-stops, 1), 1);
+	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+	background: linear-gradient($direction, $color-stops);
+}
+
+
+@mixin btn-sprite($po) {
+		background-position: $po 0px;
+		&:hover { background-position: $po 100%; }
+}
+
+@mixin cal-sprite($x,$y) {
+		background-position: $x $y;
+}
+
+@mixin dotdotdot{
+	display: block;
+	overflow: visible;
+	text-overflow: ellipsis;
+}
+
+@mixin center-block{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin center-inline-block{
+	display: inline;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-o-border-radius: $radius;
+}
+
+@mixin placeholder {
+	$placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+	@each $placeholder in $placeholders {
+		&:#{$placeholder}-placeholder {
+			@content;
+		}
+	} 
+}
+
+@mixin bg-transparent {
+	background-color:rgba(0,0,0,0); 
+	background-color:transparent;
+}
+
+@mixin not-blur{
+	backface-visibility: hidden;
+	transform: translateZ(0); 
+	filter: blur(0); //for firefox
+}
+
+
+@mixin title-border-brand{
+		border-bottom-width: 3px;
+		border-bottom-style: solid;
+		display: inline-block;
+		border-color: $brand-color;
+}
+
+@mixin title-border-white{
+		border-bottom-width: 3px;
+		border-bottom-style: solid;
+		display: inline-block;
+		border-color: $white;
+		color: $white;
+}
+
+@mixin border-circle($border-color, $width, $height){
+	border-radius: 500px 500px;
+	border: 1px solid $border-color;
+	width: $width;
+	height: $height;
+	display: inline-block;
+}
+
+@mixin background-circle($backgroud-color, $width, $height){
+	border-radius: 500px 500px;
+	background-color: $backgroud-color;
+	width: $width;
+	height: $height;
+	display: inline-block;
+}
+
+@mixin button-radius{
+	height: 44px;
+	padding-left: 10px;
+	padding-right: 10px;
+	// border-width: 1px;
+	// border-style: solid;
+	// border-color: $brand-color;
+	@include border-radius($default-border-radius $default-border-radius);		
+	@include transition(all $transition);
+}
+
+@mixin gradient-animation( $start, $end, $transTime ){
+  background-size: 100%;
+  background-image: linear-gradient($start, $end);
+  position: relative;
+  z-index: 100;
+  &:before {
+    background-image: linear-gradient($end, $start);
+    content: '';    
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+  }
+  &:hover {
+     &:before {
+       opacity: 1; 
+     }
+  }
+}
+
+
+@mixin pixelated {
+	-ms-interpolation-mode: nearest-neighbor; // IE 7+ (non-standard property)
+	image-rendering: -webkit-optimize-contrast; // Safari 6, UC Browser 9.9
+	image-rendering: -webkit-crisp-edges; // Safari 7+
+	image-rendering: -moz-crisp-edges; // Firefox 3.6+
+	image-rendering: -o-crisp-edges; // Opera 12
+	image-rendering: pixelated; // Chrome 41+ and Opera 26+
+}

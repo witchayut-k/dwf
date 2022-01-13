@@ -1,0 +1,69 @@
+.calendar {
+    margin: 15px 0 30px 15px;
+}
+
+.fc-toolbar {
+    h2 {
+        color: #666;
+        font-weight: 600;
+    }
+    .fc-button-group {
+        [type="button"] {
+            background: #ffffff;
+            border: 1px solid #666666;
+            box-sizing: border-box;
+            border-radius: 2px;
+            margin-right: 5px;
+            width: 28px;
+            height: 28px;
+            .fc-icon {
+                top: -6px;
+                left: -7px;
+            }
+        }
+    }
+}
+
+.fc-event {
+    position: relative; /* for resize handle and other inner positioning */
+    display: block; /* make the <a> tag block */
+    line-height: 14px;
+    border-radius: 40px;
+    padding: 2px 5px;
+    border: 0;
+    font-weight: 400;
+    // background-color: lighten($color: $color-primary, $amount: 50);
+    color: #fff;
+    text-align: center;
+    text-transform: unset;
+    &:hover {
+        // background-color: lighten($color: $color-primary, $amount: 20);
+        // color: #fff;
+        cursor: pointer;
+    }
+}
+
+.fc-widget-header {
+    th {
+        // font-weight: normal;
+        color: #fff;
+        background-color: $color-primary;
+        padding: 8px;
+        font-size: 1rem;
+    }
+}
+
+.fc-day-number {
+    padding: 5px 5px 2px !important;
+    font-weight: 600;
+}
+
+.fc-sat,
+.fc-sun {
+    background: #fcfcfc;
+}
+
+.fc-past {
+    color: #ccc;
+    font-weight: 400;
+}

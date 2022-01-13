@@ -1,0 +1,19 @@
+/*------------------------------------*\
+		All helpers
+		|– helpers/ 
+		|   |– _variables.scss   # Sass Variables 
+		|   |– _functions.scss   # Sass Functions 
+		|   |– _mixins.scss      # Sass Mixins 
+		|   |– _helpers.scss     # Class & placeholders helpers 
+		|   ...                  # Etc… 
+		Helpers
+		
+		The helpers/ folder (sometimes called utils/) gathers all Sass tools and helpers we’ll use across the project. Got a function? A mixin? Put it in there. This folder also contains a _variables.scss file (sometimes _config.scss) which holds all global variables for the project (for typography, color schemes, and so on).
+
+\*------------------------------------*/
+
+@import "variables";
+@import "mixins";
+@import "class";
+@import "typography";
+@import "color";

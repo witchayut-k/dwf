@@ -1,0 +1,30 @@
+/*------------------------------------*\
+		# primary Sass file
+
+		## doc scss
+		http://github.com/paranoida/sass-mediaqueries
+		http://bourbon.io/docs/
+\*------------------------------------*/
+
+//Media Queries mixins for Sass
+@import 'media-queries';
+
+// Core variables and mixins
+@import 'bootstrap-scss/bootstrap/variables';
+@import 'bootstrap-scss/bootstrap/mixins';
+
+
+// mixin, function, helper class, variable
+@import 'helpers/helpers';
+
+// reset, fonts, default styles
+@import 'base/base';
+
+// Overwrite plugins
+@import 'plugins/plugins';
+
+// All custom styles element (button, input etc...)
+@import 'components/components';
+
+// Specific page styles
+@import 'views/views';

@@ -1,0 +1,42 @@
+.sitemap {
+    ul {
+        list-style: none;
+        padding-left: 15px;
+        li {
+            i {
+                margin-right: 6px;
+                font-size: 14px;
+                color: $color-primary;
+            }
+            a {
+                display: inline-block;
+                line-height: 2;
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    .columns {
+        column-width: 500px;
+        column-gap: 30px;
+        width: 90%;
+        margin: 0 auto;
+
+        div {
+            width: 500px;
+            margin: 0 2px 15px;
+            column-break-inside: avoid;
+            display: inline-block;
+        }
+    }
+
+    .root-item {
+        display: block;
+        margin: 20px 0 15px;
+        color: $color-primary;
+    }
+
+    .l1-item + ul {
+        margin-bottom: 10px;
+    }
+}

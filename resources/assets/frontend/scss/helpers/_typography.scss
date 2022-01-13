@@ -1,0 +1,232 @@
+@mixin basefont($font-weight) {
+	font-family: $basefont;
+
+	@if $font-weight == "normal" {
+		font-weight: normal;
+		} @else if $font-weight == "light" {
+			font-weight: 100;
+			} @else if $font-weight == "bold" {
+				font-weight: bold;
+			}
+		}
+
+// h1 - 44
+// h2 - 38
+// h3 - 30
+// h4 - 28
+
+// HEADINGS ====================================================
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	margin : 0;
+	font-family : $basefont;
+	text-rendering : optimizelegibility;
+	line-height: 1.1;
+	font-weight: $weight-regular;
+}
+
+h1 small,
+h2 small {
+	font-weight : normal;
+	color : $lightgrey;
+}
+
+h1,
+.h1 {
+	@include font-size(18);
+	margin-bottom : $line-height-base / 2;
+	@include min-screen(768px) {
+		@include font-size(26);
+	}
+}
+
+h2,
+.h2 {
+	@include font-size(38);
+	margin-bottom : $line-height-base / 2;
+
+	@include max-screen(767px) {
+		@include font-size(30);
+	}
+}
+
+h3,
+.h3 {
+	@include font-size(30);
+	margin-bottom : $line-height-base / 1.5;
+}
+
+h4,
+.h4 {
+	@include font-size(28);
+	margin-bottom : $line-height-base;
+}
+
+h5,
+.h5 {
+	@include font-size(22);
+	margin-bottom : $line-height-base;
+}
+
+h6,
+.h6 {
+	margin-bottom : $line-height-base;
+}
+
+p {
+	@include font-size(14);
+}
+
+// TYPOGRAPHY ====================================================
+
+a:link{
+	// @include font-size(16);
+}
+
+p,
+ol,
+ul,
+dl,
+address {
+	margin-bottom : $line-height-base;
+
+}
+
+small {
+	// font-family: $baseheadingfont;
+	font-weight: lighter;
+}
+
+ul,
+ol {
+	margin : 0;
+	padding : 0 0 0 $grid-gutter-width;
+}
+
+li ul,
+li ol {
+	margin : 0;
+	// .font-size(16);
+}
+
+// blockquote
+
+blockquote  {
+	margin : 0;
+	padding-left : $grid-gutter-width;
+}
+
+q {
+	quotes : none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content : '';
+	content : none;
+}
+
+cite {
+	font-style : normal;
+}
+
+// definition lists
+
+dl,
+dd {
+	margin-bottom : $line-height-base;
+}
+
+dt {
+	font-weight : bold;
+}
+
+.dl-horizontal {
+
+	dt {
+		float : left;
+		clear : left;
+		width : 20.25%;
+		text-align : right;
+	}
+
+	dd {
+		margin-left : 22.78%;
+	}
+}
+
+abbr[title] {
+	border-bottom : 1px dotted $bordercolor;
+	cursor : help;
+}
+
+b, strong {
+	font-weight : bold;
+}
+
+dfn {
+	font-style : italic;
+}
+
+ins {
+	background-color : lighten($basecolor, 75%);
+	color : $basecolor;
+	text-decoration : none;
+}
+
+mark {
+	background-color : lighten($basecolor, 75%);
+	color : $basecolor;
+	font-style : italic;
+	font-weight : bold;
+}
+
+pre,
+code,
+kbd,
+samp {
+	font-family : $codefont;
+	line-height : $line-height-base;
+}
+
+pre {
+	white-space : pre;
+	white-space : pre-wrap;
+	word-wrap : break-word; }
+
+	sub,
+	sup {
+		position : relative;
+		line-height : 0;
+		vertical-align : $line-height-base;
+	}
+
+	sup {
+		top : -.5em;
+	}
+
+	sub {
+		bottom : -.25em;
+	}
+
+	p{
+		margin-bottom: 0;
+		line-height: 1.35;
+
+	// & + p {
+	// 	margin-top: 1.42857em;
+	// }
+}

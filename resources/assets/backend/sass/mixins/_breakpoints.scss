@@ -1,0 +1,39 @@
+@mixin breakpoint($mq) {
+    @if $mq==xs {
+      @media (min-width: $xs) {
+        @content;
+      }
+    } @else if $mq==sm {
+      @media (min-width: $sm) {
+        @content;
+      }
+    } @else if $mq==md {
+      @media (min-width: $md) {
+        @content;
+      }
+    } @else if $mq==lg {
+      @media (min-width: $lg) {
+        @content;
+      }
+    } @else if $mq==xl {
+      @media (min-width: $xl) {
+        @content;
+      }
+    } @else if $mq==sm_max {
+      @media (max-width: $sm-max) {
+        @content;
+      }
+    } @else if $mq==md_max {
+      @media (max-width: $md-max) {
+        @content;
+      }
+    } @else if $mq==lg_max {
+      @media (max-width: $lg-max) {
+        @content;
+      }
+    } @else if $mq==xl_max {
+      @media (max-width: $xl-max) {
+        @content;
+      }
+    }
+  }

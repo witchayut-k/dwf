@@ -1,0 +1,73 @@
+@import "../variables";
+@import "../utilities";
+
+.app {
+    background-image: url("../img/login-bg.png");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+
+    font-family: $font-primary;
+
+    .app-container {
+        background: none;
+    }
+
+    .app-login-box {
+        width: 500px;
+        padding: 0 44px 53px;
+        border-radius: 20px;
+        box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.15);
+
+        .app-login-box-user {
+            margin-bottom: 0;
+            img {
+                border: 0;
+                &.logo-text {
+                    width: 362px;
+                    border-radius: 0;
+                }
+            }
+        }
+
+        .app-login-box-container {
+            padding: 0;
+            margin-top: 42px;
+            form {
+                .form-group {
+                    margin-bottom: 30px;
+                    .control-label {
+                        font-weight: 400;
+                    }
+                    .form-control {
+                        border: 1px solid #8a8a8a;
+                        box-sizing: border-box;
+                        border-radius: 46px;
+                    }
+
+                    .btn {
+                        &.btn-link {
+                            padding-right: 0;
+                        }
+                    }
+                }
+
+                .btn-primary {
+                    background: #b70954;
+                    border: 0.75px solid #e0e0e0;
+                    box-sizing: border-box;
+                    border-radius: 49px;
+                    height: 51px;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+.app-checkbox,
+.app-radio {
+    float: unset;
+    width: auto;
+}

@@ -1,0 +1,228 @@
+
+// GRID SYSTEM
+// -------------------------
+.no-gutter {
+		margin-left: 0;
+		margin-right: 0;
+}
+.no-gutter > * {
+		padding-left: 0;
+		padding-right: 0;
+}
+
+// CLASS GOBLA
+// -------------------------
+.show {
+	display: block !important;
+}
+.hidden{
+	display: none !important;
+	visibility: hidden !important;
+}
+.invisible {
+	visibility: hidden;
+}
+
+.non-bg{
+	background: none !important;
+	background-color: transparent !important;
+	border: none !important;
+}
+
+.non-padding{
+	padding: 0 !important;
+}
+
+.non-margin{
+	margin: 0 !important;
+}
+
+.no-padding{
+	&__r{
+		padding-right: 0;
+	}
+	&__l{
+		padding-left: 0;
+	}
+}
+
+.text-nowrap{
+	white-space: nowrap;
+}
+
+.text-uppercase{
+		text-transform: uppercase;
+}
+
+.display{
+	&--table{
+		display: table;
+		width: 100%;
+	}
+	&--table-cell{
+		display: table-cell;
+	}
+}
+
+.verticel{
+	&--middle{
+		vertical-align: middle;
+	}
+}
+
+.insert-dotdotdot {
+	display: block;
+	overflow: visible;
+	text-overflow: ellipsis; 
+}
+
+.no-scroll {
+	html.touch &{
+		position: fixed;
+	}	 
+}
+
+
+.col-ss-12{
+	@include max-screen($screen-extra-small) {
+		width: 100%;
+	}
+}
+
+.text-right{
+
+	&.-md{
+		text-align: left;
+
+		@include min-screen(992px) {
+			text-align: right;
+		}
+	}
+	
+	&.-lg{
+		text-align: left;
+
+		@include min-screen(1200px) {
+			text-align: right;
+		}
+	}
+}
+
+
+// hover effect listing page
+// -------------------------
+.view{
+		
+	&.thumb{
+		position: relative;
+
+		.img-photo{
+			 max-width: 100%;
+			 transition: all 0.3s linear;
+		}
+
+		&:hover .img-photo{
+			transform: scale(1.06);
+		}
+	}
+
+	.mask {
+		opacity: 0;
+		overflow:visible;
+		 // border:100px solid rgba(0,0,0,0.7);
+		 background-color: rgba($white, 0.2);
+		 @include size(100% ,100%);
+		 box-sizing:border-box;
+		 transition: all 0.4s ease-in-out;
+
+		 position: absolute;
+		 left: 0;
+		 top:0;
+		 z-index: 9;
+		 width: 100%;
+		 display: none;
+
+		 &.non-bg{
+			 background-color: transparent;
+		 }
+	}
+
+
+	&:hover,
+	&:focus,
+	&:active{
+		.mask{
+			opacity: 1;
+		}
+	}
+}
+
+
+// background hover effect
+.parent {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    span.img-photo {
+    	height: 100%;
+    	width: 100%;
+    	background-size: cover;
+    	background-position: center center;
+    	background-repeat: no-repeat;
+    	transition: all 0.3s linear;
+    	display: block;
+    	border-radius: 18px 18px;
+    }
+
+    &:hover,
+    &:focus{
+    	span.img-photo {
+    		-ms-transform: scale(1.06);
+    		-moz-transform: scale(1.06);
+    		-webkit-transform: scale(1.06);
+    		-o-transform: scale(1.06);
+    		transform: scale(1.06);
+    	}
+    }
+}
+
+
+.visible-touch{
+	display: none;
+
+	html.touch &{
+		display: block;
+	}
+
+	@include max-screen(767px) {
+		display: block;
+	}
+}
+
+.hidden-touch{
+	display: block;
+
+	html.touch &{
+		display: none;
+	}
+
+	@include max-screen(767px) {
+		display: none;
+	}	
+}
+
+a.no-hand{
+	pointer-events: none;
+}
+
+
+.fb-page, 
+.fb-page span, 
+.fb-page span iframe[style] { 
+    width: 100% !important;
+
+    body.plugin{
+    	width: 100% !important;
+    }
+}

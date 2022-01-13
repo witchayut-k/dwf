@@ -1,0 +1,169 @@
+.app-navigation {
+    .app-navigation-logo {
+        height: 75px;
+        background-size: 90% !important;
+        background-position: center center !important;
+        border-bottom: 0 !important;
+    }
+    &.app-navigation-style-light {
+        nav {
+            background: #f8faf8;
+
+            > ul {
+                > li {
+                    border-bottom: 0;
+                    a {
+                        font-weight: 300;
+                        font-size: 1rem;
+                        font-family: $font-primary;
+                        text-transform: none;
+                        color: #666666;
+                        padding-left: 32px;
+                        background: transparent;
+
+                        > span:nth-child(1) {
+                            margin-top: 6px;
+                            color: #666666;
+                        }
+
+                        .caption {
+                            font-family: $font-primary;
+                            font-size: 1rem;
+                            font-weight: 300;
+                            height: auto;
+                            line-height: 1.2;
+                            color: #666666;
+                        }
+
+                        &::after {
+                            // content: "\f054";
+                            content: "\f078";
+                            position: absolute;
+                            top: 17px;
+                            right: 10px;
+                            display: inline-block;
+                            font: normal normal normal 14px/1 FontAwesome;
+                            font-size: inherit;
+                            text-rendering: auto;
+                            -webkit-font-smoothing: antialiased;
+                            -moz-osx-font-smoothing: grayscale;
+                            color: #666666 !important;
+                            width: auto;
+                            padding: 0;
+                        }
+
+                        &:hover {
+                            background: $color-primary-extra-light;
+                            color: #000;
+                            span {
+                                color: #000;
+                            }
+                        }
+
+                        &.active {
+                            background: $color-primary;
+                            color: #fff;
+                            span {
+                                color: #fff;
+                            }
+
+                            &::after {
+                                color: white !important;
+                            }
+                        }
+
+                        &.disabled {
+                            color: #bbb;
+
+                            > span:nth-child(1) {
+                                color: #bbb;
+                            }
+
+                            &::after {
+                                color: #bbb !important;
+                            }
+                        }
+                    }
+
+                    &.openable {
+                        a {
+                            ul > li > a::after {
+                                display: none;
+                            }
+                        }
+                        &.open {
+                            > a {
+                                color: #fff !important;
+                                background: $color-primary;
+
+                                span, i {
+                                    color: #fff !important;
+                                }
+                                
+                                &::after {
+                                    color: #fff !important;
+                                }
+                            }
+                        }
+                    }
+
+                    > ul {
+                        > li {
+                            > a {
+                                padding: 5px 5px 5px 85px;
+                                position: relative;
+                                &.active {
+                                    color: $color-primary;
+                                    font-weight: 600;
+                                }
+
+                                &::before {
+                                    content: "•";
+                                    position: absolute;
+                                    font-size: 18px;
+                                    left: 68px;
+                                    top: 6px;
+                                }
+
+                                &::after {
+                                    content: "";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.app-sidebar-left-minimized {
+    .app-navigation {
+        &.app-navigation-style-light {
+            nav {
+                overflow: hidden;
+
+                > ul {
+                    > li {
+                        a {
+                            font-size: 0px;
+                            padding: 10px;
+                            text-align: center;
+                            > span:nth-child(1) {
+                                margin-top: 0;
+                            }
+
+                            .caption {
+                                font-size: 0px;
+                            }
+
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

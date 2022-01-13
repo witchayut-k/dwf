@@ -1,0 +1,17 @@
+.form-group {
+    .help-block {
+        margin-top: 10px;
+        display: block;
+    }
+    &.has-error {
+        
+        .form-control {
+           
+        }
+
+        .error-help-block {
+            font-size: 1.3rem;
+            color: red;
+        }
+    }
+}
