@@ -45,7 +45,7 @@
                             <ul class="content-list">
                                 @foreach ($moreContents as $mContent)
                                 <li>
-                                    <a href="{{ url("categories/{$mContent->type->id}/$mContent->id") }}">
+                                    <a href="{{ url("contents/$mContent->id") }}">
                                         <h3 class="font-medium txt-wrap2">{{ $mContent->title }}</h3>
                                         <p class="date c-pink pt-2">{{ $mContent->created_at->translatedFormat('j F Y') }}</p>
                                     </a>

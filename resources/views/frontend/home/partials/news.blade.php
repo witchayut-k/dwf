@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 @php $firstContent = $rows->first(); @endphp
-                                <a href="{{ url("categories/$news->id/$firstContent->id") }}" class="box-item">
+                                <a href="{{ url("contents/$firstContent->id") }}" class="box-item">
                                     <div class="photo-thumb sm">
                                         <div class="photo-parent">
                                             <span class="photo"
@@ -49,7 +49,7 @@
                                 <div class="row">
                                     @foreach ($rows->slice(1, 4) as $content)
                                     <div class="col-md-6">
-                                        <a href="{{ url("categories/$news->id/$content->id") }}" class="box-item">
+                                        <a href="{{ url("contents/$content->id") }}" class="box-item">
                                             <div class="photo-thumb sm">
                                                 <div class="photo-parent">
                                                     <span class="photo"

@@ -37,7 +37,7 @@
         <div class="container">
             <div class="header-row row justify-content-center">
                 <div class="col-md-6 header-menu-col left">
-                    <a href="index.php" class="logo"></a>
+                    <a href="{{ url("/") }}" class="logo"></a>
                     <marquee class="txt-running font-medium c-pink">ยึดมั่นหลักธรรมาภิบาล มุ่งเน้นบริการด้วยความโปร่งใสและตรวจสอบได้</marquee>
                 </div>
                 <div class="col-md-6 header-menu-col right bg-city text-right">

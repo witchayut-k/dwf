@@ -20,7 +20,7 @@
         <div class="row content-row">
             @foreach ($contents as $content)
             <div class="col-md-6 col-lg-3">
-                <a href="{{ url("categories/$category->id/$content->id") }}" class="box-item">
+                <a href="{{ url("contents/$content->id") }}" class="box-item">
                     <div class="photo-thumb sm">
                         <div class="photo-parent">
                             <span class="photo" style="background-image: url('{{ $content->featured_image_resized }}')"></span>

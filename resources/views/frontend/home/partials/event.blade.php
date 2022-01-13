@@ -10,7 +10,7 @@
                 <div class="row row-event">
                     @foreach ($activity->published_contents->slice(0, 6) as $content)
                         <div class="col-4 col-event">
-                            <a href="{{ url("categories/$activity->id/$content->id") }}" class="box-item">
+                            <a href="{{ url("contents/$content->id") }}" class="box-item">
                                 <div class="photo-thumb">
                                     <div class="photo-parent">
                                         <span class="photo"
