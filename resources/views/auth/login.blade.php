@@ -37,7 +37,20 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <div class="form-group">
+            {{-- {!! htmlFormSnippet() !!} --}}
+            {!! htmlFormSnippet([
+                "theme" => "light",
+                "size" => "normal",
+                "tabindex" => "3",
+                "callback" => "callbackFunction",
+                "expired-callback" => "expiredCallbackFunction",
+                "error-callback" => "errorCallbackFunction",
+            ]) !!}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" disabled>Login</button>
+
         {{ Form::close() }}
     </div>
 
@@ -52,4 +65,9 @@
 {!! JsValidator::formRequest('App\Http\Requests\Backend\Auth\LoginRequest', '#form-login') !!}
 {{-- {!! JsValidator::formRequest('App\Http\Requests\Backend\Auth\ForgetPasswordRequest', '#form-forget-password') !!}
 --}}
+<script>
+    function callbackFunction (res) {
+        $('.btn-primary').prop('disabled', false);
+    }
+</script>
 @endsection

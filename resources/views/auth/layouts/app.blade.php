@@ -33,6 +33,8 @@
     <link href="{{ mix('backend/css/styles.min.css') }}" rel="stylesheet" />
     <link href="{{ mix('backend/css/auth.min.css') }}" rel="stylesheet" />
     <!-- EOF CSS INCLUDE -->
+
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body>

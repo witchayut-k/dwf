@@ -18,7 +18,7 @@
         @method($weblink->id ? 'PUT' : 'POST')
 
         {{ Form::hidden('weblink_type_value', $weblink->weblink_type_id) }}
-        {{ Form::hidden('parent_type_value', $weblink->type->parent_type_id) }}
+        {{ Form::hidden('parent_type_value', $weblink->type ? $weblink->type->parent_type_id : '') }}
 
         <div class="form-body">
             {!! Form::groupText('title', 'หัวข้อ', $weblink->title, ['required'=>'required']) !!}
