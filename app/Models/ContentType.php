@@ -56,7 +56,7 @@ class ContentType extends Model
 
     public function scopeOfAnnounce($query)
     {
-        return $query->where('is_announcment', TRUE);
+        return $query->where('is_announcement', TRUE);
     }
 
     /*

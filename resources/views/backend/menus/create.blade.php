@@ -74,10 +74,10 @@
 
             <div class="form-group">
                 <label>ประเภทเนื้อหาเมนู</label>
-                @foreach (MenuTypeEnum::getKeys() as $item)
+                @foreach (\App\Enums\MenuTypeEnum::getKeys() as $item)
                 <div class="app-radio inline round"> 
                     <label>
-                        <input type="radio" name="menu_type_id" value="{{ MenuTypeEnum::getValue($item) }}" {{ $menu->menu_type_id == MenuTypeEnum::getValue($item) ? 'checked' : '' }}> {{ MenuTypeEnum::getDescription(MenuTypeEnum::getValue($item)) }} 
+                        <input type="radio" name="menu_type_id" value="{{ \App\Enums\MenuTypeEnum::getValue($item) }}" {{ $menu->menu_type_id == \App\Enums\MenuTypeEnum::getValue($item) ? 'checked' : '' }}> {{ \App\Enums\MenuTypeEnum::getDescription(\App\Enums\MenuTypeEnum::getValue($item)) }} 
                     </label> 
                 </div>
                 @endforeach

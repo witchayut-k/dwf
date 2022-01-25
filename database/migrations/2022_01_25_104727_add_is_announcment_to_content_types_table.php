@@ -14,7 +14,7 @@ class AddIsAnnouncmentToContentTypesTable extends Migration
     public function up()
     {
         Schema::table('content_types', function (Blueprint $table) {
-            $table->boolean('is_announcment')->default(false);
+            $table->boolean('is_announcement')->default(false);
         });
     }
 
@@ -26,7 +26,7 @@ class AddIsAnnouncmentToContentTypesTable extends Migration
     public function down()
     {
         Schema::table('content_types', function (Blueprint $table) {
-            $table->dropColumn('is_announcment');
+            $table->dropColumn('is_announcement');
         });
     }
 }
