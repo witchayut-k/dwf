@@ -62,7 +62,7 @@ Route::name('home')->middleware('visitor')->group(function () {
     Route::get('faq', [FaqController::class, 'index'])->name('faq');
     Route::put('faq/{faq}', [FaqController::class, 'update']);
     Route::get('categories/{id}', [ContentController::class, 'categories'])->name('categories');
-    Route::get('contents/{content}', [ContentController::class, 'index'])->name('contents');
+    Route::get('contents/{content}', [ContentController::class, 'index'])->name('contents')->middleware('view_count');
     Route::get('events', [EventController::class, 'index']);
     Route::get('events/{event}', [EventController::class, 'show']);
     Route::get('videos', [VideoController::class, 'index']);
@@ -132,9 +132,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('sequence', [BannerController::class, 'updateSequence']);
     });
 
-    // Banner
+    // Menus
     Route::prefix('menus')->group(function () {
         Route::post('sequence', [MenuController::class, 'updateSequence']);
+    });
+
+    // Content Type
+    Route::prefix('content-types')->group(function () {
+        Route::post('sequence', [ContentTypeController::class, 'updateSequence']);
     });
 
     // Event
@@ -142,7 +147,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('calendar', [BackendEventController::class, 'calendar']);
     });
 
-    // Banner
+    // Contact
     Route::prefix('contacts')->group(function () {
         Route::post('sequence', [BackendContactController::class, 'updateSequence']);
     });

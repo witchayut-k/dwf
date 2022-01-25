@@ -29,7 +29,7 @@
                     <div class="box-item-dt">
                         <h2 class="txt-wrap">{{ $content->title }}</h2>
                         <div class="d-flex flex-wrap">
-                            <p class="date pr-4">{{ $content->created_at->translatedFormat('j F Y') }}</p>
+                            <p class="date pr-4">{{ $content->date_th }}</p>
                             <p class="view pr-4">{{ $content->view_count }} view</p>
                         </div>
                     </div>

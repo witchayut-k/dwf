@@ -15,3 +15,5 @@ yarn-error.log
 /.vscode
 public/uploads/
 storage/media-library/
+public/videos/รายการ Talk Today วันจันทร์ที่ 23 สิงหาคม 2564 พบกับความร่วมมือระหว่าง สค. กับโลตัส.mp4
+public/backend/

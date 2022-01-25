@@ -29,7 +29,7 @@ class ContentTypeSeeder extends Seeder
             ['name' => 'ป๊อปอัพ', 'published' => true],
             ['name' => 'ประกาศราคากลาง', 'published' => true],
             ['name' => 'สรุปผลการจัดซื้อจัดจ้าง', 'published' => true],
-            ['name' => 'รับสมัครงาน', 'published' => true],
+            ['name' => 'ประกาศรับสมัครงาน', 'published' => true],
             ['name' => 'ข้อมูลซีไอโอ', 'published' => true],
             ['name' => 'ข่าวสารจากซีไอโอ', 'published' => true],
             ['name' => 'กฏ/ระเบียบ/ข้อบังคับ', 'published' => true],
@@ -54,6 +54,7 @@ class ContentTypeSeeder extends Seeder
             ['name' => 'แผน-ผล', 'published' => true],
             ['name' => 'จริยธรรมและป้องกันการทุจริต', 'published' => true],
             ['name' => 'การบริหารและพัฒนาทรัพยากรบุคคล', 'published' => true],
+            ['name' => 'ข่าวภูมิภาค', 'published' => true],
         ]);
     }
 }

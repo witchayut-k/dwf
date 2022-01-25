@@ -82,6 +82,11 @@ class Video extends Model implements HasMedia
         ->nonQueued();
     }
 
+    public function getDateThAttribute()
+    {
+        return $this->created_at ? $this->created_at->addYear(543)->translatedFormat('j M Y') : "";
+    }
+
 
     /*
     |--------------------------------------------------------------------------

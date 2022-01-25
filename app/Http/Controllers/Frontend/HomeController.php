@@ -39,7 +39,8 @@ class HomeController extends Controller
 
         $budget = Budget::first() ?: new Budget();
 
-        $news = $this->getNewsContents();
+        $featuredContents = $contentTypes = ContentType::where('is_featured', true)->orderBy('sequence')->get();
+        // $featuredContents = $this->getFeaturedContents();
         $activity = ContentType::find(6);
 
         $events = Event::ofAvailable()->orderBy('begin_date')->get();
@@ -60,7 +61,7 @@ class HomeController extends Controller
                 'linkDepartments',
                 'linkRelated',
                 'linkGov',
-                'news',
+                'featuredContents',
                 'activity',
                 'events',
                 'videoCategories',
@@ -96,19 +97,19 @@ class HomeController extends Controller
     //     return view('frontend.content_categories.detail', compact('content', 'tags', 'moreContents'));
     // }
 
-    private function getNewsContents()
-    {
-        $contentType = ContentType::find(3);
-        if (empty($contentType))
-            abort(404);
+    // private function getFeaturedContents()
+    // {
+    //     $contentTypes = ContentType::where('is_featured', true)->get();
+    //     if (empty($contentType))
+    //         abort(404);
 
-        $newsList = $contentType->published_contents->sortByDesc('pinned');
-        $chunks = $newsList->chunk(5);
+    //     $newsList = $contentType->published_contents->sortByDesc('pinned');
+    //     $chunks = $newsList->chunk(5);
 
-        $contentType->featured_contents = $chunks->slice(0, 3);
+    //     $contentType->featured_contents = $chunks->slice(0, 3);
 
-        return $contentType;
-    }
+    //     return $contentType;
+    // }
 
     private function getVideoContents()
     {

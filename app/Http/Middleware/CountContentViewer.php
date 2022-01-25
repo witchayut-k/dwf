@@ -6,7 +6,7 @@ use App\Models\Visitor;
 use Closure;
 use Illuminate\Http\Request;
 
-class CountVisitor
+class CountContentViewer
 {
     /**
      * Handle an incoming request.
@@ -19,12 +19,7 @@ class CountVisitor
     {
         $ip = $this->getUserIpAddr();
 
-        if (Visitor::where('date', today())->where('ip', $ip)->count() == 0) {
-            Visitor::create([
-                'date' => today(),
-                'ip' => $ip,
-            ]);
-        }
+      
         return $next($request);
     }
 

@@ -9,8 +9,8 @@
                     <div class="card-header pt-0">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-custom">
-                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item"><a href="news.php">{{ $content->type->name }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url("categories/{$content->type->id}") }}">{{ $content->type->name }}</a></li>
                             </ol>
                         </nav>
                         <h1 class="font-medium c-pink">{{ $content->title }}</h1>
@@ -47,7 +47,7 @@
                                 <li>
                                     <a href="{{ url("contents/$mContent->id") }}">
                                         <h3 class="font-medium txt-wrap2">{{ $mContent->title }}</h3>
-                                        <p class="date c-pink pt-2">{{ $mContent->created_at->translatedFormat('j F Y') }}</p>
+                                        <p class="date c-pink pt-2">{{ $mContent->date_th }}</p>
                                     </a>
                                 </li>
                                 @endforeach

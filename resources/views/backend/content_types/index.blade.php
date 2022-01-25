@@ -27,6 +27,7 @@
         <table class="table table-bordered table-striped" id="table-content-type">
             <thead>
                 <tr>
+                    <th></th>
                     <th style="width: 30px;">ลำดับ</th>
                     <th>ประเภทเนื้อหา</th>
                     <th>สถานะ</th>

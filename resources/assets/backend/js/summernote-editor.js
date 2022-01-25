@@ -16,7 +16,6 @@ $(document).ready(function () {
     $('.editor-summernote').summernote({
         height: 400,
         toolbar: [
-            // [groupName, [list of button]]
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['font', ['strikethrough', 'superscript', 'subscript']],
             ['fontsize', ['fontsize']],
@@ -24,7 +23,7 @@ $(document).ready(function () {
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['bootstrap-grid']],
             ['insert', ['picture', 'link', 'video', 'sEmoji']],
-            // ['misc', ['emoji']]
+            ['view', ['fullscreen', 'codeview', 'help']],
         ],
         callbacks: {
             onImageUpload: function (files) {

@@ -16,7 +16,7 @@
                         </nav>
                         <h1 class="font-medium c-pink">{{ $survey->title }}</h1>
                         <div class="d-flex flex-wrap mt-3">
-                            <p class="date c-gray pr-4">{{ $survey->created_at->translatedFormat('j F Y') }}</p>
+                            <p class="date c-gray pr-4">{{ $survey->date_th }}</p>
                             <p class="view c-gray pr-4">{{ $survey->view_count }} view</p>
                             <p class="view c-gray pr-4">{{ $survey->author->name }}</p>
                         </div>

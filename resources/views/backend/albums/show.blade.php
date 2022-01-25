@@ -16,7 +16,7 @@
                         </nav>
                         <h1 class="font-medium c-pink">{{ $album->title }}</h1>
                         <div class="d-flex flex-wrap mt-3">
-                            <p class="date c-gray pr-4">{{ $album->created_at->translatedFormat('j F Y') }}</p>
+                            <p class="date c-gray pr-4">{{ $album->date_th }}</p>
                             <p class="view c-gray pr-4">{{ $album->view_count }} view</p>
                             <p class="view c-gray pr-4">{{ $album->author->name }}</p>
                         </div>

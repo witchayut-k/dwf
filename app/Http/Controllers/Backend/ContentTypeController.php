@@ -26,7 +26,7 @@ class ContentTypeController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = ContentType::select('*');
+            $query = ContentType::select('*')->orderBy('sequence');
 
             if ($request->terms) {
                 $terms = $request->terms;
