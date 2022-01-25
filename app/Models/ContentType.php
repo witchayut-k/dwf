@@ -49,6 +49,16 @@ class ContentType extends Model
         return $query->where('published', TRUE);
     }
 
+    public function scopeOfFeatured($query)
+    {
+        return $query->where('is_featured', TRUE);
+    }
+
+    public function scopeOfAnnounce($query)
+    {
+        return $query->where('is_announcment', TRUE);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

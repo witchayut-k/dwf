@@ -1,3 +1,4 @@
+@if (count($registerForms) > 0)
 <div class="box-tab py-0">
     <div class="container">
         <ul class="nav nav-tabs nav-news" id="myTabNewsRegis" role="tablist">
@@ -27,10 +28,9 @@
                     </div>
                     @endforeach
                 </div>
-                @if (count($registerForms) == 0)
-                <p class="text-center c-gray py-4">ขณะนี้ยังไม่มีการเปิดรับลงทะเบียน</p>
-                @endif
+                {{-- <p class="text-center c-gray py-4">ขณะนี้ยังไม่มีการเปิดรับลงทะเบียน</p> --}}
             </div>
         </div>
     </div>
 </div>
+@endif

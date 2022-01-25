@@ -12,9 +12,10 @@
 @include('frontend.home.partials.social_link')
 @include('frontend.home.partials.news')
 @include('frontend.home.partials.event')
-@include('frontend.home.partials.department_link')
+{{-- @include('frontend.home.partials.department_link') --}}
 @include('frontend.home.partials.video')
-@include('frontend.home.partials.rss')
+@include('frontend.home.partials.announce')
+{{-- @include('frontend.home.partials.rss') --}}
 @include('frontend.home.partials.registrar')
 @include('frontend.home.partials.related_link')
 

@@ -7,11 +7,13 @@ use App\Models\Banner;
 use App\Models\Budget;
 use App\Models\Content;
 use App\Models\ContentType;
+use App\Models\Document;
 use App\Models\DocumentType;
 use App\Models\Event;
 use App\Models\LandingPage;
 use App\Models\Menu;
 use App\Models\Registrar;
+use App\Models\Video;
 use App\Models\VideoCategory;
 use App\Models\Weblink;
 use App\Models\WeblinkType;
@@ -39,17 +41,19 @@ class HomeController extends Controller
 
         $budget = Budget::first() ?: new Budget();
 
-        $featuredContents = $contentTypes = ContentType::where('is_featured', true)->orderBy('sequence')->get();
+        $featuredContents = $contentTypes = ContentType::ofFeatured()->ofPublished()->orderBy('sequence')->get();
         // $featuredContents = $this->getFeaturedContents();
         $activity = ContentType::find(6);
 
         $events = Event::ofAvailable()->orderBy('begin_date')->get();
 
-        $videoCategories = $this->getVideoContents();
+        $videos = $this->getVideoContents();
+        $documents = $this->getDocuments();
 
         $registerForms = Registrar::ofPublished()->get();
 
-        $documentTypes = $this->getDocuments();
+        $announces = $this->getAnnounces();
+
 
         return view(
             'frontend.home.index',
@@ -64,10 +68,11 @@ class HomeController extends Controller
                 'featuredContents',
                 'activity',
                 'events',
-                'videoCategories',
+                'videos',
+                'documents',
                 'budget',
                 'registerForms',
-                'documentTypes',
+                'announces',
             )
         );
     }
@@ -113,28 +118,45 @@ class HomeController extends Controller
 
     private function getVideoContents()
     {
-        $videoCategories = VideoCategory::ofPublished()->get();
+        $chunks = Video::ofPublished()->get()->chunk(5);
+        $videos = $chunks->slice(0, 3);
 
-        foreach ($videoCategories as $category) {
-            $chunks = $category->published_videos->chunk(5);
-            $category->featured_videos = $chunks->slice(0, 3);
-        }
+        return $videos;
 
-        $results = $videoCategories->filter(function ($category) {
-            return $category->featured_videos->count() > 0;
-        });
+        // $videoCategories = VideoCategory::ofPublished()->get();
 
-        return $results;
+        // foreach ($videoCategories as $category) {
+        //     $chunks = $category->published_videos->chunk(5);
+        //     $category->featured_videos = $chunks->slice(0, 3);
+        // }
+
+        // $results = $videoCategories->filter(function ($category) {
+        //     return $category->featured_videos->count() > 0;
+        // });
+
+        // return $results;
     }
 
     private function getDocuments()
     {
-        $documentTypes = DocumentType::ofPublished()->get();
+        return Document::ofPublished()->take(10)->get();
+        // $documentTypes = DocumentType::ofPublished()->get();
 
-        foreach ($documentTypes as $docType) {
-            $docType->files = $docType->published_documents->slice(0, 10);
+        // foreach ($documentTypes as $docType) {
+        //     $docType->files = $docType->published_documents->slice(0, 10);
+        // }
+
+        // return $documentTypes;
+    }
+
+    private function getAnnounces()
+    {
+        $contentTypes =  ContentType::ofAnnounce()->ofPublished()->orderBy('sequence')->get();
+
+        foreach ($contentTypes as $type) {
+            $type->published_contents = $type->published_contents->slice(0, 10);
         }
 
-        return $documentTypes;
+        return $contentTypes;
     }
 }
