@@ -54,7 +54,7 @@
         <div class="navbar-container d-flex justify-content-center">
            @include('frontend.layouts.topnav')
         </div>
-        <a onclick="onMenu()" class="hamburger"></a>
+        <a class="hamburger"></a>
     </div>
 </header>
 

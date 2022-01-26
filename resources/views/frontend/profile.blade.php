@@ -15,7 +15,7 @@
                         </nav>
                         <h1 class="font-medium c-pink">{{ $profile->title }}</h1>
                         <div class="d-flex flex-wrap mt-3">
-                            <p class="date c-gray pr-4">{{ $profile->updated_at->translatedFormat('j F Y') }}</p>
+                            <p class="date c-gray pr-4">{{ $profile->updated_at->addYear(543)->translatedFormat('j F Y') }}</p>
                             {{-- <p class="view c-gray pr-4">250 view</p> --}}
                             <p class="view c-gray pr-4">{{ $profile->user->name }}</p>
                         </div>

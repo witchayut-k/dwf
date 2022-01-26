@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="box-item-dt">
                                         <h3 class="font-medium txt-wrap">{{ $item->title }}</h3>
-                                        <p class="date pt-1">{{ $item->created_at->translatedFormat('j F Y') }}</p>
+                                        <p class="date pt-1">{{ $item->date_th }}</p>
                                     </div>
                                 </a>
                             @endforeach
