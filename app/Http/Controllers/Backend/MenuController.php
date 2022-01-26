@@ -29,7 +29,7 @@ class MenuController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Menu::select('menus.*')->orderBy('menus.sequence')
+            $query = Menu::select('menus.*')
                 ->leftJoin('menus as p', 'p.id', '=', 'menus.parent_id');
 
 
@@ -84,6 +84,9 @@ class MenuController extends BaseController
                     $navPath .= $parent ? $parent->title : "-";
                     return $navPath;
 
+                })
+                ->order(function ($query) {
+                    $query->orderBy('menus.sequence', 'asc');
                 })
                 ->make(true);
         }

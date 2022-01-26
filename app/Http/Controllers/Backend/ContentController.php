@@ -17,7 +17,7 @@ class ContentController extends BaseController
     public function __construct()
     {
         parent::__construct(new Content());
-        $this->middleware(["permission:".PermissionEnum::getDescription(PermissionEnum::MANAGE_CONTENT)]);
+        $this->middleware(["permission:" . PermissionEnum::getDescription(PermissionEnum::MANAGE_CONTENT)]);
     }
     /**
      * Display a listing of the resource.
@@ -29,8 +29,7 @@ class ContentController extends BaseController
         if ($request->ajax()) {
 
             $query = Content::select('contents.*', 't.name as type_name')
-                ->leftJoin('content_types as t', 't.id', '=', 'contents.content_type_id')
-                ->orderByDesc('contents.created_at');
+                ->leftJoin('content_types as t', 't.id', '=', 'contents.content_type_id');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -47,6 +46,10 @@ class ContentController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('contents.pinned', 'desc');
+                    $query->orderBy('contents.created_at', 'desc');
+                })
                 ->make(true);
         }
 

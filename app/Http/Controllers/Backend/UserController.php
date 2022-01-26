@@ -28,8 +28,7 @@ class UserController extends BaseController
     {
         if ($request->ajax()) {
             $query = User::select('*')
-                ->with(['roles'])
-                ->orderBy('name');
+                ->with(['roles']);
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -43,6 +42,9 @@ class UserController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
+                })
                 ->make(true);
         }
 

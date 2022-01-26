@@ -24,7 +24,7 @@ class MessageController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Message::select('*')->orderByDesc('created_at');
+            $query = Message::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -38,6 +38,9 @@ class MessageController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
+                })
                 ->make(true);
         }
         return view('backend.messeges.index');

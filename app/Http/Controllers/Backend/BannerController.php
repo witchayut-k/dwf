@@ -24,7 +24,7 @@ class BannerController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Banner::select('*')->orderBy('sequence')->orderByDesc('id');
+            $query = Banner::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -40,6 +40,10 @@ class BannerController extends BaseController
                 ->addIndexColumn()
                 ->addColumn('featured_image', function ($content) {
                     return $content->featured_image_resized;
+                })
+                ->order(function ($query) {
+                    $query->orderBy('sequence', 'desc');
+                    $query->orderBy('created_at', 'desc');
                 })
                 ->make(true);
         }

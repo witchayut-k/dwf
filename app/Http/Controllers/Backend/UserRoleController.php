@@ -26,7 +26,7 @@ class UserRoleController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Role::select('*')->orderBy('name');
+            $query = Role::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -40,6 +40,9 @@ class UserRoleController extends Controller
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
+                })
                 ->make(true);
         }
 

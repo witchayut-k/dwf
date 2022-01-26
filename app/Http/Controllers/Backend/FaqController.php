@@ -24,7 +24,7 @@ class FaqController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Faq::select('*')->orderByDesc('id');
+            $query = Faq::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -38,6 +38,9 @@ class FaqController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
+                })
                 ->make(true);
         }
         return view('backend.faqs.index');

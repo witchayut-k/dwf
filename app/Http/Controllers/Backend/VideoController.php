@@ -43,6 +43,9 @@ class VideoController extends BaseController
                 ->addColumn('featured_image', function ($content) {
                     return $content->video_preview_image;
                 })
+                ->order(function ($query) {
+                    $query->orderBy('videos.created_at', 'desc');
+                })
                 ->make(true);
         }
         return view('backend.videos.index');

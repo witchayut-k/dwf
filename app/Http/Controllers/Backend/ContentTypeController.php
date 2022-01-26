@@ -26,7 +26,7 @@ class ContentTypeController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = ContentType::select('*')->orderBy('sequence');
+            $query = ContentType::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -40,6 +40,11 @@ class ContentTypeController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('sequence', 'asc');
+                    $query->orderBy('created_at', 'desc');
+                    
+                })
                 ->make(true);
         }
 

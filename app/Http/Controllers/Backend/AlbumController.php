@@ -25,7 +25,7 @@ class AlbumController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Album::select('*')->orderByDesc('id');
+            $query = Album::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -41,6 +41,9 @@ class AlbumController extends BaseController
                 ->addIndexColumn()
                 ->addColumn('featured_image', function ($content) {
                     return $content->featured_image_resized;
+                })
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
                 })
                 ->make(true);
         }

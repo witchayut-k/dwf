@@ -38,7 +38,7 @@ var DocumentType = function () {
                 {
                     data: 'id', sClass: 'text-center',
                     render: function (data, type, row) {
-                        var actions = App.renderTableActionsWithPreview(moduleUrl, row.id, row.type_name);
+                        var actions = App.renderTableActions(moduleUrl, row.id, row.type_name);
                         return actions;
                     }
                 },

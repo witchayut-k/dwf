@@ -25,7 +25,7 @@ class LandingPageController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = LandingPage::select('*')->orderByDesc('id');
+            $query = LandingPage::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -41,6 +41,9 @@ class LandingPageController extends BaseController
                 ->addIndexColumn()
                 ->addColumn('featured_image', function ($content) {
                     return $content->featured_image_resized;
+                })
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
                 })
                 ->make(true);
         }

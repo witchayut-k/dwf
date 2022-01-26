@@ -118,7 +118,7 @@ class HomeController extends Controller
 
     private function getVideoContents()
     {
-        $chunks = Video::ofPublished()->get()->chunk(5);
+        $chunks = Video::ofPublished()->orderByDesc('created_at')->get()->chunk(5);
         $videos = $chunks->slice(0, 3);
 
         return $videos;

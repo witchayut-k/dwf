@@ -96,7 +96,7 @@ class WeblinkTypeController extends BaseController
     public function table(Request $request, WeblinkType $weblinkType)
     {
         if ($request->ajax()) {
-            $query = WeblinkType::select('*')->where('parent_type_id', $weblinkType->id)->orderBy('sequence');
+            $query = WeblinkType::select('*')->where('parent_type_id', $weblinkType->id);
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -110,6 +110,10 @@ class WeblinkTypeController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('sequence', 'asc');
+                    $query->orderBy('created_at', 'desc');
+                })
                 ->make(true);
         }
 

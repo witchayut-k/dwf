@@ -23,7 +23,7 @@ class DocumentTypeController extends BaseController
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = DocumentType::select('*')->orderByDesc('type_name');
+            $query = DocumentType::select('*');
 
             if ($request->terms) {
                 $terms = $request->terms;
@@ -37,6 +37,9 @@ class DocumentTypeController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('type_name', 'asc');
+                })
                 ->make(true);
         }
 
