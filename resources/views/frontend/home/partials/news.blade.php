@@ -12,13 +12,42 @@
             @foreach ($featuredContents as $key => $contentType)
             @php
                 $contents = $contentType->published_contents->sortByDesc('pinned');
-                $chunks = $contents->chunk(5);
-                $contentType->featured_contents = $chunks->slice(0, 3);
+
+                if ($contentType->name == "ข่าวภูมิภาค") {
+                    $chunks = $contents->chunk(8);
+                    $contentType->featured_contents = $chunks->slice(0, 3);
+                } else {
+                    $chunks = $contents->chunk(5);
+                    $contentType->featured_contents = $chunks->slice(0, 3);
+                }
+
             @endphp
-            <div class="tab-pane fade {{ $key == 0 ? " show active" : "" }}" id="tabNews{{ $key }}" role="tabpanel"
-                aria-labelledby="tabNews{{ $key }}">
+            <div class="tab-pane fade {{ $key == 0 ? " show active" : "" }}" id="tabNews{{ $key }}" role="tabpanel" aria-labelledby="tabNews{{ $key }}">
                 <div class="slider slider-news">
                     @foreach ($contentType->featured_contents as $rows)
+                    @if ($contentType->name == "ข่าวภูมิภาค")
+                    <div>
+                        <div class="row">
+                            @foreach ($rows as $content)
+                            <div class="col-md-3">
+                                <a href="{{ url("contents/$content->id") }}" class="box-item">
+                                    <div class="photo-thumb sm">
+                                        <div class="photo-parent">
+                                            <span class="photo" style="background-image: url('{{ $content->featured_image }}')"></span>
+                                        </div>
+                                    </div>
+                                    <div class="box-item-dt">
+                                        <h2 class="txt-wrap">{{ $content->title }}</h2>
+                                        <div class="d-flex">
+                                            <p class="date pr-4">{{ $content->date_th }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @else
                     <div>
                         <div class="row">
                             <div class="col-md-6">
@@ -62,6 +91,7 @@
                             </div>
                         </div>
                     </div> 
+                    @endif
                     @endforeach
                 </div>
             </div>
