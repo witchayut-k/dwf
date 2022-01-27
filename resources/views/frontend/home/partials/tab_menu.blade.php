@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="slider slider-menu-tab mt-4">
                     @foreach ($service->weblinks as $weblink)
-                        <a href="{{ $weblink->url }}" target="_blank" class="box-menu col-6 col-lg-4" style="margin-bottom: 15px;">
+                        <a href="{{ $weblink->url }}" target="_blank" class="box-menu col-6 col-lg-4 my-3" style="margin-bottom: 15px;">
                             <img src="{{ $weblink->featured_image_resized }}" alt="" class="img-fluid">
                         </a>
                     @endforeach

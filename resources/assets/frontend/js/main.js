@@ -93,7 +93,7 @@ $(document).on('ready', function () {
 		arrows: true,
 		variableWidth: true,
 		slidesToShow: 6,
-		slidesToScroll: 6
+		slidesToScroll: 1
 	});
 
 	$('.slider-menu-tab').slick({
@@ -102,7 +102,16 @@ $(document).on('ready', function () {
 		slidesToShow: 1,
 		// slidesToShow: 1,
 		// slidesToScroll: 1,
-		rows: 2
+		rows: 2,
+		responsive: [
+			{
+			  breakpoint: 480,
+			  settings: {
+				slidesPerRow: 2,
+				rows: 1,
+			  }
+			}
+		]
 	});
 
 	$('.slider-news').slick({
