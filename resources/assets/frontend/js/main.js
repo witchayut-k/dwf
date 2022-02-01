@@ -14,6 +14,11 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
 	return false;
 });
 
+function onMenu() {
+	$(".header").toggleClass('active');
+	$(".hamburger").toggleClass('active');
+}
+
 $('.btn-display1').click(function () {
 	$('.wrapper').removeClass('dark-theme');
 	$('.wrapper').removeClass('with-txt-yellow');
@@ -75,12 +80,9 @@ $(function () {
 	});
 });
 
+
+
 $(document).on('ready', function () {
-	$('body').on('click', '.hamburger', function () {
-		$(".header").toggleClass('active');
-		$(".hamburger").toggleClass('active');
-	});
-		
 	$('.slider-hero').slick({
 		slidesToShow: 1,
 		arrows: false,
@@ -92,8 +94,8 @@ $(document).on('ready', function () {
 	$('.slider-menu').slick({
 		arrows: true,
 		variableWidth: true,
-		slidesToShow: 6,
-		slidesToScroll: 1
+		slidesToShow: 7,
+		slidesToScroll: 7
 	});
 
 	$('.slider-menu-tab').slick({
@@ -105,11 +107,11 @@ $(document).on('ready', function () {
 		rows: 2,
 		responsive: [
 			{
-			  breakpoint: 480,
-			  settings: {
-				slidesPerRow: 2,
-				rows: 1,
-			  }
+				breakpoint: 480,
+				settings: {
+					slidesPerRow: 2,
+					rows: 2,
+				}
 			}
 		]
 	});
@@ -120,14 +122,6 @@ $(document).on('ready', function () {
 		slidesToShow: 1,
 		slidesToScroll: 1
 	});
-
-	$('.slider-videos').slick({
-		arrows: true,
-		dots: true,
-		slidesToShow: 1,
-		slidesToScroll: 1
-	});
-
 	$('.slider-institution').slick({
 		arrows: true,
 		slidesToShow: 4,
@@ -150,42 +144,18 @@ $(document).on('ready', function () {
 		nextArrow: $('.next'),
 	});
 
-	$('.slider-landing').owlCarousel({
-		loop: true,
-		items: 1
-	});
-
-	if ($(".daterange").length > 0) {
-		$("input.daterange").daterangepicker({
-			locale: {
-				format: 'DD/MM/YYYY'
-			}
-		});
-	}
-
-	if ($(".bs-datepicker").length > 0) {
-		$(".bs-datepicker").datetimepicker({ format: "DD/MM/YYYY" });
-	}
-
+	// $('.service-ic').on('click', function () {
+	// 	// $('.slider-menu-tab').slick('slickGoTo', 0);
+	// });
 });
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	$('.slider-institution').slick('setPosition');
 	$('.slider-news').slick('setPosition');
-	$('.slider-videos').slick('setPosition');
 })
-
-$('[data-fancybox="gallery"]').fancybox({
-
-});
 
 $(function () {
 	$('.item-mh').matchHeight();
 
 	$('[data-toggle="tooltip"]').tooltip();
-});
-
-// show modal landing content
-$(window).on('load', function () {
-	$('#modalLandingContent').modal('show');
 });
