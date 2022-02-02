@@ -33,11 +33,44 @@ class HomeController extends Controller
         $landingPages = LandingPage::ofPublished()->get();
 
         $banners = Banner::ofPublished()->orderBy('sequence')->get();
-        $linkServices = WeblinkType::ofService()->with('weblinks')->get();
-        $linkSocials = WeblinkType::ofSocial()->with('weblinks')->get();
-        $linkDepartments = WeblinkType::ofDepartment()->with('weblinks')->get();
-        $linkRelated = WeblinkType::ofRelatedLink()->with('weblinks')->get();
-        $linkGov = WeblinkType::ofGovLink()->with('weblinks')->first();
+
+        $linkServices = WeblinkType::ofService()->ofPublished()
+            ->with(
+                [
+                    'weblinks' => function ($query) {
+                        $query->where('published', true);
+                    }
+                ]
+            )
+            ->get();
+
+        $linkSocials = WeblinkType::ofSocial()->ofPublished()
+            ->with([
+                'weblinks' => function ($query) {
+                    $query->where('published', true);
+                }
+            ])->get();
+
+        $linkDepartments = WeblinkType::ofDepartment()->ofPublished()
+            ->with([
+                'weblinks' => function ($query) {
+                    $query->where('published', true);
+                }
+            ])->get();
+
+        $linkRelated = WeblinkType::ofRelatedLink()->ofPublished()
+            ->with([
+                'weblinks' => function ($query) {
+                    $query->where('published', true);
+                }
+            ])->get();
+
+        $linkGov = WeblinkType::ofGovLink()->ofPublished()
+            ->with([
+                'weblinks' => function ($query) {
+                    $query->where('published', true);
+                }
+            ])->first();
 
         $budget = Budget::first() ?: new Budget();
 
