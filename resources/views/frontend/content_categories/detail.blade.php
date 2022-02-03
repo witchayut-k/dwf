@@ -25,7 +25,13 @@
                             @if ($content->has_featured_image)
                             <img src="{{ $content->featured_image }}" alt="{{ $content->title }}">
                             @endif
+
+                            @if (\Str::endsWith($content->file, ".pdf"))
+                                <iframe src="{{ $content->file }}" frameborder="0" width="100%" height="950"></iframe>
+                            @endif
+
                             {!! $content->content !!}
+
                         </div>
                     </div>
                     <div class="card-footer">

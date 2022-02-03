@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(config('app.env') === 'production' || config('app.env') === 'staging' ) {
+            \URL::forceScheme('https');
+        }
+
         $registrar = new \App\Routes\ResourceRegistrar($this->app['router']);
         
         Paginator::defaultView('pagination::default');

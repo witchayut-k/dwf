@@ -14,7 +14,7 @@
             </ul>
             <div class="tab-content" id="myTabNewsVdoContent">
                 @foreach ($documentTypes as $key => $docType)
-                <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="tabNewsVdo2" role="tabpanel" aria-labelledby="tabNewsVdo2">
+                <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="tabNewsVdo{{ $key }}" role="tabpanel" aria-labelledby="tabNewsVdo2">
                     <div>
                         @foreach ($docType->published_documents as $key => $file)
                              {{-- @if ($file->hasFile) --}}
