@@ -32,6 +32,13 @@
 
                             {!! $content->content !!}
 
+                            <hr>
+
+                            @if ($content->file)
+                            <h4>ดาวน์โหลดไฟล์แนบ</h4>
+                            <a href="{{ url("$content->file") }}" target="_blank">{{ $content->file }}</a>
+                            @endif
+
                         </div>
                     </div>
                     <div class="card-footer">
