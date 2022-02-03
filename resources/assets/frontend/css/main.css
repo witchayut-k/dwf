@@ -1221,6 +1221,10 @@ a {
     background-image: url("../images/icon/instagram02.svg"); }
   .footer .list-social li .social-ic.mail {
     background-image: url("../images/icon/mail02.svg"); }
+  .footer .list-social li .social-ic.twitter {
+    background-image: url("../images/icon/twitter02.svg"); }
+  .footer .list-social li .social-ic.line {
+    background-image: url("../images/icon/line02.svg"); }
 
 .ic-style {
   display: inline-block !important;
@@ -1968,6 +1972,10 @@ a {
         background-image: url("../images/icon/instagram.svg"); }
       .list-social li .social-ic.mail {
         background-image: url("../images/icon/mail.svg"); }
+      .list-social li .social-ic.twitter {
+        background-image: url("../images/icon/twitter.svg"); }
+      .list-social li .social-ic.line {
+        background-image: url("../images/icon/line.svg"); }
 
 .border-left.pink {
   border-color: rgba(232, 78, 114, 0.3) !important; }
@@ -5160,11 +5168,12 @@ select.selectpicker {
           .tab-menu .nav-tabs .nav-item .nav-link .nav-content h1 {
             font-size: 16px;
             font-size: 1.6rem;
+            font-weight: 700;
             color: #E84E72; }
             @media only screen and (min-width: 576px) {
               .tab-menu .nav-tabs .nav-item .nav-link .nav-content h1 {
-                font-size: 24px;
-                font-size: 2.4rem; } }
+                font-size: 18px;
+                font-size: 1.8rem; } }
         .tab-menu .nav-tabs .nav-item .nav-link.active {
           background: #E84E72; }
           .tab-menu .nav-tabs .nav-item .nav-link.active h1 {
