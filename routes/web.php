@@ -43,6 +43,7 @@ use App\Http\Controllers\Frontend\SitemapController;
 use App\Http\Controllers\Frontend\VideoController;
 use App\Http\Controllers\Frontend\SurveyController;
 use App\Http\Controllers\Frontend\TagController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -220,4 +221,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         'user-roles' => 'role'
     ]);
 
+});
+
+
+Route::prefix('dev')->group(function () {
+    Route::get('config-clear', function () {
+        Artisan::call('config:clear');
+        echo "<h1>Config cleared!</h1>";
+    });
+
+    Route::get('config-cache', function () {
+        Artisan::call('config:cache');
+        echo "<h1>Config cached!</h1>";
+    });
 });

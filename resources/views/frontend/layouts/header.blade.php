@@ -23,10 +23,10 @@
                     <ul>
                         <li><a href="#">สมาชิก</a></li>
                         <li><a href="{{ route('backend') }}">ADMIN</a></li>
-                        <li><a href="#">ร้องทุกข์-ร้องเรียน</a></li>
+                        <li><a href="http://complain.dwf.go.th/" target="_blank">ร้องทุกข์-ร้องเรียน</a></li>
                         <li><a href="#">INTRANET</a></li>
                     </ul>
-                    <a href="http://complain.dwf.go.th" target="_blank">
+                    <a href="http://complain.dwf.go.th/public/fraudComplaint.do" target="_blank">
                         <img src="{{ asset('images/ร้องเรียนการทุจริต.png') }}" alt="ร้องเรียนการทุจริต" class="img-btn ml-2">
                     </a>
                 </div>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="header-row row justify-content-center">
                 <div class="col-md-6 header-menu-col left">
-                    <a href="index.php" class="logo"></a>
+                    <a href="{{ url('') }}" class="logo"></a>
                     <marquee class="txt-running font-medium c-pink">ยึดมั่นหลักธรรมาภิบาล มุ่งเน้นบริการด้วยความโปร่งใสและตรวจสอบได้</marquee>
                 </div>
                 <div class="col-md-6 header-menu-col right bg-city text-right">

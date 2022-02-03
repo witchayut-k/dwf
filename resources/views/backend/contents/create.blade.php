@@ -89,6 +89,9 @@
             </div>
         </div>
         <div class="form-action">
+            @if ($content->id)
+            <a href="{{ url("contents/$content->id") }}" class="btn btn-default" target="_blank">View</a>
+            @endif
             <a href="{{ url('admin/contents') }}" class="btn btn-default">ยกเลิก</a>
             <button type="submit" class="btn btn-submit">บันทึก</button>
         </div>

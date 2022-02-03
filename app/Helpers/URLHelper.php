@@ -7,6 +7,7 @@ class URLHelper
 {
     public static function adminLoggedInURL()
     {
-        return url()->previous() == url('')."/" ? url('admin') : url()->previous();
+        return url('admin');
+        //return url()->previous() == url('')."/" ? url('admin') : url()->previous();
     }
 }
