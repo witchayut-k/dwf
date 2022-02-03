@@ -28,6 +28,7 @@
                     </div>
                     <div class="box-item-dt">
                         <h2 class="txt-wrap">{{ $content->title }}</h2>
+                        {{--<p class="txt-wrap c-pink pb-2">ศูนย์ต่างๆ</p>--}}
                         <div class="d-flex flex-wrap">
                             <p class="date pr-4">{{ $content->date_th }}</p>
                             <p class="view pr-4">{{ $content->view_count }} view</p>
@@ -37,11 +38,11 @@
             </div>
             @endforeach
 
-           
+
         </div>
 
         {{ $contents->links() }}
-        
+
         {{-- <nav aria-label="Page navigation example">
             <ul class="pagination pt-4 pb-4">
                 <li class="page-item">
