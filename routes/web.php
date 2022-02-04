@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AlbumController as BackendAlbumController;
@@ -56,6 +57,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('lang/{lang}', [LanguageController::class, 'switchLang']);
 
 Route::name('home')->middleware('visitor')->group(function () {
     Route::get('/', [HomeController::class, 'index']);

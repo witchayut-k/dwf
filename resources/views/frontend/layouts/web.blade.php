@@ -53,12 +53,23 @@
 
     </div>
 
+    <div class="fb-customerchat"
+        page_id="367383946683881"
+        theme_color="#459645"
+        logged_in_greeting="Hi! How can we help you?"
+        logged_out_greeting="GoodBye!... Hope to see you soon."
+        minimized="false">
+    </div>
+
+
     <script src="{{ mix('js/lib.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ mix('js/main.min.js') }}"></script>
 
     <!-- Go to www.addthis.com/dashboard to customize your tools --> 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61d6bbe13dd66cd2"></script>
+
+   
 
     @yield('scripts')
 

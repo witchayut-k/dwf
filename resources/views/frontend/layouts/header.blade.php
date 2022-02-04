@@ -14,14 +14,14 @@
                         <div class="fontsize">ก</div>
                         <a id="increasetext" class="btn btn-reduce">-</a>
                     </div>
-                    {{-- <div class="header-top-row d-flex">
-                        <a class="lang-flag th"></a>
-                        <a class="lang-flag en"></a>
-                    </div> --}}
+                    <div class="header-top-row d-flex">
+                        <a href="{{ url("lang/th") }}" class="lang-flag th {{ Session::get('applocale') == 'th' ? 'active' : '' }}"></a>
+                        <a href="{{ url("lang/en") }}" class="lang-flag en {{ Session::get('applocale') == 'en' ? 'active' : '' }}"></a>
+                    </div>
                 </div>
                 <div class="col-md-6 header-top-group justify-content-end link">
                     <ul>
-                        <li><a href="#">สมาชิก</a></li>
+                        {{-- <li><a href="#">สมาชิก</a></li> --}}
                         <li><a href="{{ route('backend') }}">ADMIN</a></li>
                         <li><a href="http://complain.dwf.go.th/" target="_blank">ร้องทุกข์-ร้องเรียน</a></li>
                         <li><a href="#">INTRANET</a></li>

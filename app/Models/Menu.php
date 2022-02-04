@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\LocaleHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,7 +19,7 @@ class Menu extends Model
     ];
 
     protected $fillable = [
-        'title',
+        'title_th',
         'parent_id',
         'menu_type_id',
         'content_id',
@@ -29,7 +30,7 @@ class Menu extends Model
         'menu_position'
     ];
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | SEARCHING
     |--------------------------------------------------------------------------
@@ -89,7 +90,8 @@ class Menu extends Model
         return $this->hasMany(Menu::class, 'parent_id');
     }
 
-    public function published_children() {
+    public function published_children()
+    {
         return $this->children()->ofPublished()->orderBy('sequence');
     }
 
@@ -103,5 +105,17 @@ class Menu extends Model
         return $this->belongsTo(Menu::class, 'parent_id');
     }
 
-    
+    /*
+    |--------------------------------------------------------------------------
+    | ACCESORS
+    |--------------------------------------------------------------------------
+    */
+
+    public function getTitleAttribute()
+    {
+        return LocaleHelper::getTranslated([
+            'title_th' => $this->title_th,
+            'title_en' => $this->title_en
+        ]);
+    }
 }
