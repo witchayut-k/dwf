@@ -237,4 +237,9 @@ Route::prefix('dev')->group(function () {
         Artisan::call('config:cache');
         echo "<h1>Config cached!</h1>";
     });
+
+    Route::get('view-clear', function () {
+        Artisan::call('view:clear');
+        echo "<h1>View cleared!</h1>";
+    });
 });

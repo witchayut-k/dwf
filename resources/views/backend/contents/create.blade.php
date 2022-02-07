@@ -73,7 +73,7 @@
             <div class="form-separator"></div>
 
             <div class="form-group">
-                <label>ตำแหน่งเมนู</label>
+                <label>รูปแบบการแสดงผล</label>
                 <div class="app-radio inline round"> 
                     <label>
                         <input type="radio" name="template_id" value="1" {{ $content->template_id == \App\Enums\ContentTemplateEnum::RIGHT_COLUMN ? 'checked' : '' }}> Right Column 
