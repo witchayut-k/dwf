@@ -20,6 +20,7 @@ class Menu extends Model
 
     protected $fillable = [
         'title_th',
+        'title_en',
         'parent_id',
         'menu_type_id',
         'content_id',
@@ -39,7 +40,7 @@ class Menu extends Model
     public static function searchFields()
     {
         return [
-            'title',
+            'menus.title_th',
         ];
     }
 

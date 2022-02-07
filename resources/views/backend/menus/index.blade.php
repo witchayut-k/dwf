@@ -21,7 +21,7 @@
                     <label>เมนูหลัก</label>
                     <select name="main_menu_id" class="selectpicker">
                         <option value="">ทั้งหมด</option>
-                        <option v-for="(item, index) in menus" v-bind:value="item.id">@{{ item.title }}</option>
+                        <option v-for="(item, index) in menus" v-bind:value="item.id">@{{ item.title_th }}</option>
                     </select>
                 </div>
             </div>

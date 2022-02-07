@@ -18,7 +18,8 @@
         @method($menu->id ? 'PUT' : 'POST')
 
         <div class="form-body">
-            {!! Form::groupText('title_th', 'ชื่อเมนู', $menu->title, ['required'=>'required']) !!}
+            {!! Form::groupText('title_th', 'ชื่อเมนู', $menu->title_th, ['required'=>'required']) !!}
+            {!! Form::groupText('title_en', 'ชื่อเมนู (ภาษาอังกฤษ)', $menu->title_en) !!}
 
             <div class="form-group">
                 <label>ตำแหน่งเมนู</label>

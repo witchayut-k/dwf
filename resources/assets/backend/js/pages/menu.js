@@ -42,7 +42,7 @@ var Menu = function () {
                 {
                     data: 'DT_RowIndex', sClass: 'text-center'
                 },
-                { data: 'title' },
+                { data: 'title_th' },
                 { data: 'menu_type', sClass: 'text-center' },
                 {
                     data: 'menu_content', sClass: 'text-center',
@@ -73,7 +73,7 @@ var Menu = function () {
                 {
                     data: 'id', sClass: 'text-center',
                     render: function (data, type, row) {
-                        var actions = App.renderTableActions(moduleUrl, row.id, row.title);
+                        var actions = App.renderTableActions(moduleUrl, row.id, row.title_th);
                         return actions;
                     }
                 },
