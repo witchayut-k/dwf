@@ -74,8 +74,8 @@ class HomeController extends Controller
 
         $budget = Budget::first() ?: new Budget();
 
-        $featuredContents = $contentTypes = ContentType::ofFeatured()->ofPublished()->orderBy('sequence')->get();
-        // $featuredContents = $this->getFeaturedContents();
+        // $featuredContents = ContentType::ofFeatured()->ofPublished()->orderBy('sequence')->get();
+        $featuredContents = $this->getFeaturedContents();
         $activity = ContentType::find(6);
 
         $events = Event::ofAvailable()->orderBy('begin_date')->get();
@@ -135,24 +135,33 @@ class HomeController extends Controller
     //     return view('frontend.content_categories.detail', compact('content', 'tags', 'moreContents'));
     // }
 
-    // private function getFeaturedContents()
-    // {
-    //     $contentTypes = ContentType::where('is_featured', true)->get();
-    //     if (empty($contentType))
-    //         abort(404);
+    private function getFeaturedContents()
+    {
+        $contentTypes = ContentType::ofFeatured()->ofPublished()->orderBy('sequence')->get();
+        // if (empty($contentType))
+        //     abort(404);
+        foreach ($contentTypes as $key => $contentType)
+        {
+            if ($contentType->name == "ข่าวภูมิภาค") {
+                $contentType->featured_contents = $contentType->published_contents->take(8);
+            } else {
+                $contentType->featured_contents = $contentType->published_contents->take(5);
+            }
+        }
 
-    //     $newsList = $contentType->published_contents->sortByDesc('pinned');
-    //     $chunks = $newsList->chunk(5);
+        // $newsList = $contentType->published_contents->sortByDesc('pinned');
+        // $chunks = $newsList->chunk(5);
 
-    //     $contentType->featured_contents = $chunks->slice(0, 3);
+        // $contentType->featured_contents = $chunks->slice(0, 3);
 
-    //     return $contentType;
-    // }
+        return $contentTypes;
+    }
 
     private function getVideoContents()
     {
-        $chunks = Video::ofPublished()->orderByDesc('created_at')->get()->chunk(5);
-        $videos = $chunks->slice(0, 3);
+        // $chunks = Video::ofPublished()->orderByDesc('created_at')->get()->chunk(5);
+        // $videos = $chunks->slice(0, 3);
+        $videos = Video::ofPublished()->orderByDesc('created_at')->take(5)->get();
 
         return $videos;
 

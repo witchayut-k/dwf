@@ -31,7 +31,8 @@ class Content extends Model implements HasMedia
         'pinned',
         'published',
         'begin_date',
-        'end_date'
+        'end_date',
+        'template_id'
     ];
 
     protected $appends = ['featured_image', 'file'];

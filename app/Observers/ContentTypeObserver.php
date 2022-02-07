@@ -7,11 +7,23 @@ use App\Models\ContentType;
 class ContentTypeObserver
 {
 
-    public function created(ContentType $type)
+    public function creating(ContentType $contentType)
     {
-        $type->sequence = $type->id;
-        unset($type->id);
-        $type->update();
+        \Log::info("ContentTypeObserver::creating");
+        $sequence = ContentType::orderByDesc('sequence')->first()->sequence;
+        $contentType->sequence = $sequence + 1;
     }
+    
+    // public function created(ContentType $contentType)
+    // {
+    //     \Log::info("ContentTypeObserver::created");
+    //     \DB::unprepared('SET IDENTITY_INSERT content_types ON');
+
+    //     $contentType->sequence = $contentType->id;
+    //     unset($contentType->id);
+    //     $contentType->update();
+
+    //     \DB::unprepared('SET IDENTITY_INSERT content_types OFF');
+    // }
 
 }

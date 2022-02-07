@@ -1,82 +1,68 @@
 @extends('frontend.layouts.web')
 
 @section('content')
-
 <div class="wrapper-inner bg-white">
     <div class="container">
 
-        <div class="row content-row mb-5">
-            <div class="col-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-custom">
-                        <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
-                    </ol>
-                </nav>
-                <h1 class="title-line c-pink pt-2">{{ $category->name }}</h1>
-            </div>
-        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-custom">
+                <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
+                <li class="breadcrumb-item">คลังวีดีโอ</li>
+            </ol>
+        </nav>
 
-        <div class="row content-row">
-            @foreach ($contents as $content)
-            <div class="col-md-6 col-lg-3">
-                <a href="{{ url("contents/$content->id") }}" class="box-item">
-                    <div class="photo-thumb sm">
-                        <div class="photo-parent">
-                            <span class="photo" style="background-image: url('{{ $content->featured_image_resized }}')"></span>
-                        </div>
-                    </div>
-                    <div class="box-item-dt">
-                        <h2 class="txt-wrap">{{ $content->title }}</h2>
-                        <div class="d-flex flex-wrap">
-                            <p class="date pr-4">{{ $content->created_at }}</p>
-                            <p class="view pr-4">{{ $content->view_count }} view</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            @endforeach
-           
-        </div>
-
-        {{ $contents->links() }}
-        
-        {{-- <nav aria-label="Page navigation example">
-            <ul class="pagination pt-4 pb-4">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="First">
-                        <span aria-hidden="true" class="first"></span>
-                        <span class="sr-only">First</span>
-                    </a>
+        <div class="box-tab pt-4">
+            <ul class="nav nav-tabs nav-news">
+                @foreach ($categories as $key => $category)
+                <li class="nav-item">
+                    <a class="nav-link nav-icon doc {{ $request->category == $category->id ? 'active' : '' }}" href="{{ url("videos?category=$category->id") }}">{{ $category->title }}</a>
                 </li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true" class="previous"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true" class="next"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Last">
-                        <span aria-hidden="true" class="last"></span>
-                        <span class="sr-only">Last</span>
-                    </a>
-                </li>
+                @endforeach
+              
             </ul>
-        </nav> --}}
+            <div class="tab-content" id="myTabNewsVdoContent" style="padding: 25px">
+                {{-- @foreach ($categories as $key => $category) --}}
+                    <div class="row">
+                        @foreach ($videos as $key => $video)
+                        <div class="col-md-3">
+                            <div class="box-item">
+                                <div class="photo-thumb sm">
+                                    <div class="photo-parent">
+                                        @if ($video->video_url)
+                                            {{-- <iframe class="photo" src="{{ $video->youtube_embed }}"
+                                                    title="{{ $video->title }}"
+                                                    frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen>
+                                            </iframe> --}}
+                                            <div class="yt-preview photo js-modal-btn"  data-video-id="{{ $video->youtube_id }}" style="background-image: url('{{ $video->video_preview_image }}');">
+                                                <img src="{{ asset('images/yt-icon.png') }}" />
+                                            </div>
+                                        @else
+                                            <video class="photo" controls>
+                                                <source src="{{ $video->video }}" type="video/mp4">
+                                            </video>
+                                        @endif
+                                    </div>
 
+                                </div>
+                                <div class="box-item-dt">
+                                    <h2 class="txt-wrap">{{ $video->title }}</h2>
+                                    <div class="d-flex">
+                                        <p class="date pr-4">{{ $video->date_th }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        @endforeach
+                    </div>
+                {{-- @endforeach --}}
+            </div>
+
+            {{ $videos->links() }}
+            
+        </div>
     </div>
 </div>
-
 @endsection

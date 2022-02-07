@@ -53,14 +53,36 @@
 
     </div>
 
-    <div class="fb-customerchat"
-        page_id="367383946683881"
-        theme_color="#459645"
-        logged_in_greeting="Hi! How can we help you?"
-        logged_out_greeting="GoodBye!... Hope to see you soon."
-        minimized="false">
+    <!-- Messenger Chat plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
     </div>
 
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "367383946683881");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v12.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <script src="{{ mix('js/lib.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

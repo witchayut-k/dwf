@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Enums\ContentTemplateEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Content;
 use App\Models\ContentType;
@@ -27,7 +28,9 @@ class ContentController extends Controller
 
         $moreContents = $this->contentService->getPublishedContentsExceptCurrent($content);
 
-        return view('frontend.content_categories.detail', compact('content', 'moreContents', 'tags'));
+        $view = ContentTemplateEnum::getDescription($content->template_id);
+
+        return view("frontend.content_categories.detail_{$view}", compact('content', 'moreContents', 'tags'));
     }
 
     public function categories(Request $request, $id)

@@ -43,7 +43,6 @@ class ContentTypeController extends BaseController
                 ->order(function ($query) {
                     $query->orderBy('sequence', 'asc');
                     $query->orderBy('created_at', 'desc');
-                    
                 })
                 ->make(true);
         }

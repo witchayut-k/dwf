@@ -128,6 +128,24 @@ class Video extends Model implements HasMedia
         return null;
     }
 
+    public function getYoutubeIdAttribute()
+    {
+        $videoID = "";
+        if ($this->video_url) {
+            if (\Str::contains($this->video_url, 'embed')) {
+                $videoID = substr($this->video_url, -11);
+            } else if (\Str::contains($this->video_url, 'youtube.com')) {
+                $posID = strpos($this->video_url, "v=");
+                $videoID = substr($this->video_url, ($posID + 2), 11);
+            } else if (\Str::contains($this->video_url, 'youtu.be')) {
+                $videoID = substr($this->video_url, -11);
+            }  
+            
+        }
+
+        return $videoID;
+    }
+
     public function getVideoPreviewImageAttribute()
     {
         if ($this->video_url) {

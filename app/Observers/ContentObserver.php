@@ -13,11 +13,11 @@ class ContentObserver
     {
         $contentType = $content->type;
 
-        $menu = Menu::where('title', $content->title)->first();
+        $menu = Menu::where('title_th', $content->title)->first();
 
         if (!$menu) {
             Menu::create([
-                'title' => $content->title,
+                'title_th' => $content->title,
                 'parent_id' => $contentType->id,
                 'menu_type_id' => MenuTypeEnum::CONTENT,
                 'content_id' => $content->id,

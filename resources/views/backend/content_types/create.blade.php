@@ -21,7 +21,7 @@
             {!! Form::groupText('name', 'ชื่อประเภทเนื้อหา', $contentType->name, ['required'=>'required']) !!}
         </div>
         <div class="form-action">
-            <a href="{{ url("admin/content-types/$contentType->id") }}" class="btn btn-default">ยกเลิก</a>
+            <a href="{{ url("admin/content-types") }}" class="btn btn-default">ยกเลิก</a>
             <button type="submit" class="btn btn-submit">บันทึก</button>
         </div>
         {{ Form::close() }}

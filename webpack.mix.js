@@ -27,8 +27,11 @@ mix.styles([
     'resources/assets/frontend/css/bootstrap/bootstrap.min.css',
     'resources/assets/frontend/css/libs/jquery.fancybox.min.css',
     'resources/assets/frontend/css/main.css',
+    'resources/assets/frontend/css/team.css',
     'resources/assets/frontend/js/libs/font-awesome/css/font-awesome.css',
     'node_modules/fullcalendar/dist/fullcalendar.min.css',
+
+    'node_modules/modal-video/css/modal-video.css'
 ], 'public/css/styles.min.css').version();
 
 mix.scripts([
@@ -43,6 +46,8 @@ mix.scripts([
     'resources/assets/backend/js/vendor/moment/moment.min.js',
     'resources/assets/backend/js/vendor/bootstrap-daterange/daterangepicker.js',
     'resources/assets/backend/js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js',
+
+    'node_modules/modal-video/js/modal-video.js'
 ], 'public/js/lib.min.js').version();
 
 mix.scripts([
@@ -50,7 +55,10 @@ mix.scripts([
     'node_modules/fullcalendar/dist/fullcalendar.min.js',
 ], 'public/js/fullcalendar.min.js').version();
 
-mix.js('resources/assets/frontend/js/main.js', 'public/js/main.min.js').version();
+mix.scripts([
+    'resources/assets/frontend/js/main.js',
+    'resources/assets/frontend/js/custom.js'
+], 'public/js/main.min.js').version();
 
 (glob.sync('resources/assets/frontend/js/pages/**/*.js') || []).forEach(file => {
     mix.js(file, `public/${file.replace('resources/assets/frontend/js/pages', 'js/pages').replace(/\.js$/, '.min.js')}`).version();

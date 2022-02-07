@@ -16,20 +16,23 @@
         <div class="tab-content" id="myTabNewsVdoContent">
             <div class="tab-pane fade show active" id="tabNewsVdo" role="tabpanel" aria-labelledby="tabNewsVdo">
                 <div>
-                    @foreach ($videos as $rows)
+                    {{-- @foreach ($videos as $rows) --}}
                         <div class="row">
                             <div class="col-md-6">
-                                @php $firstContent = $rows->first(); @endphp
+                                @php $firstContent = $videos->first(); @endphp
                                 <div class="box-item">
                                     <div class="photo-thumb sm">
                                         <div class="photo-parent">
                                             @if ($firstContent->video_url)
-                                                <iframe class="photo" src="{{ $firstContent->youtube_embed }}"
+                                                {{-- <iframe class="photo" src="{{ $firstContent->youtube_embed }}"
                                                         title="{{ $firstContent->title }}"
                                                         frameborder="0"
                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                         allowfullscreen>
-                                                </iframe>
+                                                </iframe> --}}
+                                                <div class="yt-preview photo js-modal-btn" data-video-id="{{ $firstContent->youtube_id }}" style="background-image: url('{{ $firstContent->video_preview_image }}');" title="{{ $firstContent->title }}">
+                                                    <img src="{{ asset('images/yt-icon.png') }}" />
+                                                </div>
                                             @else
                                                 <video class="photo" controls>
                                                     <source src="{{ $firstContent->video }}" type="video/mp4">
@@ -47,18 +50,21 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    @foreach ($rows->slice(1, 4) as $content)
+                                    @foreach ($videos->slice(1, 4) as $content)
                                         <div class="col-md-6">
                                             <div class="box-item">
                                                 <div class="photo-thumb sm">
                                                     <div class="photo-parent">
                                                         @if ($content->video_url)
-                                                            <iframe class="photo" src="{{ $content->youtube_embed }}"
+                                                            {{-- <iframe class="photo" src="{{ $content->youtube_embed }}"
                                                                     title="{{ $content->title }}"
                                                                     frameborder="0"
                                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                                     allowfullscreen>
-                                                            </iframe>
+                                                            </iframe> --}}
+                                                            <div class="yt-preview photo js-modal-btn" data-video-id="{{ $content->youtube_id }}" style="background-image: url('{{ $content->video_preview_image }}');" title="{{ $content->title }}">
+                                                                <img src="{{ asset('images/yt-icon.png') }}" />
+                                                            </div>
                                                         @else
                                                             <video class="photo" controls>
                                                                 <source src="{{ $content->video }}" type="video/mp4">
@@ -67,7 +73,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="box-item-dt">
-                                                    <h2 class="txt-wrap">{{ $content->title }}</h2>
+                                                    <h2 class="txt-wrap" title="{{ $content->title }}">{{ $content->title }}</h2>
                                                     <div class="d-flex">
                                                         <p class="date pr-4">{{ $content->date_th }}</p>
                                                     </div>
@@ -78,10 +84,10 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
                 <div class="text-center">
-                    <a href="#" class="btn btn-style btn-view extra transparent mt-3">คลิกดูทั้งหมด</a>
+                    <a href="{{ url("videos") }}" class="btn btn-style btn-view extra transparent mt-3">คลิกดูทั้งหมด</a>
                 </div>
             </div>
 

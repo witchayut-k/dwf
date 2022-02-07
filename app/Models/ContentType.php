@@ -17,6 +17,9 @@ class ContentType extends Model
 
     protected $fillable = [
         'name',
+        'sequence',
+        'is_featured',
+        'is_announcement',
         'published',
     ];
 

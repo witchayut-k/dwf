@@ -73,20 +73,46 @@
             <div class="form-separator"></div>
 
             <div class="form-group">
-                <label for="" class="control-label">สถานะการแสดงผล</label>
-                <label class="switch has-label">
-                    <input type="checkbox" name="published" {{ $content->published ? "checked" : "" }} />
-                    เปิดใช้งาน
-                </label>
+                <label>ตำแหน่งเมนู</label>
+                <div class="app-radio inline round"> 
+                    <label>
+                        <input type="radio" name="template_id" value="1" {{ $content->template_id == \App\Enums\ContentTemplateEnum::RIGHT_COLUMN ? 'checked' : '' }}> Right Column 
+                    </label> 
+                </div>
+                <div class="app-radio inline round"> 
+                    <label>
+                        <input type="radio" name="template_id" value="2" {{ $content->template_id == \App\Enums\ContentTemplateEnum::LEFT_COLUMN ? 'checked' : '' }}> Left Column 
+                    </label> 
+                </div>
+                <div class="app-radio inline round"> 
+                    <label>
+                        <input type="radio" name="template_id" value="3" {{ $content->template_id == \App\Enums\ContentTemplateEnum::FULLWIDTH ? 'checked' : '' }}> Full width 
+                    </label> 
+                </div>
+               
             </div>
 
-            <div class="form-group">
-                <label for="" class="control-label">การปักหมุด</label>
-                <label class="switch has-label">
-                    <input type="checkbox" name="pinned" {{ $content->pinned ? "checked" : "" }} />
-                    ปักหมุด
-                </label>
+            <div class="form-separator"></div>
+
+            <div class="d-flex">
+                <div class="form-group">
+                    <label for="" class="control-label">สถานะการแสดงผล</label>
+                    <label class="switch has-label">
+                        <input type="checkbox" name="published" {{ $content->published ? "checked" : "" }} />
+                        เปิดใช้งาน
+                    </label>
+                </div>
+    
+                <div class="form-group">
+                    <label for="" class="control-label">การปักหมุด</label>
+                    <label class="switch has-label">
+                        <input type="checkbox" name="pinned" {{ $content->pinned ? "checked" : "" }} />
+                        ปักหมุด
+                    </label>
+                </div>
             </div>
+
+           
         </div>
         <div class="form-action">
             @if ($content->id)
