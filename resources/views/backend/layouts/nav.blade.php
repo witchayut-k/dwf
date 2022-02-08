@@ -8,14 +8,14 @@ $user = Auth::user();
     <nav>
         <ul>
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_LANDING_PAGE)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_LANDING_PAGE)]))
             <li>
                 <a href="{{ url('admin/landing-pages') }}">
                     <span class="fa fa-th-large"></span> Landing Page</a>
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_CONTENT)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_CONTENT)]))
             <li class="openable">
                 <a href="javascript:;">
                     <span class="fa fa-th-large"></span> จัดการเนื้อหาเว็บไซต์</a>
@@ -26,21 +26,21 @@ $user = Auth::user();
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_MENU)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_MENU)]))
             <li>
                 <a href="{{ url('admin/menus') }}">
                     <span class="fa fa-th-large"></span> จัดการเมนูเว็บไซต์</a>
             </li>
             @endif
 
-            {{-- @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_MENU)]))
+            {{-- @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_MENU)]))
             <li>
                 <a href="{{ url('admin/budgets') }}">
                     <span class="fa fa-th-large"></span> ข้อมูลงบประมาณเผยแพร่</a>
             </li>
             @endif --}}
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_WEBLINK)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_WEBLINK)]))
             <li class="openable">
                 <a href="javascript:;">
                     <span class="fa fa-th-large"></span> Link Management</a>
@@ -51,7 +51,7 @@ $user = Auth::user();
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_BACKEND_USER)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_BACKEND_USER)]))
             <li class="openable">
                 <a href="javascript;;">
                     <span class="fa fa-th-large"></span>
@@ -64,7 +64,7 @@ $user = Auth::user();
             </li>
             @endcan
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_RSS_FEED)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_RSS_FEED)]))
             <li>
                 <a href="{{ url('admin/feeds') }}" class="disabled">
                     <span class="fa fa-th-large"></span> RSS Feed</a>
@@ -76,14 +76,14 @@ $user = Auth::user();
                     <span class="fa fa-th-large"></span> Profile Management</a>
             </li>
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_FAQ)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_FAQ)]))
             <li>
                 <a href="{{ url('admin/faqs') }}">
                     <span class="fa fa-th-large"></span> FAQ</a>
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_DOWNLOAD)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_DOWNLOAD)]))
             <li class="openable">
                 <a href="javascript;;">
                     <span class="fa fa-th-large"></span> จัดการข้อมูล Download</a>
@@ -94,14 +94,14 @@ $user = Auth::user();
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_BANNER)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_BANNER)]))
             <li>
                 <a href="{{ url('admin/banners') }}">
                     <span class="fa fa-th-large"></span> จัดการแบนเนอร์</a>
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_CONTACT)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_CONTACT)]))
             <li class="openable">
                 <a href="javascript:;">
                     <span class="fa fa-th-large"></span> ระบบติดต่อสอบถาม</a>
@@ -112,14 +112,14 @@ $user = Auth::user();
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_ALBUM)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_ALBUM)]))
             <li>
                 <a href="{{ url('admin/albums') }}">
                     <span class="fa fa-th-large"></span> ระบบคลังภาพ</a>
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_VIDEO)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_VIDEO)]))
             <li class="openable">
                 <a href="javascript:;">
                     <span class="fa fa-th-large"></span> ระบบคลังวีดีโอ</a>
@@ -130,7 +130,7 @@ $user = Auth::user();
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_EVENT)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_EVENT)]))
             <li>
                 <a href="{{ url('admin/events') }}">
                     <span class="fa fa-th-large"></span> ระบบปฏิทินกิจกรรม</a>
@@ -142,21 +142,21 @@ $user = Auth::user();
                     <span class="fa fa-th-large"></span> แผนผังเว็บไซต์</a>
             </li>
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_SURVEY)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_SURVEY)]))
             <li>
                 <a href="{{ url('admin/surveys') }}">
                     <span class="fa fa-th-large"></span> จัดการแบบสำรวจ</a>
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_REGISTRAR)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_REGISTRAR)]))
             <li>
                 <a href="{{ url('admin/registrars') }}">
                     <span class="fa fa-th-large"></span> ระบบลงทะเบียน</a>
             </li>
             @endif
 
-            @if ($user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_PETITION)]))
+            @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_PETITION)]))
             <li>
                 <a href="{{ url('admin/petitions') }}">
                     <span class="fa fa-th-large"></span> <span
@@ -164,7 +164,7 @@ $user = Auth::user();
             </li>
             @endif
 
-            {{-- @if ($user->hasAnyPermission(['manage map']) || $user->hasRole('Administrator'))
+            {{-- @if ($user && $user->hasAnyPermission(['manage map']) || $user->hasRole('Administrator'))
             <li>
                 <a href="{{ url('admin/maps') }}" class="disabled">
                     <span class="fa fa-th-large"></span> Map</a>

@@ -41,7 +41,7 @@ class Content extends Model implements HasMedia
         'center_name',
     ];
 
-    protected $appends = ['featured_image', 'file'];
+    protected $appends = ['featured_image', 'files'];
     protected $hidden = ['media'];
 
     public static function options()
@@ -108,7 +108,7 @@ class Content extends Model implements HasMedia
             ->performOnCollections('featured_image')
             ->nonQueued();
 
-        $this->addMediaCollection('file')->singleFile();
+        $this->addMediaCollection('files');
     }
 
 
@@ -129,36 +129,48 @@ class Content extends Model implements HasMedia
         return explode(',', $this->tags);
     }
 
-    public function getFileNameAttribute()
+    public function getHasFilesAttribute()
     {
-        $media = $this->getFirstMedia('file');
-        if (!empty($media))
-            return $media->name . "." . $media->extension;
-
-        return '-';
-    }
-
-    public function getFileSizeAttribute()
-    {
-        $media = $this->getFirstMedia('file');
-        if (!empty($media))
-            return $media->human_readable_size;
-
-        return '-';
-    }
-
-    public function getHasFileAttribute()
-    {
-        $media = $this->getFirstMedia('file');
+        $media = $this->getFirstMedia('files');
         return !empty($media);
     }
 
-    public function getFileAttribute()
+    public function getFilesAttribute()
     {
-        $media = $this->getFirstMedia('file');
-        if (!empty($media))
-            return $media->getFullUrl();
-        else
-            return null;
+        $medias = $this->getMedia('files');
+        return $medias;
     }
+
+    // public function getFileNameAttribute()
+    // {
+    //     $media = $this->getFirstMedia('file');
+    //     if (!empty($media))
+    //         return $media->name . "." . $media->extension;
+
+    //     return '-';
+    // }
+
+    // public function getFileSizeAttribute()
+    // {
+    //     $media = $this->getFirstMedia('file');
+    //     if (!empty($media))
+    //         return $media->human_readable_size;
+
+    //     return '-';
+    // }
+
+    // public function getHasFileAttribute()
+    // {
+    //     $media = $this->getFirstMedia('file');
+    //     return !empty($media);
+    // }
+
+    // public function getFileAttribute()
+    // {
+    //     $media = $this->getFirstMedia('file');
+    //     if (!empty($media))
+    //         return $media->getFullUrl();
+    //     else
+    //         return null;
+    // }
 }

@@ -136,6 +136,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('sequence', [BannerController::class, 'updateSequence']);
     });
 
+    // Content
+    Route::prefix('contents')->group(function () {
+        Route::post('{content}/uploads/files', [BackendContentController::class, 'uploadFiles']);
+        Route::delete('{content}/files', [BackendContentController::class, 'deleteFilesItem']);
+    });
+
     // Menus
     Route::prefix('menus')->group(function () {
         Route::post('sequence', [MenuController::class, 'updateSequence']);

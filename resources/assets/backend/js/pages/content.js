@@ -1,9 +1,19 @@
 var Content = function () {
 
     var moduleUrl = appUrl + '/admin/contents';
-    var contentId;
+    var contentId = $('[name="id"]').val();;
 
     var regionalContentId = $('#regional_content_id').data('id');
+
+    var contentApp = new Vue({
+        el: '.content-app',
+        data: {
+            files: {
+                items: [],
+                processing: false
+            },
+        },
+    });
 
     var initDatatable = function () {
         datatable = $('#table-content').DataTable({
@@ -27,9 +37,6 @@ var Content = function () {
                     data: 'title',
                     render: function (data, type, row) {
                         let content = row.pinned ? data + ' <i class="fa fa-thumb-tack text-danger tooltips" title="เนื้อหาปักหมุด"></i>' : data;
-                        if (row.file)
-                            content += ` <i class="fa fa-file-pdf-o text-danger tooltips" title="แนบไฟล์ PDF"></i>`;
-
                         return content;
                     }
                 },
@@ -79,7 +86,6 @@ var Content = function () {
      */
 
     var handleContentTypeChange = function () {
-        console.log('regionalContentId', regionalContentId)
         $('[name="content_type_id"]').on('change', function () {
             if ($(this).val() == regionalContentId) {
                 $('.center-container').show();
@@ -89,6 +95,97 @@ var Content = function () {
         });
     }
 
+    var initFiles = function () {
+        if (!contentId) return;
+        $.ajax({
+            url: `${appUrl}/api/backend/contents/${contentId}/files`,
+            type: 'GET',
+            success: function (resp) {
+                contentApp.files.items = resp;
+                contentApp.files.processing = false;
+            },
+            error: function (resp) {
+                console.error(resp);
+            }
+        });
+    };
+
+    var initFilesUpload = function () {
+
+        initFiles();
+
+        var dzFiles = $(".btn-add-files");
+
+        dzFiles.dropzone({
+            url: `${moduleUrl}/${contentId}/uploads/files`,
+            autoProcessQueue: true,
+            uploadMultiple: true,
+            // maxFiles: 10,
+            // maxFilesize: 12288,
+            dictRemoveFile: 'ลบ',
+            // acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            previewsContainer: '#files-preview',
+            // previewTemplate: '<div class="files-preview"></div>',
+            // maxfilesexceeded: function (file) {
+            //     this.removeAllFiles();
+            //     this.addFile(file);
+            // },
+            headers: {
+                'X-CSRF-TOKEN': token
+            },
+            init: function () {
+                dzFiles = this;
+                this.on("addedfile", function (file) {
+                    $('#files-preview').slideDown();
+                });
+                this.on("thumbnail", function (file) {
+                    // setTimeout(() => {
+                    //     this.processFile(file)
+                    // }, 500);
+                    // if (file.accepted && file.size / 1024 <= 12288) {
+                    //     // console.log('filesImage', filesImage);
+                    //     // filesImage.css('background-image', 'url(' + file.dataURL + ')');
+                    //     // filesImage.addClass('preview');
+                    // } else {
+                    //     alert('ไม่สามารถอัพโหลดรูปภาพที่มีขนาดเกิน 12MB ได้')
+                    // }
+                });
+                this.on('error', function (file, resp) {
+                    App.error(resp.message);
+                });
+                this.on("sending", function (file, xhr, formData) {
+                    formData.append("id", contentId);
+                });
+                this.on("queuecomplete", function (file) {
+                    // App.toastrSuccess("อัพโหลดภาพอื่นๆ เสร็จเรียบร้อยแล้ว");
+                    initFiles();
+                    this.removeAllFiles();
+                    $('#files-preview').slideUp();
+                });
+            }
+        });
+
+    };
+
+    var handleDeleteFiles = function () {
+        $('body').on('click', '.btn-delete-item', function () {
+            contentApp.files.processing = true;
+
+            $.ajax({
+                url: `${moduleUrl}/${contentId}/files`,
+                type: 'delete',
+                data: {
+                    id: $(this).attr('data-id')
+                },
+                success: function (resp) {
+                    initFiles();
+                },
+                error: function () {
+                    alert('Error occured, please contact administrator');
+                }
+            });
+        });
+    };
 
     var handleSubmit = function () {
         var $form = $('#form-content');
@@ -140,12 +237,12 @@ var Content = function () {
         });
     };
 
-    var handleFileUpload = function () {
-        $('.btn-delete-file').on('click', function () {
-            var $form = $('#form-content');
-            // $form.append()''
-        });
-    }
+    // var handleFileUpload = function () {
+    //     $('.btn-delete-file').on('click', function () {
+    //         var $form = $('#form-content');
+    //         // $form.append()''
+    //     });
+    // }
 
     return {
         init: function () {
@@ -156,7 +253,9 @@ var Content = function () {
 
             if ($('#form-content').length) {
                 customSubmit = true;
-                handleFileUpload();
+                // handleFileUpload();
+                initFilesUpload();
+                handleDeleteFiles();
                 handleSubmit();
                 handleContentTypeChange();
             }

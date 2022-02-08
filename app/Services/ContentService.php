@@ -15,16 +15,18 @@ class ContentService
     {
         $contents = Content::ofPublished()
             ->orderByDesc('pinned')
+            ->orderByDesc('created_at')
             ->where('id', '!=', $content->id)
             ->where('content_type_id', $content->content_type_id)
             ->limit($limit)
             ->get();
         return $contents;
     }
-    
+
     public function getPublishedSurveysExceptCurrent(Survey $content, $limit = 5)
     {
         $surveys = Survey::ofPublished()
+            ->orderByDesc('created_at')
             ->where('id', '!=', $content->id)
             ->limit($limit)
             ->get();
@@ -34,10 +36,11 @@ class ContentService
     public function getPublishedRegisterFormsExceptCurrent(Registrar $content, $limit = 5)
     {
         $forms = Registrar::ofPublished()
+            ->orderByDesc('created_at')
             ->where('id', '!=', $content->id)
             ->limit($limit)
             ->get();
-            
+
         return $forms;
     }
 }

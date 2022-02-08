@@ -137,22 +137,22 @@ class AlbumController extends BaseController
         return ResponseHelper::deleteSuccess($request, $album);
     }
 
-    public function gallery(Request $request, Album $album)
-    {
-        if (!$album) return [];
+    // public function gallery(Request $request, Album $album)
+    // {
+    //     if (!$album) return [];
 
-        $gallery = $album->getMedia('gallery_images');
+    //     $gallery = $album->getMedia('gallery_images');
 
-        $results = [];
-        foreach ($gallery as $item) {
-            $gallery = [];
-            $gallery['id'] = $item->id;
-            $gallery['url'] = url($item->getUrl());
-            $results[] = $gallery;
-        }
+    //     $results = [];
+    //     foreach ($gallery as $item) {
+    //         $gallery = [];
+    //         $gallery['id'] = $item->id;
+    //         $gallery['url'] = url($item->getUrl());
+    //         $results[] = $gallery;
+    //     }
 
-        return response()->json($results);
-    }
+    //     return response()->json($results);
+    // }
 
     public function uploadGallery(Request $request, Album $album)
     {

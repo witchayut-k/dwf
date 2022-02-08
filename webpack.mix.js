@@ -85,6 +85,7 @@ mix.styles([
 
 mix.sass('resources/assets/backend/sass/apps/auth.scss', 'public/backend/css/auth.min.css').version();
 mix.sass('resources/assets/backend/sass/apps/album.scss', 'public/backend/css/album.min.css').version();
+mix.sass('resources/assets/backend/sass/apps/content.scss', 'public/backend/css/content.min.css').version();
 mix.sass('resources/assets/backend/sass/custom.scss', 'public/backend/css/custom.min.css').version();
 mix.sass('resources/assets/backend/sass/rte-content.scss', 'public/backend/css/rte-content.min.css').version();
 

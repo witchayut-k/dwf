@@ -75,6 +75,29 @@ var App = function () {
         });
     };
 
+    var handleDeleteImage = function () {
+        $('body').on('click', '.btn-delete-image', function (e) {
+            const id = $(e.target).data('id');
+            $(e.target).prop('disabled', true);
+            $(e.target).append(' <i class="fa fa-spinner fa-spin"></i>');
+
+            $.ajax({
+                url: `${appUrl}/api/backend/medias/${id}`,
+                type: 'delete',
+                success: function (resp) {
+                    $(e.target).prop('disabled', false);
+                    const text = $(e.target).text();
+                    $(e.target).text(text.replace(' <i class="fa fa-spinner fa-spin"></i>', ''));
+                    window.location.reload();
+                },
+                error: function () {
+                    alert('Error occured, please contact administrator');
+                }
+            });
+
+        })
+    }
+
     var handleTabs = function () {
         //activate tab if tab id provided in the URL
         if (encodeURI(location.hash)) {
@@ -535,6 +558,7 @@ var App = function () {
         init: function () {
             handleTabs();
             handleDeleteButton();
+            handleDeleteImage();
             handleSelectTwo();
             handleBootstrapSelect();
             handleAutoNumeric();

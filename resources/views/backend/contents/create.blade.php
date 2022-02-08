@@ -1,5 +1,9 @@
 @extends('backend.layouts.app', ['title' => 'จัดการเนื้อหาเว็บไซต์'])
 
+@section('styles')
+<link href="{{ mix('backend/css/content.min.css') }}" rel="stylesheet" />
+@endsection
+
 @section('content')
 
 <h1>จัดการเนื้อหาเว็บไซต์</h1>
@@ -18,6 +22,9 @@
         @method($content->id ? 'PUT' : 'POST')
 
         <div class="form-body">
+
+            {!! Form::hidden('id', $content->id) !!}
+
             {!! Form::groupText('title', 'ชื่อเนื้อหา', $content->title, ['required'=>'required']) !!}
 
             {!! Form::groupSelect('content_type_id', 'ประเภทเนื้อหา', $contentTypes, $content->content_type_id, ['required'=>'required']) !!}
@@ -39,7 +46,7 @@
                 'label' => 'รูปภาพ',
                 'help' => '*รองรับไฟล์ JPG, PNG, GIF ขนาด 640 x 360 px'])
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="" class="control-label">แนบไฟล์ PDF</label>
                 <div class="file-input">
                     <input type="file" class="file" name="pdf" accept="application/pdf" />
@@ -50,8 +57,29 @@
                 @if ($content->has_file)
                 <a href="javascript:;" class="btn-delete-file">ลบไฟล์แนบ</a>
                 @endif
-                {{-- <span class="help-block">*รองรับไฟล์ PDF</span> --}}
+            </div> --}}
+
+            <hr class="form-separator" />
+
+            <h4>ไฟล์แนบ</h4>
+
+            <div class="form-group">
+                <div class="files-container">
+                    <div class="files-items" style="display: none;" v-show="!files.processing">
+                        <div class="item" v-for="(item, index) in files.items">
+                            @{{ index + 1 }} - @{{ item.name }}
+                            <button type="button" class="btn-delete-item" v-bind:data-id="item.id"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div id="files-preview" class="dropzone" style="display:none">
+        
+                    </div>
+                </div>
             </div>
+
+            <button type="button" class="btn btn-add-files btn-add-field">เพิ่มไฟล์</button>
+
+            <hr class="form-separator" />
 
             <div class="row form-group">
                 <div class="col-md-6">

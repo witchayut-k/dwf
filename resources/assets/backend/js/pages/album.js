@@ -79,7 +79,7 @@ var Album = function () {
 
     var initGalleryImages = function () {
         $.ajax({
-            url: `${moduleUrl}/${albumId}/gallery`,
+            url: `${appUrl}/api/backend/albums/${albumId}/gallery`,
             type: 'GET',
             success: function (resp) {
                 galleryApp.gallery.items = resp;

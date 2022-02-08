@@ -32,6 +32,11 @@
                     @endif
                 </div>
                 {{-- <span class="help-block">*รองรับไฟล์ PDF DOC DOCX XLS PPT CSV</span> --}}
+                @if ($document->has_file)
+                <div style="margin-top: 10px">
+                    <button type="button" data-id="{{ $document->getFirstMedia('file')->id }}" class="btn btn-xs btn-danger btn-delete-image">ลบไฟล์แนบ</button>
+                </div>
+                @endif
             </div>
 
             <div class="form-group">

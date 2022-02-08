@@ -28,4 +28,7 @@ Route::group(['prefix' => 'media'], function () {
 Route::group(['prefix' => 'backend'], function () {
     Route::get('weblink-types', [BackendAPIController::class, 'getWeblinkTypes']);
     Route::get('main-menus', [BackendAPIController::class, 'getMainNenus']);
+    Route::get('contents/{content}/files', [BackendAPIController::class, 'getContentFiles']);
+    Route::get('albums/{album}/gallery', [BackendAPIController::class, 'getGallery']);
+    Route::delete('medias/{media}', [BackendAPIController::class, 'deleteMedia']);
 });

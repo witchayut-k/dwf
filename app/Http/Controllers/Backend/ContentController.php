@@ -10,6 +10,7 @@ use App\Models\Content;
 use App\Models\ContentType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Yajra\DataTables\Facades\DataTables;
 
 class ContentController extends BaseController
@@ -65,9 +66,16 @@ class ContentController extends BaseController
      */
     public function create()
     {
-        $content = new Content();
-        $contentTypes = ContentType::options();
-        return view('backend.contents.create', compact('content', 'contentTypes'));
+        $count = Content::where('title', 'Untitled')->count();
+        $content = Content::create([
+            'title' => 'Untitled' . ($count > 0 ? $count : ""),
+            'content_type_id' => ContentType::first()->id
+        ]);
+        return redirect(url("admin/contents/$content->id/edit"));
+
+        // $content = new Content();
+        // $contentTypes = ContentType::options();
+        // return view('backend.contents.create', compact('content', 'contentTypes'));
     }
 
     /**
@@ -134,10 +142,10 @@ class ContentController extends BaseController
             $content->addMedia($request->file)->toMediaCollection('featured_image');
         }
 
-        if ($request->pdf) {
-            $content->clearMediaCollection('file');
-            $content->addMedia($request->pdf)->toMediaCollection('file');
-        }
+        // if ($request->pdf) {
+        //     $content->clearMediaCollection('file');
+        //     $content->addMedia($request->pdf)->toMediaCollection('file');
+        // }
 
         return ResponseHelper::saveSuccess($request, $content);
     }
@@ -165,5 +173,27 @@ class ContentController extends BaseController
             $endDate = Carbon::createFromFormat("d/m/Y", trim($request->end_date));
             $request->merge(['end_date' => $endDate]);
         }
+    }
+
+    public function uploadFiles(Request $request, Content $content)
+    {
+        foreach ($request->file as $key => $item) {
+            // $fileName = $item->getClientOriginalName();
+            $content
+                ->addMedia($item)
+                // ->usingName($fileName)
+                ->sanitizingFileName(function ($fileName) {
+                    return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
+                })
+                ->toMediaCollection('files');
+        }
+        return response()->json(['result' => $content]);
+    }
+
+    public function deleteFilesItem(Request $request, Content $content)
+    {
+        $media = Media::find($request->input('id'));
+        $content->deleteMedia($media->id);
+        return response()->json($request->all());
     }
 }

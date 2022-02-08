@@ -3,7 +3,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ url("categories/{$content->type->id}") }}">{{ $content->type->name }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ url("categories/{$content->type->id}") }}">{{
+                        $content->type->name }}</a></li>
             </ol>
         </nav>
         <h1 class="font-medium c-pink">{{ $content->title }}</h1>
@@ -23,16 +24,19 @@
             @endif --}}
 
             {{-- @if (\Str::endsWith($content->file, ".pdf"))
-                <iframe src="{{ $content->file }}" frameborder="0" width="100%" height="950"></iframe>
+            <iframe src="{{ $content->file }}" frameborder="0" width="100%" height="950"></iframe>
             @endif --}}
 
             {!! $content->content !!}
 
-            <hr>
+            @if ($content->files->count() > 0)
+                <hr>
 
-            @if ($content->file)
-            <h4>ดาวน์โหลดไฟล์แนบ</h4>
-            <a href="{{ url("$content->file") }}" target="_blank">{{ $content->file }}</a>
+                <span class="badge badge-pill pink mb-2">ดาวน์โหลดไฟล์</span>
+                @foreach ($content->files as $file)
+                <a class="check-item txt-wrap pl-5" href="{{ $file->getFullUrl() }}" target="_blank">{{ $file->name . "." .
+                    $file->extension }}</a>
+                @endforeach
             @endif
 
         </div>
