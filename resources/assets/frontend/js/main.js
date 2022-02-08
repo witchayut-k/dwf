@@ -152,6 +152,7 @@ $(document).on('ready', function () {
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	$('.slider-institution').slick('setPosition');
 	$('.slider-news').slick('setPosition');
+    $('.slider-menu-tab').slick('setPosition');
 })
 
 $(function () {
@@ -159,3 +160,5 @@ $(function () {
 
 	$('[data-toggle="tooltip"]').tooltip();
 });
+
+
