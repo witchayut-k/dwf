@@ -8,7 +8,7 @@ class ConvertStringBooleans extends TransformsRequest
 {
     protected function transform($key, $value)
     {
-        $inputs = ['published', 'enabled', 'active', 'pinned'];
+        $inputs = ['published', 'enabled', 'active', 'pinned', 'is_page', 'is_popup'];
 
         if (in_array($key, $inputs)) {
             if (strtolower($value) === 'true' || $value === 'on' || $value === '1')

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Config;
 use Session;
 use Redirect;
-use Auth;
-use Cache;
 
 use Illuminate\Http\Request;
 

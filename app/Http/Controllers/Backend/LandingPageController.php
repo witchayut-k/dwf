@@ -152,4 +152,10 @@ class LandingPageController extends BaseController
             $request->merge(['end_date' => $endDate]);
         }
     }
+
+    public function getButtons($id)
+    {
+        $landingPage = LandingPage::find($id);
+        return response()->json(json_decode($landingPage->buttons));
+    }
 }

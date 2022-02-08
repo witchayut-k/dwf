@@ -119,7 +119,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // });
 
     // Landing Page
-    Route::prefix('landing-page')->group(function () {
+    Route::prefix('landing-pages')->group(function () {
+        Route::get('{id}/buttons', [LandingPageController::class, 'getButtons']);
         Route::post('upload-featured', [LandingPageController::class, 'uploadFeatured']);
     });
 

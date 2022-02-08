@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'home' => 'หน้าหลัก',
+    'search' => 'ค้นหาข้อมูล',
     /**
      * Response message
      */

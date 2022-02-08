@@ -18,7 +18,8 @@ class LandingPage extends Model implements HasMedia
     protected $casts = [
         'published' => 'boolean',
         'begin_date' => 'date',
-        'end_date' => 'date'
+        'end_date' => 'date',
+        'buttons' => 'array'
     ];
 
     protected $fillable = [
@@ -26,6 +27,9 @@ class LandingPage extends Model implements HasMedia
         'begin_date',
         'end_date',
         'published',
+        'is_popup',
+        'is_page',
+        'buttons',
     ];
 
     protected $appends = ['featured_image'];

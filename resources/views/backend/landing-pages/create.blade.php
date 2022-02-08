@@ -4,7 +4,7 @@
 
 <h1>Landing Page Management</h1>
 
-<div class="block">
+<div class="block landing-page-app">
     <div class="app-heading bordered">
         <div class="d-flex">
             <h2>Content Management</h2>
@@ -50,17 +50,61 @@
                 'help' => '*รองรับไฟล์ JPG, PNG, GIF ขนาด 800 x 450 pixel'
             ])
 
-            <div class="form-group">
-                <label for="" class="control-label">สถานะการแสดงผล</label>
-                <label class="switch has-label">
-                    <input type="checkbox" name="published" {{ $landingPage->published ? "checked" : "" }} />
-                    เปิดใช้งาน
-                </label>
+            <div class="form-separator"></div>
+
+            <div class="d-flex">
+                <div class="form-group">
+                    <label for="" class="control-label">สถานะการแสดงผล</label>
+                    <label class="switch has-label">
+                        <input type="checkbox" name="published" {{ $landingPage->published ? "checked" : "" }} />
+                        เปิดใช้งาน
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">แสดงแบบเต็มหน้า</label>
+                    <label class="switch has-label">
+                        <input type="checkbox" name="is_page" {{ $landingPage->is_page ? "checked" : "" }} />
+                        แสดงเต็มหน้า
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="control-label">แสดงแบบ Popup</label>
+                    <label class="switch has-label">
+                        <input type="checkbox" name="is_popup" {{ $landingPage->is_popup ? "checked" : "" }} />
+                        แสดง Popup
+                    </label>
+                </div>
             </div>
+
+            <div class="form-separator"></div>
+
+            <h4>Action Buttons</h4>
+
+            <div class="field-group" v-cloak>
+                <div class="d-flex" v-for="(item, index) in buttons">
+                    <div class="form-group" style="margin-right: 10px">
+                        <label>ชื่อปุ่มที่ @{{ index+1 }}</label>
+                        <input type="text" class="form-control" v-model="item.title" placeholder="ระบุชื่อปุ่ม" />
+                    </div>
+                    <div class="form-group">
+                        <label>ลิงค์ปุ่มที่ @{{ index+1 }}</label>
+                        <div class="input-group-icon">
+                            <input type="text" class="form-control" v-model="item.url" placeholder="https://" />
+                            <button type="button" class="btn-delete" v-on:click="removeButton(index)"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-add-field" v-on:click="addButton()">เพิ่มปุ่ม</button>
+
         </div>
         <div class="form-action">
             <a href="{{ url('admin/landing-pages') }}" class="btn btn-default">ยกเลิก</a>
             <button type="submit" class="btn btn-submit">บันทึก</button>
+            {{ Form::hidden('id', $landingPage->id) }}
         </div>
         {{ Form::close() }}
     </div>
