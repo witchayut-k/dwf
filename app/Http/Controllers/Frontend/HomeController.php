@@ -184,7 +184,7 @@ class HomeController extends Controller
 
     private function getDocuments()
     {
-        return Document::ofPublished()->take(10)->get();
+        return Document::ofPublished()->orderByDesc('created_at')->take(10)->get();
         // $documentTypes = DocumentType::ofPublished()->get();
 
         // foreach ($documentTypes as $docType) {

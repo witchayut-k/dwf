@@ -40,6 +40,9 @@ class DocumentController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('created_at', 'desc');
+                })
                 ->make(true);
         }
 

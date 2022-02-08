@@ -25,7 +25,7 @@ class VideoController extends Controller
 
         // dd($categories);
 
-        $videos = Video::where('video_category_id', $request->category)->paginate(16);
+        $videos = Video::where('video_category_id', $request->category)->orderByDesc('created_at')->paginate(12);
         $videos->appends(['category' => $request->category]);
 
         return view('frontend.videos.index', compact('categories', 'videos', 'request'));

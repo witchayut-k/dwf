@@ -25,40 +25,6 @@
                 </div>
                 @endforeach
             </div>
-            {{-- <nav aria-label="Page navigation example">
-                <ul class="pagination pt-4 pb-4">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="First">
-                            <span aria-hidden="true" class="first"></span>
-                            <span class="sr-only">First</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true" class="previous"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#">8</a></li>
-                    <li class="page-item"><a class="page-link" href="#">9</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true" class="next"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Last">
-                            <span aria-hidden="true" class="last"></span>
-                            <span class="sr-only">Last</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav> --}}
         </div>
     </div>
 </div>
