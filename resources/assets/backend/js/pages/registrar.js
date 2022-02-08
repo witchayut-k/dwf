@@ -112,6 +112,7 @@ var Registrar = function () {
         $form.ajaxForm({
             beforeSerialize: function ($form, options) {
                 $('<input />').attr('type', 'hidden').attr('name', 'fields').attr('value', JSON.stringify(registrarApp.fields)).appendTo($form);
+                $('<input />').attr('type', 'hidden').attr('name', 'published').attr('value', $('[name="published"]').is(':checked')).appendTo($form);
             },
             beforeSubmit: function (arr, $form, options) {
                 $inputs.prop("disabled", true);

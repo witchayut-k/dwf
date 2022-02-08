@@ -134,6 +134,7 @@ var User = function () {
                 var checkboxes = $(this).find("input[type=checkbox]");
                 $.each(checkboxes, function (key, val) {
                     $('<input />').attr('type', 'hidden').attr('name', $(val).attr('name')).attr('value', $(this).is(':checked')).appendTo($(form));
+                    $('<input />').attr('type', 'hidden').attr('name', 'enabled').attr('value', $('[name="enabled"]').is(':checked')).appendTo($form);
                 });
 
                 var $inputs = $(form).find("input, select, button, textarea");

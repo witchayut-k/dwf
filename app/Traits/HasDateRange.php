@@ -23,7 +23,7 @@ trait HasDateRange
             })
             ->where(function ($query) {
                 $query
-                    ->whereDate('end_date', '>=', Carbon::today()->startOfDay())
+                    ->whereDate('end_date', '>=', Carbon::today()->endOfDay())
                     ->orWhere('end_date', null);
             });
     }
@@ -37,7 +37,7 @@ trait HasDateRange
     public function getIsPublishedAttribute()
     {
         return $this->published
-            && ($this->begin_date == null || $this->begin_date <= Carbon::today()->startOfDay())
-            && ($this->end_date == null || $this->end_date >= Carbon::today()->endOfDay());
+            && ($this->begin_date == null || $this->begin_date->startOfDay() <= Carbon::today()->startOfDay())
+            && ($this->end_date == null || $this->end_date->endOfDay() >= Carbon::today()->endOfDay());
     }
 }

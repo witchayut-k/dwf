@@ -57,7 +57,7 @@
                     console.log('dropzone', dropzone);
                     console.log('customSubmit', customSubmit);
 
-                    var checkboxes = $(this).find("input[type=checkbox]");
+                    var checkboxes = $(form).find("input[type=checkbox]");
                     $.each(checkboxes, function(key, val) {
                         // console.log($(val).attr('name'), $(this).is(':checked'));
                         $('<input />').attr('type', 'hidden').attr('name', $(val).attr('name')).attr('value', $(this).is(':checked')).appendTo($(form));

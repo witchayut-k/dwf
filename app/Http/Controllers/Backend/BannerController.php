@@ -100,6 +100,12 @@ class BannerController extends BaseController
      */
     public function edit(Banner $banner)
     {
+        if (empty($banner->url))
+        {
+            if ($banner->content_id)
+                $banner->url = url("contents/$banner->content_id");
+        }
+
         return view('backend.banners.create', compact('banner'));
     }
 

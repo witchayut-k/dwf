@@ -130,6 +130,7 @@ var Survey = function () {
             beforeSerialize: function ($form, options) {
                 $('<input />').attr('type', 'hidden').attr('name', 'questions').attr('value', JSON.stringify(surveyApp.questions)).appendTo($form);
                 $('<input />').attr('type', 'hidden').attr('name', 'choices').attr('value', JSON.stringify(surveyApp.choices)).appendTo($form);
+                $('<input />').attr('type', 'hidden').attr('name', 'published').attr('value', $('[name="published"]').is(':checked')).appendTo($form);
             },
             beforeSubmit: function (arr, $form, options) {
                 $inputs.prop("disabled", true);

@@ -199,6 +199,7 @@ var Menu = function () {
                     $('[name="url"]').val($('[name="internal_link"]').val());
 
                 $('<input />').attr('type', 'hidden').attr('name', 'content_id').attr('value', contentId).appendTo($form);
+                $('<input />').attr('type', 'hidden').attr('name', 'published').attr('value', $('[name="published"]').is(':checked')).appendTo($form);
             },
             beforeSubmit: function (arr, $form, options) {
                 $inputs.prop("disabled", true);

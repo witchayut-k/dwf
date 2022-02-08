@@ -18,7 +18,7 @@ class ContentController extends Controller
 
     public function index(Content $content)
     {
-        if (empty($content) || !$content->published || !$content->type || !$content->type->published)
+        if (empty($content) || !$content->published || !$content->type || !$content->type->published || !$content->is_published)
             abort(404);
 
         $content->view_count++;

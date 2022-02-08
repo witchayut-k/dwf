@@ -183,8 +183,7 @@ var Weblink = function () {
 
         $form.ajaxForm({
             beforeSerialize: function ($form, options) {
-                // $('<input />').attr('type', 'hidden').attr('name', 'weblink_type_id').attr('value', searchData.weblink_type_id).appendTo($form);
-                // $('<input />').attr('type', 'hidden').attr('name', 'weblink_type_id').attr('value', searchData.parent_type_id).appendTo($form);
+                $('<input />').attr('type', 'hidden').attr('name', 'published').attr('value', $('[name="published"]').is(':checked')).appendTo($form);
             },
             beforeSubmit: function (arr, $form, options) {
                 $inputs.prop("disabled", true);

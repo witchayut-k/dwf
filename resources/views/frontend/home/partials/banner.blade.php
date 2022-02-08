@@ -1,17 +1,17 @@
 <div class="hero-banner">
     <div class="slider slider-hero">
         @foreach ($banners as $banner)
-        @php $link = ""; @endphp
-        @if ($banner->url)
+        {{-- @if ($banner->published_content)
+            @php $link = url("contents/$banner->content_id"); @endphp
+        @elseif ($banner->url)
+            @php $link = $banner->url; @endphp
+        @endif --}}
         @php $link = $banner->url; @endphp
-        @elseif ($banner->published_content)
-        @php $link = url("contents/$banner->content_id"); @endphp
-        @endif
         <div>
             <div class="photo-thumb">
                 <div class="photo-parent">
                     @if ($link)
-                    <a href="{{ url("content/$banner->content_id") }}">
+                    <a href="{{ $link }}" target="_blank">
                         <span class="photo" style="background-image: url('{{ $banner->featured_image }}')"></span>
                     </a>
                     @else
