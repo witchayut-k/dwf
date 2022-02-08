@@ -15,6 +15,10 @@ class AlbumController extends Controller
     }
 
     public function show (Album $album) {
+
+        $album->view_count++;
+        $album->update();
+
         return view('frontend.album', compact('album'));
     }
 }

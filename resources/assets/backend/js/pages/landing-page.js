@@ -1,7 +1,26 @@
 var LandingPage = function () {
 
     var moduleUrl = appUrl + '/admin/landing-pages';
-    var landingPageId;
+    var landingPageId = $('[name="id"]').val();
+
+    var landingPageApp = new Vue({
+        el: '.landing-page-app',
+        data: {
+            buttons: [{ title: 'เข้าสู่เว็บไซต์', url: appUrl }],
+        },
+        methods: {
+            addButton: function () {
+                this.buttons.push({
+                    title: '',
+                    url: ''
+                })
+
+            },
+            removeButton: function (index) {
+                this.buttons.splice(index, 1);
+            }
+        }
+    });
 
     var initDatatable = function () {
         datatable = $('#table-landing-page').DataTable({
@@ -67,62 +86,19 @@ var LandingPage = function () {
      * Form Section
      */
 
-    var initFeaturedImage = function () {
-        dropzone = true;
-        var featuredImage = $(".featured");
-
-        featuredImage.dropzone({
-            url: `${moduleUrl}/upload-featured`,
-            autoProcessQueue: false,
-            uploadMultiple: false,
-            maxFiles: 1,
-            maxFilesize: 5048,
-            dictRemoveFile: 'Remove',
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
-            previewTemplate: '<div id="template-preview"></div>',
-            maxfilesexceeded: function (file) {
-                this.removeAllFiles();
-                this.addFile(file);
+    const initForm = () => {
+        if (!landingPageId) return;
+        $.ajax({
+            url: `${moduleUrl}/${landingPageId}/buttons`,
+            type: 'GET',
+            success: function (resp) {
+                landingPageApp.buttons = resp.length ? resp : [{ title: '', url: '' }];
             },
-            headers: {
-                'X-CSRF-TOKEN': token
-            },
-            init: function () {
-                featuredDropzone = this;
-
-                this.on("thumbnail", function (file, dataURL) {
-                    if (file.accepted) {
-                        featuredImage.css('background-image', 'url(' + dataURL + ')');
-                        featuredImage.addClass('preview');
-
-                        var size = file.size / 1024;
-                        featuredImage.siblings('.image-info').text(`${file.name} (${size.toNumber(2)} kb)`).show()
-                    }
-                });
-                this.on('error', function (file, resp) {
-                    console.log(resp);
-                });
-                this.on("sending", function (file, xhr, formData) {
-                    formData.append("id", landingPageId);
-                });
-                this.on("queuecomplete", function (file) {
-                    featuredDropzone.files = [];
-                    App.showSuccess(httpResponse);
-                    var $inputs = $(form).find("input, select, button, textarea");
-                    $inputs.prop("disabled", false);
-                    Loading.hide();
-
-                    var method = $('[name="_method"]').val();
-
-                    if (method == 'post') {
-                        setTimeout(() => {
-                            window.location.href = moduleUrl;
-                        }, 300);
-                    }
-                });
+            error: function () {
+                // alert('Error occured, please contact administrator');
             }
         });
-    };
+    }
 
     var handleSubmit = function () {
 
@@ -134,6 +110,7 @@ var LandingPage = function () {
 
         $form.ajaxForm({
             beforeSerialize: function ($form, options) {
+                $('<input />').attr('type', 'hidden').attr('name', 'buttons').attr('value', JSON.stringify(landingPageApp.buttons)).appendTo($form);
                 $('<input />').attr('type', 'hidden').attr('name', 'published').attr('value', $('[name="published"]').is(':checked')).appendTo($form);
             },
             beforeSubmit: function (arr, $form, options) {
@@ -176,7 +153,8 @@ var LandingPage = function () {
             }
 
             if ($('#form-landing-page').length) {
-                dropzone = true;
+                customSubmit = true;
+                initForm();
                 handleSubmit();
             }
         }

@@ -12,10 +12,10 @@
         <li>
             <div class="contact contact-rounded contact-bordered contact-lg contact-ps-controls hidden-xs">
                 <div class="contact-container">
-                    <a href="#">{{ $auth->name }}</a>
+                    <a href="#">{{ $auth ? $auth->name : '' }}</a>
                     <span><a href="{{ url('admin/logout') }}">ออกจากระบบ</a></span>
                 </div>
-                <img src="{{ $auth->avatar_image_resized }}" alt="{{ $auth->name }}">
+                <img src="{{ $auth ? $auth->avatar_image_resized : ''}}" alt="{{ $auth ? $auth->name : '' }}">
             </div>
         </li>
     </ul>
