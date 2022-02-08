@@ -113,31 +113,6 @@ class HomeController extends Controller
         );
     }
 
-    /**
-     * Display the specified content.
-     *
-     * @param  \App\Models\ContentType  $id
-     * @param  \App\Models\Content  $content
-     */
-    // public function content($id, Content $content)
-    // {
-    //     $category = ContentType::find($id);
-
-    //     if (empty($category) || !$category->published)
-    //         abort(404);
-
-    //     if (empty($content) || !$content->is_published)
-    //         abort(404);
-
-    //     $content->view_count++;
-    //     $content->update();
-
-    //     $tags = ContentType::ofPublished()->limit(10)->get();
-    //     $moreContents = $this->contentService->getPublishedContentsExceptCurrent($content);
-
-    //     return view('frontend.content_categories.detail', compact('content', 'tags', 'moreContents'));
-    // }
-
     private function getFeaturedContents()
     {
         $contentTypes = ContentType::ofFeatured()->ofPublished()->orderBy('sequence')->get();

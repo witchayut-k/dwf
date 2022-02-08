@@ -30,7 +30,7 @@ class ContentController extends Controller
 
         $view = ContentTemplateEnum::getDescription($content->template_id);
 
-        return view("frontend.content_categories.detail_{$view}", compact('content', 'moreContents', 'tags'));
+        return view("frontend.contents.detail_{$view}", compact('content', 'moreContents', 'tags'));
     }
 
     public function categories(Request $request, $id)
@@ -45,7 +45,7 @@ class ContentController extends Controller
         $contents = Content::ofPublished()->where('content_type_id', $category->id)->orderByDesc('pinned')->orderByDesc('created_at')->paginate($rowsPerPage);
 
         return view(
-            'frontend.content_categories.index',
+            'frontend.contents.index',
             compact(
                 'category',
                 'contents'
