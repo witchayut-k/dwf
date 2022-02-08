@@ -99,7 +99,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    
+
     Route::get('logout', [LoginController::class, 'logout']);
 
     // Dashboard
@@ -161,10 +161,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('{registrar}/fields', [RegistrarController::class, 'getFields']);
     });
 
-     // Survey
-     Route::prefix('surveys')->group(function () {
+    // Survey
+    Route::prefix('surveys')->group(function () {
         Route::get('{survey}/choices', [BackendSurveyController::class, 'getChoices']);
         Route::get('{survey}/questions', [BackendSurveyController::class, 'getQuestions']);
+    });
+
+    // Weblink
+    Route::prefix('weblinks')->group(function () {
+        Route::post('sequence', [WeblinkController::class, 'updateSequence']);
     });
 
     Route::resources([
@@ -223,7 +228,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('user-roles', UserRoleController::class)->parameters([
         'user-roles' => 'role'
     ]);
-
 });
 
 

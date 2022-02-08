@@ -12,7 +12,7 @@
             @foreach ($featuredContents as $key => $contentType)
                 <div class="tab-pane fade {{ $key == 0 ? " show active" : "" }}" id="tabNews{{ $key }}" role="tabpanel" aria-labelledby="tabNews{{ $key }}">
                     <div>
-                        @if ($contentType->name == "ข่าวภูมิภาค")
+                        @if ($contentType->id == Config::get('dwf.regional_content_id'))
                             <div class="row">
                             @foreach ($contentType->featured_contents as $content)
                                 <div class="col-md-3">
@@ -24,7 +24,7 @@
                                         </div>
                                         <div class="box-item-dt">
                                             <h2 class="txt-wrap">{{ $content->title }}</h2>
-                                            <p class="txt-wrap c-pink pb-2">ศูนย์ต่างๆ</p>
+                                            <p class="txt-wrap c-pink pb-2">{{ $content->center_name }}</p>
                                             <div class="d-flex">
                                                 <p class="date pr-4">{{ $content->date_th }}</p>
                                             </div>

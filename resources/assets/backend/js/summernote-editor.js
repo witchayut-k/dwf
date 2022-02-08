@@ -55,8 +55,8 @@ $(document).ready(function () {
             myVideo: function (context) {
                 var ui = $.summernote.ui;
                 var button = ui.button({
-                    contents: '<i class="fa fa-video-camera"/>',
-                    tooltip: 'video',
+                    contents: '<i class="fa fa-desktop"/>',
+                    tooltip: 'iframe',
                     click: function () {
                         var div = document.createElement('div');
                         div.classList.add('embed-container');
@@ -64,6 +64,7 @@ $(document).ready(function () {
                         iframe.src = prompt('Enter video url:');
                         iframe.setAttribute('frameborder', 0);
                         iframe.setAttribute('width', '100%');
+                        iframe.setAttribute('height', '600');
                         iframe.setAttribute('allowfullscreen', true);
                         div.appendChild(iframe);
                         context.invoke('editor.insertNode', div);

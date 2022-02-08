@@ -9,6 +9,8 @@ var Banner = function () {
                 update: false
             },
             bSort: false,
+            bPaginate: false,
+            bStateSave: false,
             ajax: {
                 url: moduleUrl,
                 data: function (d) {

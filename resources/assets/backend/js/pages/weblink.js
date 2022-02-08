@@ -59,6 +59,13 @@ var Weblink = function () {
 
             columns: [
                 {
+                    data: 'id',
+                    sClass: "dragable",
+                    render: function (data, type, row) {
+                        return '';
+                    }
+                },
+                {
                     data: 'DT_RowIndex', sClass: 'text-center'
                 },
                 { data: 'title' },

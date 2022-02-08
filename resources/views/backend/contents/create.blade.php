@@ -22,6 +22,16 @@
 
             {!! Form::groupSelect('content_type_id', 'ประเภทเนื้อหา', $contentTypes, $content->content_type_id, ['required'=>'required']) !!}
 
+            <div class="form-group center-container" style="display: {{ $content->content_type_id == Config::get('dwf.regional_content_id') ? 'block' : 'none' }}">
+                <label>ศูนย์ต่างๆ</label>
+                <select name="center_name" class="form-control selectpicker">
+                    {{-- <option value="">[-ไม่ระบุ-]</option> --}}
+                    @foreach (Config::get('dwf.centers') as $item)
+                        <option value="{{ $item }}" {{ $content->center_name == $item ? 'selected' : '' }}>{{ $item }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             {!! Form::groupSummernoteEditor('content', 'รายละเอียด', $content->content) !!}
 
             @include('backend.components.form_featured_image', [
@@ -120,6 +130,8 @@
             @endif
             <a href="{{ url('admin/contents') }}" class="btn btn-default">ยกเลิก</a>
             <button type="submit" class="btn btn-submit">บันทึก</button>
+
+            <span id="regional_content_id" data-id="{{ Config::get('dwf.regional_content_id') }}"></span>
         </div>
         {{ Form::close() }}
     </div>

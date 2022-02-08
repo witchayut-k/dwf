@@ -35,19 +35,19 @@ class HomeController extends Controller
         $banners = Banner::ofPublished()->orderBy('sequence')->get();
 
         $linkServices = WeblinkType::ofService()->ofPublished()
-            ->with(
-                [
+            ->with([
                     'weblinks' => function ($query) {
                         $query->where('published', true);
+                        $query->orderBy('sequence');
                     }
-                ]
-            )
+                ])
             ->get();
 
         $linkSocials = WeblinkType::ofSocial()->ofPublished()
             ->with([
                 'weblinks' => function ($query) {
                     $query->where('published', true);
+                    $query->orderBy('sequence');
                 }
             ])->get();
 
@@ -55,6 +55,7 @@ class HomeController extends Controller
             ->with([
                 'weblinks' => function ($query) {
                     $query->where('published', true);
+                    $query->orderBy('sequence');
                 }
             ])->get();
 
@@ -62,6 +63,7 @@ class HomeController extends Controller
             ->with([
                 'weblinks' => function ($query) {
                     $query->where('published', true);
+                    $query->orderBy('sequence');
                 }
             ])->get();
 
@@ -69,6 +71,7 @@ class HomeController extends Controller
             ->with([
                 'weblinks' => function ($query) {
                     $query->where('published', true);
+                    $query->orderBy('sequence');
                 }
             ])->first();
 

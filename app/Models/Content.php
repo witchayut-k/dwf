@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ContentTemplateEnum;
 use App\Traits\HasDateRange;
 use App\Traits\HasFeaturedImage;
 use Carbon\Carbon;
@@ -15,6 +16,10 @@ use Sqits\UserStamps\Concerns\HasUserStamps;
 class Content extends Model implements HasMedia
 {
     use InteractsWithMedia, HasUserStamps, HasFeaturedImage, SoftDeletes, HasDateRange;
+
+    protected $attributes = [
+        'template_id' => ContentTemplateEnum::RIGHT_COLUMN,
+    ];
 
     protected $casts = [
         'pinned' => 'boolean',
@@ -32,7 +37,8 @@ class Content extends Model implements HasMedia
         'published',
         'begin_date',
         'end_date',
-        'template_id'
+        'template_id',
+        'center_name',
     ];
 
     protected $appends = ['featured_image', 'file'];

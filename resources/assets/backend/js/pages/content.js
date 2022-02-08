@@ -3,6 +3,8 @@ var Content = function () {
     var moduleUrl = appUrl + '/admin/contents';
     var contentId;
 
+    var regionalContentId = $('#regional_content_id').data('id');
+
     var initDatatable = function () {
         datatable = $('#table-content').DataTable({
             rowReorder: {
@@ -76,6 +78,17 @@ var Content = function () {
      * Form Section
      */
 
+    var handleContentTypeChange = function () {
+        console.log('regionalContentId', regionalContentId)
+        $('[name="content_type_id"]').on('change', function () {
+            if ($(this).val() == regionalContentId) {
+                $('.center-container').show();
+            } else {
+                $('.center-container').hide();
+            }
+        });
+    }
+
 
     var handleSubmit = function () {
         var $form = $('#form-content');
@@ -145,6 +158,7 @@ var Content = function () {
                 customSubmit = true;
                 handleFileUpload();
                 handleSubmit();
+                handleContentTypeChange();
             }
         }
     }

@@ -53,6 +53,9 @@ class WeblinkController extends BaseController
 
             return DataTables::eloquent($query)
                 ->addIndexColumn()
+                ->order(function ($query) {
+                    $query->orderBy('weblinks.sequence', 'asc');
+                })
                 ->make(true);
         }
 

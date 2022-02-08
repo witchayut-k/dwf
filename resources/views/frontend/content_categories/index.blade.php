@@ -28,7 +28,9 @@
                     </div>
                     <div class="box-item-dt">
                         <h2 class="txt-wrap">{{ $content->title }}</h2>
-                        {{--<p class="txt-wrap c-pink pb-2">ศูนย์ต่างๆ</p>--}}
+                        @if ($content->content_type_id == Config::get('dwf.regional_content_id'))
+                        <p class="txt-wrap c-pink pb-2">{{ $content->center_name }}</p>
+                        @endif
                         <div class="d-flex flex-wrap">
                             <p class="date pr-4">{{ $content->date_th }}</p>
                             <p class="view pr-4">{{ $content->view_count }} view</p>

@@ -50,6 +50,9 @@
                             </ol>
                         </nav>
                         <h1 class="font-medium c-pink">{{ $content->title }}</h1>
+                        @if ($content->content_type_id == Config::get('dwf.regional_content_id'))
+                        <p class="py-2 c-pink">{{ $content->center_name }}</p>
+                        @endif
                         <div class="d-flex flex-wrap mt-3">
                             <p class="date c-gray pr-4">{{ $content->created_at }}</p>
                             <p class="view c-gray pr-4">{{ $content->view_count }} view</p>

@@ -25,6 +25,7 @@ class Weblink extends Model implements HasMedia
         'subtitle',
         'weblink_type_id',
         'url',
+        'sequence',
         'published',
     ];
 

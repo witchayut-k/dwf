@@ -47,6 +47,7 @@
         <table class="table table-bordered table-striped" id="table-weblink">
             <thead>
                 <tr>
+                    <th></th>
                     <th style="width: 30px;">ลำดับ</th>
                     <th>หัวข้อ</th>
                     <th>ภาพ</th>

@@ -42,7 +42,7 @@ class BannerController extends BaseController
                     return $content->featured_image_resized;
                 })
                 ->order(function ($query) {
-                    $query->orderBy('sequence', 'desc');
+                    $query->orderBy('sequence', 'asc');
                     $query->orderBy('created_at', 'desc');
                 })
                 ->make(true);
