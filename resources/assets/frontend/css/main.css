@@ -727,7 +727,7 @@ a {
               height: 110px;
               position: absolute;
               right: 0;
-              top: -14px; } }
+              top: 0; } }
     .header .header-menu .header-menu-list {
       list-style: none;
       padding-left: 0;
@@ -892,7 +892,8 @@ a {
   .navbar-container {
     background-color: #FFCEE1;
     -webkit-box-shadow: 0px 3px 4px rgba(85, 86, 90, 0.04);
-    box-shadow: 0px 3px 4px rgba(85, 86, 90, 0.04); } }
+    box-shadow: 0px 3px 4px rgba(85, 86, 90, 0.04);
+    position: relative; } }
 
 @media only screen and (max-width: 1199px) {
   .navbar.navbar-expand-lg {
@@ -1066,7 +1067,7 @@ a {
       font-size: 2rem;
       font-weight: 400;
       line-height: 1.4; }
-      .header-top .btn.btn-increase.disible, .header-top .btn.btn-reduce.disible {
+      .header-top .btn.btn-increase.disable, .header-top .btn.btn-reduce.disable {
         pointer-events: none;
         color: #D8D8D8; }
   .header-top .fontsize {
@@ -1115,8 +1116,8 @@ a {
     padding-bottom: 20px; }
     .footer .footer-top h1 {
       color: #E84E72;
-      font-size: 20px !important;
-      font-size: 2rem !important; }
+      font-size: 20px;
+      font-size: 2rem; }
     .footer .footer-top ul {
       padding-top: 15px;
       font-size: 14px;
@@ -1714,7 +1715,7 @@ a {
 .dark-theme .nav-tabs .nav-link.active {
   background-color: black; }
 
-.dark-theme .btn-increase.disible, .dark-theme .btn-reduce.disible {
+.dark-theme .btn-increase.disable, .dark-theme .btn-reduce.disable {
   opacity: 0.5; }
 
 .dark-theme .nav-link {
@@ -2357,6 +2358,54 @@ select {
   /* Safari and Chrome */
   appearance: none;
   background: url("../images/icon/sort-down.svg") no-repeat 99%; }
+
+.landing-section {
+  height: 100vh; }
+  .landing-section .photo-thumb {
+    background-color: white; }
+    .landing-section .photo-thumb .photo {
+      background-size: contain; }
+  .landing-section .slick-slider {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%; }
+  .landing-section .slick-track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+
+.landing-btn {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  margin-left: 10px;
+  margin-right: 10px; }
+  @media only screen and (min-width: 576px) {
+    .landing-btn {
+      bottom: 20px; } }
+  .landing-btn .btn-style {
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 5px 10px;
+    padding-top: 8px;
+    padding-bottom: 8px; }
 
 select.bs-select-hidden,
 select.selectpicker {
