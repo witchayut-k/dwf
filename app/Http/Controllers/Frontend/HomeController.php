@@ -19,6 +19,7 @@ use App\Models\Weblink;
 use App\Models\WeblinkType;
 use App\Services\ContentService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,16 @@ class HomeController extends Controller
 
     public function index()
     {
-        $landingPages = LandingPage::ofPublished()->get();
+        /** Redirect to landing page if exists */
+
+        $landingPageFull = LandingPage::ofPublished()->ofFullPage()->get();
+
+        if ($landingPageFull->count() > 0 && !session('skip_landing_page'))
+            return view( 'frontend.home.landing', compact('landingPageFull'));
+
+        /** End redirect to landing page */
+
+        $popups = LandingPage::ofPublished()->ofPopup()->get();
 
         $banners = Banner::ofPublished()->orderBy('sequence')->get();
 
@@ -94,7 +104,7 @@ class HomeController extends Controller
         return view(
             'frontend.home.index',
             compact(
-                'landingPages',
+                'popups',
                 'banners',
                 'linkServices',
                 'linkSocials',
@@ -112,6 +122,15 @@ class HomeController extends Controller
             )
         );
     }
+
+    public function skipLandingPage () {
+        session(['skip_landing_page' => true]);
+        return redirect(url(''));
+    }
+
+    /**
+     * Private Methods
+     */
 
     private function getFeaturedContents()
     {

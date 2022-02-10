@@ -6,9 +6,9 @@
             </button>
             <div class="modal-body">
                 <div class="owl-carousel owl-theme slider-landing">
-                    @foreach ($landingPages as $page)
+                    @foreach ($popups as $popup)
                     <div class="item">
-                        <img src="{{ $page->featured_image }}" alt="{{ $page->title }}">
+                        <img src="{{ $popup->featured_image }}" alt="{{ $popup->title }}">
                     </div>
                     @endforeach
                 </div>

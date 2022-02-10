@@ -19,7 +19,7 @@
 @include('frontend.home.partials.registrar')
 @include('frontend.home.partials.related_link')
 
-@if (count($landingPages) > 0)
+@if ($popups->count() > 0)
 @include('frontend.home.partials.modal_landing')
 @endif
 

@@ -52,4 +52,13 @@ trait HasFeaturedImage
         else
             return asset('img/img-placeholder.jpg');
     }
+
+    public function getImageIdAttribute()
+    {
+        $media = $this->getFirstMedia('featured_image');
+        if ($media)
+            return $media->id;
+        else
+            return null;
+    }
 }
