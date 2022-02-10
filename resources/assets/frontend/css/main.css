@@ -2038,9 +2038,7 @@ a {
   .content-editor img, .content-editor > * img {
     display: block !important;
     max-width: 100% !important;
-    height: auto !important;
-    margin-left: auto;
-    margin-right: auto; }
+    height: auto !important; }
   .content-editor a:hover, .content-editor > * a:hover {
     color: #E84E72 !important; }
 
@@ -6264,7 +6262,9 @@ select.selectpicker {
     border: 1px solid #E84E72;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border-radius: 10px; }
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto; }
   .board-item .list-info {
     list-style-type: none;
     text-align: center;
@@ -6298,6 +6298,10 @@ select.selectpicker {
           -webkit-transform: scale(1.2);
           -ms-transform: scale(1.2);
           transform: scale(1.2); }
+  .board-item .list-inline.team-social {
+    margin-top: 10px; }
+    .board-item .list-inline.team-social li {
+      display: inline-block; }
 
 .file-item {
   display: inline-block;
