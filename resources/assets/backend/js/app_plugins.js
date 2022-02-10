@@ -351,8 +351,21 @@ var app_plugins = {
             if (file) {
                 // console.log(file)
                 $('.preview-image').attr('src', URL.createObjectURL(file));
-                $('.preview-image').show();
+                // $('.preview-image').show();
+                $('.img-action').show();
+                $('[name="delete_image"]').remove();
             }
+        });
+
+        $('body').on('click', '.btn-delete-image', function (e) {
+            const id = $(e.target).data('id');
+            let el = $('<input type="hidden" name="delete_image" value="1" />');
+            $('form').append(el);
+            $('[name="file"]').val('');
+            $('.preview-image').attr('src', appUrl + '/img/img-placeholder.jpg');
+            $('.img-action').hide();
+            $('.file-input-name').text('');
+
         })
 
     },

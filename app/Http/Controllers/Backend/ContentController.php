@@ -142,6 +142,9 @@ class ContentController extends BaseController
             $content->addMedia($request->file)->toMediaCollection('featured_image');
         }
 
+        if ($request->delete_image && $content->image_id)
+            $content->deleteMedia($content->image_id);
+
         // if ($request->pdf) {
         //     $content->clearMediaCollection('file');
         //     $content->addMedia($request->pdf)->toMediaCollection('file');

@@ -124,6 +124,9 @@ class LandingPageController extends BaseController
             $landingPage->addMedia($request->file)->toMediaCollection('featured_image');
         }
 
+        if ($request->delete_image && $landingPage->image_id)
+            $landingPage->deleteMedia($landingPage->image_id);
+
         return ResponseHelper::updateSuccess($request, $landingPage);
     }
 

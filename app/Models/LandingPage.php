@@ -53,7 +53,15 @@ class LandingPage extends Model implements HasMedia
     | SCOPES
     |--------------------------------------------------------------------------
     */
+    public function scopeOfFullPage($query)
+    {
+        return $query->where('is_page', TRUE);
+    }
 
+    public function scopeOfPopup($query)
+    {
+        return $query->where('is_popup', TRUE);
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATOR
@@ -71,8 +79,8 @@ class LandingPage extends Model implements HasMedia
         $this->addMediaCollection('featured_image')->singleFile();
 
         $this->addMediaConversion('featured_image_resized')
-            ->width(574)
-            ->height(310)
+            // ->width(574)
+            // ->height(310)
             ->performOnCollections('featured_image')
             ->nonQueued();
     }

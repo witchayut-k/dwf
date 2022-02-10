@@ -62,6 +62,7 @@ Route::get('lang/{lang}', [LanguageController::class, 'switchLang']);
 
 Route::name('home')->middleware('visitor')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'skipLandingPage']);
     // Route::get('categories/{id}/{content}', [HomeController::class, 'content']);
     Route::get('faq', [FaqController::class, 'index'])->name('faq');
     Route::put('faq/{faq}', [FaqController::class, 'update']);
@@ -252,5 +253,10 @@ Route::prefix('dev')->group(function () {
     Route::get('view-clear', function () {
         Artisan::call('view:clear');
         echo "<h1>View cleared!</h1>";
+    });
+
+    Route::get('session-flush', function () {
+        Session::flush();
+        echo "<h1>Session Flushed!</h1>";
     });
 });

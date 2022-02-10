@@ -32,7 +32,29 @@
     }
 }
 
-
 .attach-file {
     // margin-eft
+}
+
+.landing-page {
+    .slider-landing-page {
+        height: 100vh;
+        
+        .slick-slide {
+            z-index: 0;
+        }
+    }
+
+    .actions {
+        z-index: 1;
+        position: absolute;
+        bottom: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .action-wrapper {
+            display: inline-block;
+        }
+    }
 }
