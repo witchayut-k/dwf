@@ -270,11 +270,15 @@
 }
 
 .modal .modal-body {
-  padding-top: 0;
+  // padding-top: 0;
     &.text-center {
         .form-control {
             margin: 0 auto;
         }
+    }
+
+    .form-body {
+      width: auto;
     }
 }
 

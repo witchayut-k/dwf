@@ -169,5 +169,5 @@
 @section('scripts')
 <script src="{{ mix('backend/js/summernote-editor.min.js') }}"></script>
 <script src="{{ mix('backend/js/pages/content.min.js') }}"></script>
-{!! JsValidator::formRequest('App\Http\Requests\Backend\WeblinkRequest', '#form-content') !!}
+{!! JsValidator::formRequest('App\Http\Requests\Backend\ContentRequest', '#form-content') !!}
 @endsection

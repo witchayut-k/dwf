@@ -16,8 +16,11 @@
                 </div>
             </div>
             <div>
-                <a href="{{ url('admin/albums/create') }}" class="btn btn-create">
+                {{-- <a href="{{ url('admin/albums/create') }}" class="btn btn-create">
                     <i class="fa fa-plus"></i> เพิ่มอัลบั้ม
+                </a> --}}
+                <a href="#modal-simple-create" class="btn btn-create" data-toggle="modal" data-animation="effect-scale">
+                    <i class="fa fa-plus"></i> เพิ่มอัลบั้ม 
                 </a>
             </div>
         </div>
@@ -39,9 +42,18 @@
         </table>
     </div>                            
 </div>
+
+@include('backend.components.modal_simple_create_form', [
+    'action' => url('admin/albums'),
+    'id' => 'form-album',
+    'title' => 'คลังภาพ',
+    'redirectUrl' => url('admin/albums/{id}/edit')
+])
+
 @endsection
 
 @section('scripts')
 
 <script src="{{ mix('backend/js/pages/album.min.js') }}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\Backend\AlbumRequest', '#form-album') !!}
 @endsection

@@ -139,6 +139,7 @@ mix.scripts([
     // 'resources/assets/backend/js/vendor/summernote/summernote-ext-emoji.js',
     'resources/assets/backend/js/vendor/summernote/summernoteEmoji.js',
     'resources/assets/backend/js/vendor/summernote/summernote-image-attributes.js',
+    'resources/assets/backend/js/vendor/summernote/summernote-ext-iframe.js',
     'resources/assets/backend/js/vendor/summernote/bootstrap-grid.js',
     // 'resources/assets/backend/js/vendor/summernote/summernote-ext-emoji-min.js',
     // 'resources/assets/backend/js/vendor/smartwizard/jquery.smartWizard.js',

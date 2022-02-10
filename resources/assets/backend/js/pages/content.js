@@ -78,6 +78,8 @@ var Content = function () {
         $('[name="content_type_id"]').on('change', function () {
             searchData.content_type_id = $(this).val();
             datatable.draw();
+
+            $('#content-type-id').selectpicker('val', $(this).val());
         });
     }
 

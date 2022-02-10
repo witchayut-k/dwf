@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\AlbumRequest;
 use App\Models\Album;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -72,7 +73,7 @@ class AlbumController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlbumRequest $request)
     {
         $album = Album::create($request->all());
 
@@ -113,7 +114,7 @@ class AlbumController extends BaseController
      * @param  \App\Models\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update(AlbumRequest $request, Album $album)
     {
         $album->update($request->all());
 

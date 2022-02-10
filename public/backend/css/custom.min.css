@@ -697,11 +697,11 @@ h1 {
   color: #fff;
 }
 
-.modal .modal-body {
-  padding-top: 0;
-}
 .modal .modal-body.text-center .form-control {
   margin: 0 auto;
+}
+.modal .modal-body .form-body {
+  width: auto;
 }
 
 .modal .modal-footer.text-center {

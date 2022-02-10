@@ -24,7 +24,7 @@ $(document).ready(function () {
             ['table', ['bootstrap-grid']],
             ['insert', ['picture', 'link', 'video', 'sEmoji']],
             ['view', ['fullscreen', 'codeview', 'help']],
-            ['mybutton', ['myVideo']]
+            ['mybutton', ['myVideo', 'synonym']]
         ],
         popover: {
             image: [

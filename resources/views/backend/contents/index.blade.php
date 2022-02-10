@@ -27,8 +27,11 @@
             </div>
             <div class="flex-grow"> </div>
             <div>
-                <a href="{{ url('admin/contents/create') }}" class="btn btn-create">
+                {{-- <a href="{{ url('admin/contents/create') }}" class="btn btn-create">
                     <i class="fa fa-plus"></i> เพิ่มเนื้อหา
+                </a> --}}
+                <a href="#modal-simple-create" class="btn btn-create" data-toggle="modal" data-animation="effect-scale">
+                    <i class="fa fa-plus"></i> เพิ่มเนื้อหา 
                 </a>
             </div>
         </div>
@@ -49,8 +52,17 @@
         </table>
     </div>                            
 </div>
+
+@include('backend.components.modal_simple_create_form', [
+    'action' => url('admin/contents'),
+    'id' => 'form-content',
+    'title' => 'เนื้อหาเว็บไซต์',
+    'redirectUrl' => url('admin/contents/{id}/edit')
+])
+
 @endsection
 
 @section('scripts')
 <script src="{{ mix('backend/js/pages/content.min.js') }}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\Backend\ContentRequest', '#form-content') !!}
 @endsection
