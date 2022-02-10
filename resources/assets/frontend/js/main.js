@@ -84,6 +84,7 @@ $(document).on('ready', function () {
 		slidesToShow: 1,
 		slidesToScroll: 1
 	});
+
 	$('.slider-institution').slick({
 		arrows: true,
 		slidesToShow: 4,
@@ -98,12 +99,18 @@ $(document).on('ready', function () {
 			}
 		]
 	});
+
 	$('.slider-calendar').slick({
 		vertical: true,
 		slidesToShow: 4,
 		slidesToScroll: 4,
 		prevArrow: $('.prev'),
 		nextArrow: $('.next'),
+	});
+
+	$('.slider-landing').owlCarousel({
+		loop: true,
+		items: 1
 	});
 
 	// $('.service-ic').on('click', function () {
@@ -123,4 +130,9 @@ $(function () {
 	$('[data-toggle="tooltip"]').tooltip();
 });
 
+
+// show modal landing content
+$(window).on('load', function () {
+	$('#modalLandingContent').modal('show');
+});
 

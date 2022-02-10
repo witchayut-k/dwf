@@ -8,7 +8,8 @@
             </div>
             {{ Form::close() }}
         </div>
-        <li class="nav-item active">
+        {{-- <li class="nav-item {{ request()->is('/') ? 'active' : '' }}"> --}}
+        <li class="nav-item">
             <a class="nav-link" href="{{ url('') }}">{{ __('shared.home') }} <span class="sr-only">(current)</span></a>
         </li>
 

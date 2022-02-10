@@ -56,7 +56,7 @@ class NavHelper
 
         $menu = Menu::ofPublished()->where('parent_id', null)->where('menu_position', 'footer_menu')->orderBy('sequence')->get();
 
-        foreach ($menu as $nav) {
+        foreach ($menu as $key => $nav) {
 
             $submenu = "";
             foreach ($nav->published_children as $key => $subnav) {
@@ -64,10 +64,10 @@ class NavHelper
             }
 
             $root .= " <div class=\"col-md-4\">
-                        <h1 data-toggle=\"collapse\" data-target=\"#collapseOther\" aria-expanded=\"false\" aria-controls=\"collapseOther\" class=\"list-topic\">" . $nav->title . "</span></h1>";
+                        <h1 data-toggle=\"collapse\" data-target=\"#collapse${key}\" aria-expanded=\"false\" aria-controls=\"collapse${key}\" class=\"list-topic\">" . $nav->title . "</span></h1>";
 
             if (count($nav->children) > 0) {
-                $root .= "<ul id=\"collapseOther\" aria-labelledby=\"headingOne\" data-parent=\"#footerToggle\" class=\"list-group collapse\">";
+                $root .= "<ul id=\"collapse${key}\" aria-labelledby=\"heading${key}\" data-parent=\"#footerToggle\" class=\"list-group collapse\">";
                 $root .= $submenu;
                 $root .= "</ul>";
             }
