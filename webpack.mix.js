@@ -46,6 +46,7 @@ mix.scripts([
     'resources/assets/backend/js/vendor/moment/moment.min.js',
     'resources/assets/backend/js/vendor/bootstrap-daterange/daterangepicker.js',
     'resources/assets/backend/js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js',
+    'resources/assets/frontend/js/libs/fontsize.min.js',
 
     'node_modules/modal-video/js/modal-video.js'
 ], 'public/js/lib.min.js').version();

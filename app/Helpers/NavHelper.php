@@ -63,7 +63,7 @@ class NavHelper
                 $submenu .= "<li>" . NavHelper::RenderMenuItem($subnav) . "</li>";
             }
 
-            $root .= " <div>
+            $root .= " <div class=\"col-md-4\">
                         <h1 data-toggle=\"collapse\" data-target=\"#collapseOther\" aria-expanded=\"false\" aria-controls=\"collapseOther\" class=\"list-topic\">" . $nav->title . "</span></h1>";
 
             if (count($nav->children) > 0) {

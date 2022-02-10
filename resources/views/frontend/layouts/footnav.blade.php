@@ -5,7 +5,7 @@
                 <a href="#" class="logo"></a>
             </div>
             <div class="col-lg-7">
-                <div class="row footer-menu">
+                <div class="row" id="footerToggle">
                     {!! NavHelper::RenderFooterMenu() !!}
             </div>
         </div>

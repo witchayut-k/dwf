@@ -14,10 +14,10 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
 	return false;
 });
 
-function onMenu() {
-	$(".header").toggleClass('active');
-	$(".hamburger").toggleClass('active');
-}
+// function onMenu() {
+// 	$(".header").toggleClass('active');
+// 	$(".hamburger").toggleClass('active');
+// }
 
 $('.btn-display1').click(function () {
 	$('.wrapper').removeClass('dark-theme');
@@ -33,56 +33,17 @@ $('.btn-display3').click(function () {
 	$('.wrapper').addClass('dark-theme with-txt-yellow');
 });
 
-(function ($) {
-	$.fn.fontResize = function (options) {
-		var increaseCount = 0;
-		var self = this;
-
-		var changeFont = function (element, amount) {
-			var baseFontSize = parseInt(element.css('font-size'), 10);
-			var baseLineHeight = parseInt(element.css('line-height'), 10);
-			element.css('font-size', (baseFontSize + amount) + 'px');
-			element.css('line-height', (baseLineHeight + amount) + 'px');
-		};
-
-		options.increaseFontsizeBtn.on('click', function (e) {
-			e.preventDefault();
-			if (increaseCount === 3) {
-				$('.btn-increase').addClass('disible');
-				$('.btn-reduce').removeClass('disible');
-				return;
-			}
-			self.each(function (index, element) {
-				changeFont($(element), 2);
-			});
-			increaseCount++;
-		});
-
-		options.decreaseFontsizeBtn.on('click', function (e) {
-			e.preventDefault();
-			if (increaseCount === 0) {
-				$('.btn-reduce').addClass('disible');
-				$('.btn-increase').removeClass('disible');
-				return;
-			}
-			self.each(function (index, element) {
-				changeFont($(element), -2);
-			});
-			increaseCount--;
-		});
-	}
-})(jQuery);
-
-$(function () {
-	$('h1, h2, h3, h4, h5, h6, p:not(.header-top .topic-text, .txt-intro, .txt-running) .fontsize, .form-control, .service-item-dt, .btn-style, .nav-tabs .nav-link, .check-item, .list-dashed li a').fontResize({
-		increaseFontsizeBtn: $('.btn-increase'),
-		decreaseFontsizeBtn: $('.btn-reduce')
-	});
+$('h1, h2, h3, h4, h5, h6, p:not(.topic-text) .fontsize, .form-control, .service-item-dt, .btn-style, .nav-tabs .nav-link, .check-item, .list-dashed li a, .content-editor, .content-editor > *, .text-by, .board-item > *, .card-custom p > u, .header-top .header-top-group ul li a, .txt-intro, .txt-running, .footer .footer-top h1, .footer .footer-top ul li a').FontSize({
+    increaseBtn:'.btn-increase',
+    reduceBtn:'.btn-reduce'
 });
 
-
-
 $(document).on('ready', function () {
+    $('body').on('click', '.hamburger', function () {
+        $(".header").toggleClass('active');
+	    $(".hamburger").toggleClass('active');
+    });
+
 	$('.slider-hero').slick({
 		slidesToShow: 1,
 		arrows: false,
@@ -91,6 +52,7 @@ $(document).on('ready', function () {
 		autoplay: true,
 		autoplaySpeed: 5000,
 	});
+
 	$('.slider-menu').slick({
 		arrows: true,
 		variableWidth: true,
