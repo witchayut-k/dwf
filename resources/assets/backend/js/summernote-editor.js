@@ -24,7 +24,8 @@ $(document).ready(function () {
             ['table', ['bootstrap-grid']],
             ['insert', ['picture', 'link', 'video', 'sEmoji']],
             ['view', ['fullscreen', 'codeview', 'help']],
-            ['mybutton', ['myVideo', 'synonym']]
+            ['mybutton', ['iframe']]
+            // ['mybutton', ['iframe', 'synonym']]
         ],
         popover: {
             image: [
@@ -52,7 +53,7 @@ $(document).ready(function () {
             }
         },
         buttons: {
-            myVideo: function (context) {
+            iframe: function (context) {
                 var ui = $.summernote.ui;
                 var button = ui.button({
                     contents: '<i class="fa fa-desktop"/>',
@@ -61,13 +62,18 @@ $(document).ready(function () {
                         var div = document.createElement('div');
                         div.classList.add('embed-container');
                         var iframe = document.createElement('iframe');
-                        iframe.src = prompt('Enter video url:');
-                        iframe.setAttribute('frameborder', 0);
-                        iframe.setAttribute('width', '100%');
-                        iframe.setAttribute('height', '600');
-                        iframe.setAttribute('allowfullscreen', true);
-                        div.appendChild(iframe);
-                        context.invoke('editor.insertNode', div);
+                        var src = prompt('Enter iframe url:');
+
+                        if (src) {
+                            iframe.src = src;
+                            iframe.setAttribute('frameborder', 0);
+                            iframe.setAttribute('width', '100%');
+                            iframe.setAttribute('height', '600');
+                            iframe.setAttribute('allowfullscreen', true);
+                            div.appendChild(iframe);
+                            context.invoke('editor.insertNode', div);
+                        }
+                     
                     }
                 });
 
