@@ -27,9 +27,9 @@
                         </div>
                     </div>
                     <div class="box-item-dt">
-                        <h2 class="txt-wrap">{{ $content->title }}</h2>
+                        <h2 class="txt-wrap" title="{{ $content->title }}">{{ $content->title }}</h2>
                         @if ($content->content_type_id == Config::get('dwf.regional_content_id'))
-                        <p class="txt-wrap c-pink pb-2">{{ $content->center_name }}</p>
+                        <p class="txt-wrap c-pink pb-2" title="{{ $content->center_name }}">{{ $content->center_name }}</p>
                         @endif
                         <div class="d-flex flex-wrap">
                             <p class="date pr-4">{{ $content->date_th }}</p>

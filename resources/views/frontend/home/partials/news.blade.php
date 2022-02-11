@@ -16,15 +16,15 @@
                             <div class="row">
                             @foreach ($contentType->featured_contents as $content)
                                 <div class="col-md-3">
-                                    <a href="{{ url("contents/$content->id") }}" class="box-item" title="{{ $content->title }}">
+                                    <a href="{{ url("contents/$content->id") }}" class="box-item">
                                         <div class="photo-thumb sm">
                                             <div class="photo-parent">
                                                 <span class="photo" style="background-image: url('{{ $content->featured_image }}')"></span>
                                             </div>
                                         </div>
                                         <div class="box-item-dt">
-                                            <h2 class="txt-wrap">{{ $content->title }}</h2>
-                                            <p class="txt-wrap c-pink pb-2">{{ $content->center_name }}</p>
+                                            <h2 class="txt-wrap" title="{{ $content->title }}">{{ $content->title }}</h2>
+                                            <p class="txt-wrap c-pink pb-2" title="{{ $content->center_name }}">{{ $content->center_name }}</p>
                                             <div class="d-flex">
                                                 <p class="date pr-4">{{ $content->date_th }}</p>
                                             </div>
