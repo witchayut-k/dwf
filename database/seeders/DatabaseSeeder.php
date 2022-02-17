@@ -18,21 +18,21 @@ class DatabaseSeeder extends Seeder
         /**
          * Required
          */
-        $this->call(UserSeeder::class);
-        $this->call(PermissionSeeder::class);
-        $this->call(MenuSeeder::class);
+        // $this->call(UserSeeder::class);
+        // $this->call(PermissionSeeder::class);
+        // $this->call(MenuSeeder::class);
         $this->call(ContentTypeSeeder::class);
         $this->call(WeblinkTypeSeeder::class);
 
         /**
          * Dummy
          */
-        $this->call(BannerSeeder::class);
-        $this->call(EventSeeder::class);
+        // $this->call(BannerSeeder::class);
+        // $this->call(EventSeeder::class);
         $this->call(WeblinkSeeder::class);
-        $this->call(ContentSeeder::class);
-        $this->call(VideoCategorySeeder::class);
-        $this->call(VideoSeeder::class);
-        $this->call(FAQSeeder::class);
+        // $this->call(ContentSeeder::class);
+        // $this->call(VideoCategorySeeder::class);
+        // $this->call(VideoSeeder::class);
+        // $this->call(FAQSeeder::class);
     }
 }

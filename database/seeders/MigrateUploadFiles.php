@@ -19,11 +19,11 @@ class MigrateUploadFiles extends Seeder
      */
     public function run()
     {
-        //$this->importAlbumFiles();
-        //$this->importBannerFiles();
-        // $this->importContentFiles();
-        // $this->importDocumentFiles();
-        // $this->importLandingPageFiles();
+        $this->importAlbumFiles();
+        $this->importBannerFiles();
+        $this->importContentFiles();
+        $this->importDocumentFiles();
+        $this->importLandingPageFiles();
         $this->importVideoFiles();
     }
 
