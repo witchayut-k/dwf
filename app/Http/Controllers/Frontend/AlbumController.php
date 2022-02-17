@@ -9,9 +9,8 @@ use Illuminate\Http\Request;
 class AlbumController extends Controller
 {
     public function index () {
-        abort(404);
-
-        return view('frontend.album');
+        $albums = Album::ofPublished()->orderByDesc('created_at')->paginate(12);
+        return view('frontend.albums.index', compact('albums'));
     }
 
     public function show (Album $album) {
@@ -19,6 +18,6 @@ class AlbumController extends Controller
         $album->view_count++;
         $album->update();
 
-        return view('frontend.album', compact('album'));
+        return view('frontend.albums.detail', compact('album'));
     }
 }
