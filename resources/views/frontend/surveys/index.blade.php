@@ -17,7 +17,7 @@
                         <div class="d-flex flex-wrap mt-3">
                             <p class="date c-gray pr-4">{{ $survey->date_th }}</p>
                             <p class="view c-gray pr-4">{{ $survey->view_count }} view</p>
-                            <p class="view c-gray pr-4">{{ $survey->author->name }}</p>
+                            <p class="view c-gray pr-4">{{ $survey->author ? $survey->author->name : "-" }}</p>
                         </div>
                     </div>
                     <div class="card-body">

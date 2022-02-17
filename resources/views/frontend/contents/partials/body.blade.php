@@ -14,7 +14,7 @@
         <div class="d-flex flex-wrap mt-3">
             <p class="date c-gray pr-4">{{ $content->created_at }}</p>
             <p class="view c-gray pr-4">{{ $content->view_count }} view</p>
-            <p class="view c-gray pr-4">{{ $content->author->name }}</p>
+            <p class="view c-gray pr-4">{{ $content->author ? $content->author->name : "-" }}</p>
         </div>
     </div>
     <div class="card-body">
