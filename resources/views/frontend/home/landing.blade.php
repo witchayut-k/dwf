@@ -43,13 +43,15 @@
 
 <body>
 
-    <div class="landing-section position-relative">
-        <div class="slider landing-page">
-            @foreach ($landingPageFull as $key => $item)
-            <div>
-                <img class="img-fluid mx-auto" src="{{ $item->featured_image }}" alt="">
+    <div class="landing-section">
+        <div class="landing-top">
+            <div class="slider landing-page">
+                @foreach ($landingPageFull as $key => $item)
+                <div class="slider-item">
+                    <img class="img-fluid mx-auto" src="{{ $item->featured_image }}" alt="">
+                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
 
         @foreach ($landingPageFull as $key => $item)
@@ -120,7 +122,7 @@
                 autoplay: true,
                 autoplaySpeed: 5000
             });
-            
+
             $('.slider-landing-page').slick({
                 slidesToShow: 1,
                 arrows: false,
