@@ -22,7 +22,7 @@ class EventService
             $item->title = $event->title;
             $item->color = $event->color;
             $item->start = $event->begin_date->format('Y-m-d H:i');
-            $item->end = $event->end_date->format('Y-m-d H:i');
+            $item->end = $event->end_date->addDay(1)->format('Y-m-d H:i');
 
             $result[] = $item;
         }
@@ -44,7 +44,7 @@ class EventService
             $item->title = $event->title;
             $item->color = $event->color;
             $item->start = $event->begin_date->format('Y-m-d H:i');
-            $item->end = $event->end_date->format('Y-m-d H:i');
+            $item->end = $event->end_date->addDay(1)->format('Y-m-d H:i');
 
             $result[] = $item;
         }
