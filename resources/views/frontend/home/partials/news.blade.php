@@ -34,6 +34,7 @@
                                 @endforeach
                             </div>
                             @else
+                                @if ($contentType->featured_contents->count() > 0)
                                 <div class="row">
                                     <div class="col-md-6">
                                         @php $firstContent = $contentType->featured_contents->first(); @endphp
@@ -75,6 +76,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             @endif
                     </div>
                     <div class="text-center">
