@@ -27874,7 +27874,6 @@ input[type="file"] {
 }
 .modal .modal-dialog .modal-content .modal-header {
   border: 0px;
-  float: left;
   width: 100%;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;

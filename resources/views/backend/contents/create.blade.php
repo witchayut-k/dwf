@@ -32,7 +32,7 @@
             <div class="form-group center-container" style="display: {{ $content->content_type_id == Config::get('dwf.regional_content_id') ? 'block' : 'none' }}">
                 <label>ศูนย์ต่างๆ</label>
                 <select name="center_name" class="form-control selectpicker">
-                    {{-- <option value="">[-ไม่ระบุ-]</option> --}}
+                    <option value="">[-ไม่ระบุ-]</option>
                     @foreach (Config::get('dwf.centers') as $item)
                         <option value="{{ $item }}" {{ $content->center_name == $item ? 'selected' : '' }}>{{ $item }}</option>
                     @endforeach
