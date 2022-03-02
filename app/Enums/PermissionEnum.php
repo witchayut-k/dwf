@@ -131,7 +131,7 @@ final class PermissionEnum extends Enum
                 return 'จัดการ FAQ';
                 break;
             case self::MANAGE_DOWNLOAD:
-                return 'จัดการข้อมูล Download';
+                return 'จัดการข้อมูล สื่อสิ่งพิมพ์';
                 break;
             case self::MANAGE_BANNER:
                 return 'จัดการแบนเนอร์';

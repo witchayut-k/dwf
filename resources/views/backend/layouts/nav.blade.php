@@ -86,7 +86,7 @@ $user = Auth::user();
             @if ($user && $user->hasAnyPermission([PermissionEnum::getDescription(PermissionEnum::MANAGE_DOWNLOAD)]))
             <li class="openable">
                 <a href="javascript;;">
-                    <span class="fa fa-th-large"></span> จัดการข้อมูล Download</a>
+                    <span class="fa fa-th-large"></span> จัดการข้อมูล สื่อสิ่งพิมพ์</a>
                 <ul>
                     <li><a href="{{ url('admin/documents') }}">ข้อมูล Download</a></li>
                     <li><a href="{{ url('admin/document-types') }}">หมวดหมู่เอกสาร</a></li>

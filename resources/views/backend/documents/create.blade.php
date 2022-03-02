@@ -1,14 +1,14 @@
-@extends('backend.layouts.app', ['title' => 'จัดการข้อมูล Download'])
+@extends('backend.layouts.app', ['title' => 'จัดการข้อมูล สื่อสิ่งพิมพ์'])
 
 @section('content')
 
-<h1>จัดการข้อมูล Download</h1>
+<h1>จัดการข้อมูล สื่อสิ่งพิมพ์</h1>
 
 <div class="block">
     <div class="app-heading bordered">
         <div class="d-flex">
-            <h2>จัดการข้อมูล Download</h2>
-            <p><i class="fa fa-home"></i> - จัดการข้อมูล Download - {{ empty($document->id) ? 'Create' : 'Edit' }}</p>
+            <h2>จัดการข้อมูล สื่อสิ่งพิมพ์</h2>
+            <p><i class="fa fa-home"></i> - จัดการข้อมูล สื่อสิ่งพิมพ์ - {{ empty($document->id) ? 'Create' : 'Edit' }}</p>
         </div>
     </div>
 

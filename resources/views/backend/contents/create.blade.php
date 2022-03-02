@@ -27,7 +27,7 @@
 
             {!! Form::groupText('title', 'ชื่อเนื้อหา', $content->title, ['required'=>'required']) !!}
 
-            {!! Form::groupSelect('content_type_id', 'ประเภทเนื้อหา', $contentTypes, $content->content_type_id, ['required'=>'required']) !!}
+            {!! Form::groupSelect('content_type_id', 'ประเภทเนื้อหา', $contentTypes, $content->content_type_id, ['required'=>'required','data-live-search'=>'true']) !!}
 
             <div class="form-group center-container" style="display: {{ $content->content_type_id == Config::get('dwf.regional_content_id') ? 'block' : 'none' }}">
                 <label>ศูนย์ต่างๆ</label>

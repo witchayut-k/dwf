@@ -1,8 +1,8 @@
-@extends('backend.layouts.app', ['title' => 'จัดการข้อมูล Download'])
+@extends('backend.layouts.app', ['title' => 'จัดการข้อมูล สื่อสิ่งพิมพ์'])
 
 @section('content')
 
-<h1>จัดการข้อมูล Download</h1>
+<h1>จัดการข้อมูล สื่อสิ่งพิมพ์</h1>
 
 <div class="block block-condensed">
     <div class="app-heading">
