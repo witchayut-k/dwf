@@ -9,7 +9,7 @@
         <div class="d-flex">
             <div class="mr-10">
                 <div class="form-group">
-                    <select name="content_type_id" class="selectpicker" title="เลือกประเภทเนื้อหา">
+                    <select name="content_type_id" class="selectpicker" title="เลือกประเภทเนื้อหา" data-live-search="true">
                         <option value="">แสดงทั้งหมด</option>
                         @foreach ($contentTypes as $type)
                             <option value="{{ $type->id }}">{{ $type->name }}</option>

@@ -37,43 +37,55 @@ class PermissionSeeder extends Seeder
         \DB::unprepared('SET IDENTITY_INSERT permissions OFF');
 
         // \DB::statement('SET FOREIGN_KEY_CHECKS=0');
-        \DB::statement('Alter Table roles NOCHECK Constraint All');
-        \DB::unprepared('SET IDENTITY_INSERT roles ON');
-        \DB::table('roles')->truncate();
-        \DB::table('roles')->insert(array(
-            [
-                'id' => UserRoleEnum::USER,
-                'name' => UserRoleEnum::getDescription(UserRoleEnum::USER),
-                'guard_name' => 'web',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ],
-            [
-                'id' => UserRoleEnum::ADMIN,
-                'name' => UserRoleEnum::getDescription(UserRoleEnum::ADMIN),
-                'guard_name' => 'web',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
-            ]
-        ));
-        \DB::unprepared('SET IDENTITY_INSERT roles OFF');
+        // \DB::statement('Alter Table roles NOCHECK Constraint All');
+        // \DB::unprepared('SET IDENTITY_INSERT roles ON');
+        // \DB::table('roles')->truncate();
+        // \DB::table('roles')->insert(array(
+        //     [
+        //         'id' => UserRoleEnum::USER,
+        //         'name' => UserRoleEnum::getDescription(UserRoleEnum::USER),
+        //         'guard_name' => 'web',
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now()
+        //     ],
+        //     [
+        //         'id' => UserRoleEnum::ADMIN,
+        //         'name' => UserRoleEnum::getDescription(UserRoleEnum::ADMIN),
+        //         'guard_name' => 'web',
+        //         'created_at' => Carbon::now(),
+        //         'updated_at' => Carbon::now()
+        //     ]
+        // ));
+        // \DB::unprepared('SET IDENTITY_INSERT roles OFF');
 
         // \DB::statement('SET FOREIGN_KEY_CHECKS=0');
         \DB::statement('Alter Table user_roles NOCHECK Constraint All');
         // \DB::unprepared('SET IDENTITY_INSERT user_roles ON');
         \DB::table('user_roles')->truncate();
-        \DB::table('user_roles')->insert(array(
-            [
-                'role_id' => UserRoleEnum::ADMIN,
-                'model_type' => 'App\\Models\\User',
-                'model_id' => 1
-            ],
-            [
-                'role_id' => UserRoleEnum::USER,
-                'model_type' => 'App\\Models\\User',
-                'model_id' => 2
-            ],
-        ));
+
+        foreach (User::all() as $user) {
+            \DB::table('user_roles')->insert(array(
+                [
+                    'role_id' => $user->migrate_user_role_id,
+                    'model_type' => 'App\\Models\\User',
+                    'model_id' => $user->id
+                ]
+            ));
+        }
+
+
+        // \DB::table('user_roles')->insert(array(
+        //     [
+        //         'role_id' => UserRoleEnum::ADMIN,
+        //         'model_type' => 'App\\Models\\User',
+        //         'model_id' => 1
+        //     ],
+        //     [
+        //         'role_id' => UserRoleEnum::USER,
+        //         'model_type' => 'App\\Models\\User',
+        //         'model_id' => 2
+        //     ],
+        // ));
         // \DB::unprepared('SET IDENTITY_INSERT user_roles OFF');
 
         // \DB::statement('SET FOREIGN_KEY_CHECKS=0');
@@ -88,7 +100,7 @@ class PermissionSeeder extends Seeder
             ]);
         }
 
-        
+
         // \DB::unprepared('SET IDENTITY_INSERT role_permissions OFF');
 
 

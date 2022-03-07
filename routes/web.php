@@ -259,4 +259,9 @@ Route::prefix('dev')->group(function () {
         Session::flush();
         echo "<h1>Session Flushed!</h1>";
     });
+
+    Route::get('permission-flush', function () {
+        Artisan::call('permission:cache-reset');
+        echo "<h1>Permission Flushed!</h1>";
+    });
 });
