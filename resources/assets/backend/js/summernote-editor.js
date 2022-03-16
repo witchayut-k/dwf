@@ -21,7 +21,7 @@ $(document).ready(function () {
             ['fontsize', ['fontsize']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['bootstrap-grid']],
+            ['table', ['bootstrap-grid', 'table']],
             ['insert', ['picture', 'link', 'video', 'sEmoji']],
             ['view', ['fullscreen', 'codeview', 'help']],
             ['mybutton', ['iframe']]
