@@ -30,7 +30,7 @@
             {!! Form::groupSelect('content_type_id', 'ประเภทเนื้อหา', $contentTypes, $content->content_type_id, ['required'=>'required','data-live-search'=>'true']) !!}
 
             <div class="form-group center-container" style="display: {{ $content->content_type_id == Config::get('dwf.regional_content_id') ? 'block' : 'none' }}">
-                <label>ศูนย์ต่างๆ</label>
+                <label>ศูนย์ต่างๆ <span class="required">*</span></label>
                 <select name="center_name" class="form-control selectpicker">
                     <option value="">[-ไม่ระบุ-]</option>
                     @foreach (Config::get('dwf.centers') as $item)

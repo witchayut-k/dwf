@@ -2,7 +2,7 @@
 
 return [
 
-    'regional_content_id' => 50,
+    'regional_content_id' => 38,
 
     'centers' => [
         'ศูนย์เรียนรู้การพัฒนาสตรีและครอบครัวรัตนาภา จังหวัดขอนแก่น',

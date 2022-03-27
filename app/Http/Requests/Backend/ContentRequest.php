@@ -4,6 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class ContentRequest extends FormRequest
 {
@@ -24,8 +25,19 @@ class ContentRequest extends FormRequest
      */
     public function rules()
     {
+
+        $rules = [
+            'title' => 'required',
+            'center_name' => 'required_if:content_type_id,' . Config::get('dwf.regional_content_id'),
+        ];
+
+        return $rules;
+    }
+
+    public function messages()
+    {
         return [
-            'title' => 'required'
+            'center_name.required' => 'This is required',
         ];
     }
 }

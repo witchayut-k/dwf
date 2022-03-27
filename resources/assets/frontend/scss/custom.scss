@@ -39,7 +39,7 @@
 .landing-page {
     .slider-landing-page {
         height: 100vh;
-        
+
         .slick-slide {
             z-index: 0;
         }
@@ -59,8 +59,10 @@
     }
 }
 
-.photo-thumb {
-    .photo {
-        background-size: contain;
+.hero-banner {
+    .photo-thumb {
+        .photo {
+            background-size: contain;
+        }
     }
 }
