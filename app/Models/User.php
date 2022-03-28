@@ -56,7 +56,7 @@ class User extends Authenticatable implements HasMedia
     {
         return [
             'name',
-            'role'
+            // 'role'
         ];
     }
 

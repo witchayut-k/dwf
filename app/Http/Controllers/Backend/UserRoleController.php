@@ -30,12 +30,7 @@ class UserRoleController extends Controller
 
             if ($request->terms) {
                 $terms = $request->terms;
-                $searchFields = Role::searchFields();
-                $query = $query->where(function ($query) use ($terms, $searchFields) {
-                    foreach ($searchFields as $field) {
-                        $query->orWhere($field, 'LIKE', "%{$terms}%");
-                    }
-                });
+                $query->where('name', 'LIKE', "%{$terms}%");
             }
 
             return DataTables::eloquent($query)

@@ -39,7 +39,19 @@
                     {!! Form::groupText('email', 'Email', $user->email, ['required']) !!}
                 </div>
                 <div class="col-lg-6">
-                    {!! Form::groupSelect('role', 'User Group', $roles, NULL, ['data-live-search'=>'true', 'required']) !!}
+                    <div class="form-group">
+                        <label for="role">User Role</label>
+                        <select name="role" id="role" class="selectpicker">
+                            @foreach ($roles as $role)
+                            @php
+                                $selected = $role->name == $roleName ? "selected" : "";
+                            @endphp
+                            <option value="{{ $role->id }}" {{ $selected }}>{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- {!! Form::groupSelect('role', 'User Group', $roles, NULL, ['data-live-search'=>'true', 'required']) !!} --}}
                 </div>
             </div>
 

@@ -59,8 +59,9 @@ class UserController extends BaseController
     public function create()
     {
         $user = new User();
-        $roles = UserRole::options();
-        return view('backend.users.create', compact('user', 'roles'));
+        $roles = UserRole::all();
+        $roleName = "";
+        return view('backend.users.create', compact('user', 'roles', 'roleName'));
     }
 
     /**
@@ -92,8 +93,9 @@ class UserController extends BaseController
      */
     public function edit(User $user)
     {
-        $roles = UserRole::options();
-        return view('backend.users.create', compact('user', 'roles'));
+        $roles = UserRole::all();
+        $roleName = $user->getRoleNames()->first();
+        return view('backend.users.create', compact('user', 'roles', 'roleName'));
     }
 
     /**
