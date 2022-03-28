@@ -6,25 +6,25 @@
                     <h1 class="c-pink">{{ $activity->name }}</h1>
                     <a href="{{ url("categories/$activity->id") }}" class="btn-view">+ ดูทั้งหมด</a>
                 </div>
-                
+
                 <div class="row row-event">
                     @foreach ($activity->published_contents->slice(0, 2) as $content)
-                        <div class="col-6 col-event">
-                            <a href="{{ url("contents/$content->id") }}" class="box-item">
-                                <div class="photo-thumb">
-                                    <div class="photo-parent">
-                                        <span class="photo"
-                                            style="background-image: url('{{ $content->featured_image_resized }}')"></span>
-                                    </div>
+                    <div class="col-6 col-event">
+                        <a href="{{ url("contents/$content->id") }}" class="box-item">
+                            <div class="photo-thumb">
+                                <div class="photo-parent">
+                                    <span class="photo"
+                                        style="background-image: url('{{ $content->featured_image_resized }}')"></span>
                                 </div>
-			      <div class="box-item-dt">
-                                    <h2 class="txt-wrap">รายการ TALK TODAY พบกับ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
-                                    <div class="d-flex">
-                                        <p class="date pr-4">25 ธ.ค. 2564</p>
-                                    </div>
+                            </div>
+                            <div class="box-item-dt">
+                                <h2 class="txt-wrap" title="{{ $content->title }}">{{ $content->title }}</h2>
+                                <div class="d-flex">
+                                    <p class="date pr-4">{{ $content->date_th }}</p>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -45,7 +45,8 @@
                     <div class="slider slider-calendar pb-2">
                         @foreach ($events as $event)
                         <div>
-                            <a href="{{ url("events/$event->id") }}" class="calendar-item d-flex align-items-center" title="{{ $event->title }}">
+                            <a href="{{ url("events/$event->id") }}" class="calendar-item d-flex align-items-center"
+                                title="{{ $event->title }}">
                                 <div class="item-info item-left">
                                     <h1 class="date-txt c-pink">{{ $event->begin_date->format('j') }}</h1>
                                     <p class="pt-1">{{ $event->begin_date->translatedFormat('M') }}</p>
@@ -56,7 +57,7 @@
                             </a>
                         </div>
                         @endforeach
-                    
+
                     </div>
                 </div>
             </div>
