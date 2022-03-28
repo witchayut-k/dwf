@@ -160,7 +160,7 @@ class WeblinkTypeController extends BaseController
      */
     public function destroy(Request $request, $id, WeblinkType $weblinkType)
     {
-        if ($weblinkType->links->count() > 0)
+        if ($weblinkType->links && $weblinkType->links->count() > 0)
             return ResponseHelper::cannotDeleteDependency($request, $weblinkType);
 
         $weblinkType->delete();

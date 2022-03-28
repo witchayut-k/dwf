@@ -41,7 +41,9 @@ class Weblink extends Model implements HasMedia
     public static function searchFields()
     {
         return [
-            'title',
+            'weblinks.title',
+            't2.title',
+            't1.title',
         ];
     }
 
