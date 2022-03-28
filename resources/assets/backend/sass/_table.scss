@@ -208,3 +208,7 @@ tr.dt-rowReorder-moving {
     color: #fff;
     border: 1px solid #fff;
 }
+
+.dataTables_wrapper {
+    overflow-x: auto;
+}
