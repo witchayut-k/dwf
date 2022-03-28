@@ -733,22 +733,28 @@ var App = function () {
         },
 
         showFormErrors: function (errors, form, reload) {
+            $('form').find('help-block-error').remove();
+            $('form').find('.form-group').removeClass('has-error');
+
             if (errors && errors['errors'] !== undefined) {
                 $.each(errors['errors'], function (key, value) {
-                    var formGroup = form.find('#' + key).parents('.form-group');
+                    var formGroup = form.find('#' + key).parent('.form-group');
                     if (!formGroup.length)
-                        formGroup = form.find('[name=' + key + ']').parents('.form-group');
+                        formGroup = form.find('[name=' + key + ']').parent('.form-group');
+
+                        console.log('add error to formGroup', formGroup)
 
                     formGroup.addClass('has-error').removeClass('has-success');
 
-                    var jQueryValidationElm = formGroup.find('.help-block-error');
+                    var jQueryValidationElm = formGroup.find('.error-help-block');
+
                     if (jQueryValidationElm.length) {
                         jQueryValidationElm.text(value);
                     } else {
-                        formGroup.append('<span class="help-block help-block-error">' + value + '</span>')
-                        formGroup.find('.help-block-error').text(value);
+                        formGroup.append('<span class="help-block error-help-block">' + value + '</span>')
+                        formGroup.find('.error-help-block').text(value);
                     }
-                    formGroup.find('.help-block-error').show();
+                    formGroup.find('.error-help-block').show();
                 });
             } else {
                 if (debug && (typeof errors == "object")) {
@@ -776,6 +782,7 @@ var App = function () {
             }
         },
         showSuccess: function (resp, reload) {
+            $('form').find('.form-group').removeClass('has-error');
             noty({
                 text: resp.message,
                 type: 'success'
