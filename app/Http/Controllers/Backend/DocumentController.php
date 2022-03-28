@@ -71,8 +71,6 @@ class DocumentController extends BaseController
     {
         $document = Document::create($request->all());
 
-        dd($request->file());
-
         if ($request->file) {
             $document->clearMediaCollection('file');
             $document->addMedia($request->file)->toMediaCollection('file');
