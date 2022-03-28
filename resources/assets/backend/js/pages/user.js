@@ -142,7 +142,7 @@ var User = function () {
                 $inputs.prop("disabled", true);
                 Loading.show();
 
-                var method = $('[name="_method"]').val();
+                var method = $('[name="_method"]').val().toLowerCase();
 
                 $.ajax({
                     type: 'POST',
@@ -169,7 +169,7 @@ var User = function () {
                     error: function (jqXhr) {
                         var errors = jqXhr.responseJSON;
                         App.showFormErrors(errors, $(form));
-                        App.resetSubmitButton($(form));
+                        // App.resetSubmitButton($(form));
                         $inputs.prop("disabled", false);
                         Loading.hide();
                     }
