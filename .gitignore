@@ -22,3 +22,5 @@ public/js/
 public/images/
 deploy/
 public/img/
+.env.uat
+public/mix-manifest.json
