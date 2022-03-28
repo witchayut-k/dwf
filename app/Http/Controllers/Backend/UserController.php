@@ -80,6 +80,7 @@ class UserController extends BaseController
         $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->enabled = $request->enabled;
         $user->save();
         $user->syncRoles([$request->role]);
         return ResponseHelper::saveSuccess($request, $user, 'name');
@@ -112,6 +113,7 @@ class UserController extends BaseController
         $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->enabled = $request->enabled;
         $user->update();
         $user->syncRoles([$request->role]);
         return ResponseHelper::saveSuccess($request, $user, 'name');
