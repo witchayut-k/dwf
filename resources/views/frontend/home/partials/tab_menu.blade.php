@@ -10,13 +10,13 @@
             </a>
         </li>
         @endforeach
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link nav-icon service-ic"  href="{{ url('contacts') }}">
                 <div class="nav-content">
                     <h1>ติดต่อเรา</h1>
                 </div>
             </a>
-        </li>
+        </li> --}}
     </ul>
     <div class="tab-content" id="myTabContent">
         @foreach ($linkServices as $key => $service)
