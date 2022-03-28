@@ -19,12 +19,12 @@ class CountVisitor
     {
         $ip = $this->getUserIpAddr();
 
-        if (Visitor::where('date', today())->where('ip', $ip)->count() == 0) {
+       // if (Visitor::where('date', today())->where('ip', $ip)->count() == 0) {
             Visitor::create([
                 'date' => today(),
                 'ip' => $ip,
             ]);
-        }
+       // }
         return $next($request);
     }
 
