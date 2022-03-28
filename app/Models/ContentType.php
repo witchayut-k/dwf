@@ -25,7 +25,7 @@ class ContentType extends Model
 
     public static function options()
     {
-        return (new static)::pluck('name', 'id');
+        return (new static)::ofPublished()->pluck('name', 'id');
     }
 
     /*

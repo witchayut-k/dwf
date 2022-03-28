@@ -54,7 +54,7 @@ class ContentController extends BaseController
                 ->make(true);
         }
 
-        $contentTypes = ContentType::all();
+        $contentTypes = ContentType::ofPublished()->get();
 
         return view('backend.contents.index', compact('contentTypes'));
     }
