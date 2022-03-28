@@ -1,4 +1,4 @@
-<div class="box-event pt-3">
+<div class="box-event py-3">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -8,13 +8,19 @@
                 </div>
                 
                 <div class="row row-event">
-                    @foreach ($activity->published_contents->slice(0, 6) as $content)
-                        <div class="col-4 col-event">
+                    @foreach ($activity->published_contents->slice(0, 2) as $content)
+                        <div class="col-6 col-event">
                             <a href="{{ url("contents/$content->id") }}" class="box-item">
                                 <div class="photo-thumb">
                                     <div class="photo-parent">
                                         <span class="photo"
                                             style="background-image: url('{{ $content->featured_image_resized }}')"></span>
+                                    </div>
+                                </div>
+			      <div class="box-item-dt">
+                                    <h2 class="txt-wrap">รายการ TALK TODAY พบกับ Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                                    <div class="d-flex">
+                                        <p class="date pr-4">25 ธ.ค. 2564</p>
                                     </div>
                                 </div>
                             </a>
