@@ -39,7 +39,7 @@
                     <div class="slider slider-calendar pb-2">
                         @foreach ($events as $event)
                         <div>
-                            <a href="{{ url("events/$event->id") }}" class="calendar-item d-flex align-items-center">
+                            <a href="{{ url("events/$event->id") }}" class="calendar-item d-flex align-items-center" title="{{ $event->title }}">
                                 <div class="item-info item-left">
                                     <h1 class="date-txt c-pink">{{ $event->begin_date->format('j') }}</h1>
                                     <p class="pt-1">{{ $event->begin_date->translatedFormat('M') }}</p>
