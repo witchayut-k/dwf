@@ -15,12 +15,12 @@ class VisitorSeeder extends Seeder
     public function run()
     {
         Visitor::where('ip', 'generator')->delete();
-        for ($i = 0; $i <= 30000; $i++) {
+        // for ($i = 0; $i <= 30000; $i++) {
 
-            Visitor::create([
-                'date' => date('Y-m-d', strtotime( '-'.mt_rand(15, 45).' days')),
-                'ip' => 'generator',
-            ]);
-        }
+        //     Visitor::create([
+        //         'date' => date('Y-m-d', strtotime( '-'.mt_rand(15, 45).' days')),
+        //         'ip' => 'generator',
+        //     ]);
+        // }
     }
 }

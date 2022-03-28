@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\Visitor;
+use Carbon\Carbon;
 
 class VisitorHelper
 {
@@ -20,10 +21,14 @@ class VisitorHelper
     }
     public static function YearVisitor()
     {
-        return Visitor::ofYear()->count();
+        $count = Visitor::ofYear()->count();
+        if (date('Y') == 2022)
+            $count += 30000;
+
+        return $count;
     }
     public static function TotalVisitor()
     {
-        return Visitor::count();
+        return Visitor::count() + 30000;
     }
 }
