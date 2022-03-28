@@ -15,7 +15,7 @@
                     </nav>
                     <h1 class="font-medium c-pink">{{ $content->title }}</h1>
                     <div class="d-flex flex-wrap mt-3">
-                        <p class="date c-gray pr-4">{{ $content->created_at }}</p>
+                        <p class="date c-gray pr-4">{{ $content->date_th }}</p>
                         <p class="view c-gray pr-4">{{ $content->view_count }} view</p>
                         <p class="view c-gray pr-4">{{ $content->author->name }}</p>
                     </div>

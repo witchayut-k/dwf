@@ -22,7 +22,7 @@
                         <h4><a href="{{ url("contents/$content->id") }}">{{ $content->title }}</a></h4>
                         <p class="pre-content">{!! $content->content !!}</p>
                         @if ($content->created_at)
-                        <p class="timestamp">{{ $content->created_at->translatedFormat('j F Y - H:i น.') }}</p>
+                        <p class="timestamp">{{ $content->date_th }}</p>
                         @endif
                         <p class="tags">
                             @foreach ($content->tag_list as $tag)

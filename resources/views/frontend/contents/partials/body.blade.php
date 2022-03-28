@@ -12,7 +12,7 @@
         <p class="py-2 c-pink">{{ $content->center_name }}</p>
         @endif
         <div class="d-flex flex-wrap mt-3">
-            <p class="date c-gray pr-4">{{ $content->created_at }}</p>
+            <p class="date c-gray pr-4">{{ $content->date_th }}</p>
             <p class="view c-gray pr-4">{{ $content->view_count }} view</p>
             <p class="view c-gray pr-4">{{ $content->author ? $content->author->name : "-" }}</p>
         </div>
