@@ -47,7 +47,7 @@ var Menu = function () {
                 {
                     data: 'menu_content', sClass: 'text-center',
                     render: function (data, type, row) {
-                        if (data.indexOf('http') > -1)
+                        if (data && data.indexOf('http') > -1)
                             return `<div style="width: 150px; word-wrap: break-word;"><a href="${data}" target="_blank">${data}</a></div>`;
 
                         return `<div style="width: 150px; word-wrap: break-word;">${data}</div>`;
