@@ -55,8 +55,6 @@ class SearchController extends Controller
                 $query = $query->whereDate('created_at', '<=', $endDate->endOfDay());
             }
 
-            // dd($query->toSql());
-
             $results = $query->paginate(10);
 
             $results->appends(['contentType' => $request->contentType]);

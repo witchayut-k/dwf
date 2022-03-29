@@ -1,5 +1,10 @@
 @extends('frontend.layouts.web')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+@endsection
+
 @section('content')
 <div class="wrapper-inner bg-white search advance">
     <div class="container">
@@ -18,31 +23,30 @@
                     {{ Form::open(['url'=>'search/advance', 'method'=>'get', 'id'=>'form-search-advance']) }}
                     <div class="form-group">
                         <label>กลุ่มเนื้อหา</label>
-                        <select name="contentType" class="form-control search-type">
+                        <select name="contentType" class="form-control search-type selectpicker" data-live-search="true">
                             <option value="">ทั้งหมด</option>
                             @foreach ($contentTypes as $contentType)
-                            <option value="{{ $contentType->id }}" {{ $request->contentType == $contentType->id ?
-                                "selected" : "" }}>{{ $contentType->name }}</option>
+                            <option value="{{ $contentType->id }}" {{ $request->contentType == $contentType->id ? "selected" : "" }}>{{ $contentType->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>คำสำคัญ</label>
-                        <input type="search" name="q" class="form-control" 
-                            placeholder="ค้นหาข้อมูลภายในเว็บไซต์" autocomplete="off" autofocus
+                        <input type="search" name="q" class="form-control" required
+                            placeholder="ค้นหาข้อมูลภายในเว็บไซต์" autofocus
                             value="{{ $request->q }}">
                     </div>
                     <div class="row form-group">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>วันเริ่มต้น</label>
-                                <input type="text" name="begin" class="form-control bs-datepicker" value="{{ $request->begin }}">
+                                <input type="text" name="begin" class="form-control bs-datepicker" value="{{ $request->begin }}" autocomplete="Off">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>วันสิ้นสุด</label>
-                                <input type="text" name="end" class="form-control bs-datepicker" value="{{ $request->end }}">
+                                <input type="text" name="end" class="form-control bs-datepicker" value="{{ $request->end }}" autocomplete="Off">
                             </div>
                         </div>
                     </div>
@@ -73,4 +77,11 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.th.min.js"></script>
+<script src="{{ mix('js/pages/search.min.js') }}"></script>
 @endsection

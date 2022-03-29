@@ -177,4 +177,11 @@
       }
     }
   }
+
+  .btn-primary {
+    background-color: $color-primary;
+    border-color: darken($color-primary, 5%);
+    border-radius: 30px;
+    padding: 0 30px;
+  }
 }

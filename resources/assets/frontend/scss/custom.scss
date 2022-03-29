@@ -66,3 +66,21 @@
         }
     }
 }
+
+.search-type {
+    padding: 0 !important;
+    border: 0 !important;
+
+    .btn {
+        font-size: 15px;
+        font-family: inherit;
+        font-weight: normal;
+        padding: 10px 20px;
+    }
+
+    .dropdown-menu {
+        .active a {
+            background-color: $color-primary;
+        }
+    }
+}
