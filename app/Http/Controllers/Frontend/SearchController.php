@@ -20,7 +20,7 @@ class SearchController extends Controller
             $results = Content::ofPublished()->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('content', 'LIKE', '%' . $request->q . '%')
                 ->orderByDesc('updated_at')
                 ->paginate(10);
-                
+
             $results->appends(['q' => $request->q]);
             $results->appends(['search' => $request->search]);
 
@@ -69,9 +69,11 @@ class SearchController extends Controller
             $results->appends(['range' => $request->range]);
             $results->appends(['search' => $request->search]);
 
-            foreach ($results as $item) {
-                $item->title = StringHelper::Mark($item->title, $request->q);
-                $item->content = StringHelper::Mark(StringHelper::GetFirstParagraph($item->content), $request->q);
+            if ($request->q) {
+                foreach ($results as $item) {
+                    $item->title = StringHelper::Mark($item->title, $request->q);
+                    $item->content = StringHelper::Mark(StringHelper::GetFirstParagraph($item->content), $request->q);
+                }
             }
         }
 
