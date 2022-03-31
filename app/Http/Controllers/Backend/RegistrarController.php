@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Registrar;
 use Carbon\Carbon;
@@ -74,10 +75,8 @@ class RegistrarController extends BaseController
         $this->transformRequest($request);
         $registrar = Registrar::create($request->all());
 
-        if ($request->file) {
-            $registrar->clearMediaCollection('featured_image');
-            $registrar->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $registrar, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $registrar);
     }
@@ -117,10 +116,8 @@ class RegistrarController extends BaseController
         $this->transformRequest($request);
         $registrar->update($request->all());
 
-        if ($request->file) {
-            $registrar->clearMediaCollection('featured_image');
-            $registrar->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $registrar, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $registrar);
     }

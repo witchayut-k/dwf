@@ -24,10 +24,8 @@ class ProfileController extends Controller
     {
         $profile = Profile::create($request->all());
 
-        if ($request->file) {
-            $profile->clearMediaCollection('file');
-            $profile->addMedia($request->file)->toMediaCollection('file');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $profile, "file");
 
         return ResponseHelper::updateSuccess($request, $profile);
     }
@@ -37,10 +35,8 @@ class ProfileController extends Controller
 
         $profile->update($request->all());
 
-        if ($request->file) {
-            $profile->clearMediaCollection('file');
-            $profile->addMedia($request->file)->toMediaCollection('file');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $profile, "file");
 
         return ResponseHelper::updateSuccess($request, $profile);
     }

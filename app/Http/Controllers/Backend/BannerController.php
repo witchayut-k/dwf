@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Models\Banner;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -73,10 +74,8 @@ class BannerController extends BaseController
         $this->transformRequest($request);
         $banner = Banner::create($request->all());
 
-        if ($request->file) {
-            $banner->clearMediaCollection('featured_image');
-            $banner->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $banner, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $banner);
     }
@@ -120,10 +119,8 @@ class BannerController extends BaseController
         $this->transformRequest($request);
         $banner->update($request->all());
 
-        if ($request->file) {
-            $banner->clearMediaCollection('featured_image');
-            $banner->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $banner, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $banner);
     }

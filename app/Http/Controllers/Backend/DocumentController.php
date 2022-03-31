@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Document;
 use App\Models\DocumentType;
@@ -71,10 +72,8 @@ class DocumentController extends BaseController
     {
         $document = Document::create($request->all());
 
-        if ($request->file) {
-            $document->clearMediaCollection('file');
-            $document->addMedia($request->file)->toMediaCollection('file');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $document, "file");
 
         return ResponseHelper::saveSuccess($request, $document);
     }
@@ -103,8 +102,7 @@ class DocumentController extends BaseController
         $document->update($request->all());
 
         if ($request->file) {
-            $document->clearMediaCollection('file');
-            $document->addMedia($request->file)->toMediaCollection('file');
+            UploadHelper::addMedia($request->file, $document, "file");
         }
 
         return ResponseHelper::saveSuccess($request, $document);

@@ -17,7 +17,10 @@ class SearchController extends Controller
         $results = collect();
 
         if ($request->q) {
-            $results = Content::ofPublished()->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('content', 'LIKE', '%' . $request->q . '%')->paginate(10);
+            $results = Content::ofPublished()->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('content', 'LIKE', '%' . $request->q . '%')
+                ->orderByDesc('updated_at')
+                ->paginate(10);
+                
             $results->appends(['q' => $request->q]);
             $results->appends(['search' => $request->search]);
 
@@ -34,10 +37,15 @@ class SearchController extends Controller
     {
         $results = collect();
 
-        if ($request->q) {
-            $query = Content::where('published', true)->where(function ($query) use ($request) {
-                $query->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('content', 'LIKE', '%' . $request->q . '%');
-            });
+        if ($request->search) {
+
+            if ($request->q) {
+                $query = Content::ofPublished()->where(function ($query) use ($request) {
+                    $query->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('content', 'LIKE', '%' . $request->q . '%');
+                })->orderByDesc('updated_at');
+            } else {
+                $query = Content::ofPublished()->orderByDesc('updated_at');
+            }
 
             if ($request->contentType)
                 $query = $query->where('content_type_id', $request->contentType);
@@ -46,8 +54,7 @@ class SearchController extends Controller
                 $beginDate = Carbon::createFromFormat("d/m/Y", $request->begin);
                 $endDate = Carbon::createFromFormat("d/m/Y", $request->end);
                 $query = $query->whereBetween('created_at', [$beginDate->startOfDay(), $endDate->endOfDay()]);
-            } 
-            else if ($request->begin) {
+            } else if ($request->begin) {
                 $beginDate = Carbon::createFromFormat("d/m/Y", $request->begin);
                 $query = $query->whereDate('created_at', '>=', $beginDate->startOfDay());
             } else if ($request->end) {

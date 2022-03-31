@@ -37,7 +37,7 @@ class BackendAPIController extends Controller
             $file = [];
             $file['id'] = $item->id;
             $file['url'] = url($item->getUrl());
-            $file['name'] = $item->name.".".$item->extension . " (".$item->human_readable_size.")";
+            $file['name'] = $item->file_name. " (".$item->human_readable_size.")";
             $results[] = $file;
         }
 

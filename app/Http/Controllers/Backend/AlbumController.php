@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AlbumRequest;
 use App\Models\Album;
@@ -77,10 +78,8 @@ class AlbumController extends BaseController
     {
         $album = Album::create($request->all());
 
-        if ($request->file) {
-            $album->clearMediaCollection('featured_image');
-            $album->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $album, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $album);
     }
@@ -117,11 +116,9 @@ class AlbumController extends BaseController
     public function update(AlbumRequest $request, Album $album)
     {
         $album->update($request->all());
-
-        if ($request->file) {
-            $album->clearMediaCollection('featured_image');
-            $album->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $album, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $album);
     }

@@ -101,7 +101,12 @@
 
     &.has-error {
         .form-control {
-            border-color: #f04e51;
+            border-color: #f04e51 !important;
+        }
+        .bootstrap-select {
+            .btn {
+                border-color: #f04e51 !important;
+            }
         }
     }
 

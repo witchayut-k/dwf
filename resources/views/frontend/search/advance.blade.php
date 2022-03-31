@@ -21,6 +21,7 @@
             <div class="col-md-11">
                 <div class="search-bar">
                     {{ Form::open(['url'=>'search/advance', 'method'=>'get', 'id'=>'form-search-advance']) }}
+                    {{ Form::hidden('search', 'true') }}
                     <div class="form-group">
                         <label>กลุ่มเนื้อหา</label>
                         <select name="contentType" class="form-control search-type selectpicker" data-live-search="true">
@@ -32,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label>คำสำคัญ</label>
-                        <input type="search" name="q" class="form-control" required
+                        <input type="search" name="q" class="form-control" 
                             placeholder="ค้นหาข้อมูลภายในเว็บไซต์" autofocus
                             value="{{ $request->q }}">
                     </div>

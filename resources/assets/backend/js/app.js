@@ -742,7 +742,10 @@ var App = function () {
                     if (!formGroup.length)
                         formGroup = form.find('[name=' + key + ']').parent('.form-group');
 
-                        console.log('add error to formGroup', formGroup)
+                    if (!formGroup.length)
+                        formGroup = form.find('[name=' + key + ']').parents('.form-group').first();
+
+                    console.log('add error to formGroup', formGroup)
 
                     formGroup.addClass('has-error').removeClass('has-success');
 

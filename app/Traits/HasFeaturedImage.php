@@ -15,7 +15,7 @@ trait HasFeaturedImage
     {
         $media = $this->getFirstMedia('featured_image');
         if (!empty($media))
-            return $media->name . "." . $media->extension;
+            return $media->file_name;
 
         return '-';
     }

@@ -37,7 +37,7 @@ class ContentRequest extends FormRequest
     public function messages()
     {
         return [
-            'center_name.required' => 'This is required',
+            'center_name.required_if' => 'ข้อมูลในช่องนี้จำเป็นต้องระบุ',
         ];
     }
 }

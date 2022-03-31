@@ -80,6 +80,7 @@ var Content = function () {
             datatable.draw();
 
             $('#content-type-id').selectpicker('val', $(this).val());
+            $('[name=content_type_id]').selectpicker('val', $(this).val());
         });
     }
 
@@ -93,6 +94,7 @@ var Content = function () {
                 $('.center-container').show();
             } else {
                 $('.center-container').hide();
+                    $('[name=center_name]').selectpicker('val', '');
             }
         });
     }
@@ -251,6 +253,7 @@ var Content = function () {
             if ($('#table-content').length) {
                 handleFilter();
                 initDatatable();
+                handleContentTypeChange();
             }
 
             if ($('#form-content').length) {

@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use File;
+use Str;
 
 class UploadHelper
 {
@@ -45,14 +46,22 @@ class UploadHelper
     public static function addMedia($file, $model, $collection)
     {
         $model->clearMediaCollection($collection);
-        $media = $model->addMedia($file)->toMediaCollection($collection);
+        
+        $media = $model->addMedia($file)
+            ->sanitizingFileName(function ($fileName) {
+                return strtolower(str_replace(['#', '/', '\\', ' '], '-', $fileName));
+            })
+            ->toMediaCollection($collection);
+
         $names = explode(".", $media->file_name);
         $extension = $names[count($names) - 1];
 
-        $classNames = explode("\\", get_class($model));
-        $prefix = strtolower($classNames[count($classNames) - 1]);
+        $uuid = Str::uuid()->toString();
 
-        $media->file_name = $prefix . "_" . $model->id . "." . $extension;
+        $classNames = explode("\\", get_class($model));
+        $prefix = $uuid . "-" . strtolower($classNames[count($classNames) - 1]);
+
+        $media->file_name = $prefix . "-" . $model->id . "." . $extension;
         $media->save();
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Models\LandingPage;
 use Carbon\Carbon;
@@ -77,10 +78,8 @@ class LandingPageController extends BaseController
         $this->transformRequest($request);
         $landingPage = LandingPage::create($request->all());
 
-        if ($request->file) {
-            $landingPage->clearMediaCollection('featured_image');
-            $landingPage->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $landingPage, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $landingPage);
     }
@@ -119,10 +118,8 @@ class LandingPageController extends BaseController
         $this->transformRequest($request);
         $landingPage->update($request->all());
 
-        if ($request->file) {
-            $landingPage->clearMediaCollection('featured_image');
-            $landingPage->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $landingPage, "featured_image");
 
         if ($request->delete_image && $landingPage->image_id)
             $landingPage->deleteMedia($landingPage->image_id);

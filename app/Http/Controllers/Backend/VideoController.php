@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Video;
 use App\Models\VideoCategory;
@@ -15,7 +16,7 @@ class VideoController extends BaseController
     public function __construct()
     {
         parent::__construct(new Video());
-        $this->middleware(["permission:".PermissionEnum::getDescription(PermissionEnum::MANAGE_VIDEO)]);
+        $this->middleware(["permission:" . PermissionEnum::getDescription(PermissionEnum::MANAGE_VIDEO)]);
     }
     /**
      * Display a listing of the resource.
@@ -73,15 +74,11 @@ class VideoController extends BaseController
     {
         $video = Video::create($request->all());
 
-        if ($request->file) {
-            $video->clearMediaCollection('featured_image');
-            $video->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $video, "featured_image");
 
-        if ($request->video) {
-            $video->clearMediaCollection('video');
-            $video->addMedia($request->video)->toMediaCollection('video');
-        }
+        if ($request->video)
+            UploadHelper::addMedia($request->video, $video, "video");
 
         return ResponseHelper::saveSuccess($request, $video);
     }
@@ -120,15 +117,11 @@ class VideoController extends BaseController
     {
         $video->update($request->all());
 
-        if ($request->file) {
-            $video->clearMediaCollection('featured_image');
-            $video->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $video, "featured_image");
 
-        if ($request->video) {
-            $video->clearMediaCollection('video');
-            $video->addMedia($request->video)->toMediaCollection('video');
-        }
+        if ($request->video)
+            UploadHelper::addMedia($request->video, $video, "video");
 
         return ResponseHelper::saveSuccess($request, $video);
     }

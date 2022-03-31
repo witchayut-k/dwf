@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Models\WeblinkType;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class WeblinkTypeController extends BaseController
     public function __construct()
     {
         parent::__construct(new WeblinkType());
-        $this->middleware(["permission:".PermissionEnum::getDescription(PermissionEnum::MANAGE_WEBLINK)]);
+        $this->middleware(["permission:" . PermissionEnum::getDescription(PermissionEnum::MANAGE_WEBLINK)]);
     }
 
     /**
@@ -68,15 +69,11 @@ class WeblinkTypeController extends BaseController
     {
         $weblinkType = WeblinkType::create($request->all());
 
-        if ($request->icon) {
-            $weblinkType->clearMediaCollection('icon');
-            $weblinkType->addMedia($request->icon)->toMediaCollection('icon');
-        }
+        if ($request->icon)
+            UploadHelper::addMedia($request->icon, $weblinkType, "icon");
 
-        if ($request->icon_active) {
-            $weblinkType->clearMediaCollection('icon_active');
-            $weblinkType->addMedia($request->icon_active)->toMediaCollection('icon_active');
-        }
+        if ($request->icon_active)
+            UploadHelper::addMedia($request->icon_active, $weblinkType, "icon_active");
 
         return ResponseHelper::saveSuccess($request, $weblinkType);
     }
@@ -139,15 +136,11 @@ class WeblinkTypeController extends BaseController
     {
         $weblinkType->update($request->all());
 
-        if ($request->icon) {
-            $weblinkType->clearMediaCollection('icon');
-            $weblinkType->addMedia($request->icon)->toMediaCollection('icon');
-        }
+        if ($request->icon)
+            UploadHelper::addMedia($request->icon, $weblinkType, "icon");
 
-        if ($request->icon_active) {
-            $weblinkType->clearMediaCollection('icon_active');
-            $weblinkType->addMedia($request->icon_active)->toMediaCollection('icon_active');
-        }
+        if ($request->icon_active)
+            UploadHelper::addMedia($request->icon_active, $weblinkType, "icon_active");
 
         return ResponseHelper::saveSuccess($request, $weblinkType);
     }

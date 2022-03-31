@@ -87,7 +87,7 @@ class Document extends Model implements HasMedia
     {
         $media = $this->getFirstMedia('file');
         if (!empty($media))
-            return $media->name . "." . $media->extension;
+            return $media->file_name;
 
         return '-';
     }

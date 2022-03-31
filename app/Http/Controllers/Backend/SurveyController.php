@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Survey;
 use App\Services\SurveyService;
@@ -70,10 +71,8 @@ class SurveyController extends BaseController
         $this->transformRequest($request);
         $survey = Survey::create($request->all());
 
-        if ($request->file) {
-            $survey->clearMediaCollection('featured_image');
-            $survey->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $survey, "featured_image");
 
         $this->surveyService->SaveQuestions($request, $survey);
 
@@ -115,10 +114,8 @@ class SurveyController extends BaseController
         $this->transformRequest($request);
         $survey->update($request->all());
 
-        if ($request->file) {
-            $survey->clearMediaCollection('featured_image');
-            $survey->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $survey, "featured_image");
 
         $this->surveyService->SaveQuestions($request, $survey);
 

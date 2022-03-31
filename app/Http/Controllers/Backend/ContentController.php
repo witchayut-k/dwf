@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ContentRequest;
 use App\Models\Content;
@@ -89,15 +90,11 @@ class ContentController extends BaseController
         $this->transformRequest($request);
         $content = Content::create($request->all());
 
-        if ($request->file) {
-            $content->clearMediaCollection('featured_image');
-            $content->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $content, "featured_image");
 
-        if ($request->pdf) {
-            $content->clearMediaCollection('file');
-            $content->addMedia($request->pdf)->toMediaCollection('file');
-        }
+        if ($request->pdf)
+            UploadHelper::addMedia($request->pdf, $content, "file");
 
         return ResponseHelper::saveSuccess($request, $content);
     }
@@ -137,10 +134,8 @@ class ContentController extends BaseController
         $this->transformRequest($request);
         $content->update($request->all());
 
-        if ($request->file) {
-            $content->clearMediaCollection('featured_image');
-            $content->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file)
+            UploadHelper::addMedia($request->file, $content, "featured_image");
 
         if ($request->delete_image && $content->image_id)
             $content->deleteMedia($content->image_id);

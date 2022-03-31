@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Enums\PermissionEnum;
 use App\Helpers\ResponseHelper;
+use App\Helpers\UploadHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\WeblinkRequest;
 use App\Models\Weblink;
@@ -83,10 +84,8 @@ class WeblinkController extends BaseController
     {
         $weblink = Weblink::create($request->all());
 
-        if ($request->file) {
-            $weblink->clearMediaCollection('featured_image');
-            $weblink->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file) 
+            UploadHelper::addMedia($request->file, $weblink, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $weblink);
     }
@@ -124,10 +123,8 @@ class WeblinkController extends BaseController
     {
         $weblink->update($request->all());
 
-        if ($request->file) {
-            $weblink->clearMediaCollection('featured_image');
-            $weblink->addMedia($request->file)->toMediaCollection('featured_image');
-        }
+        if ($request->file) 
+            UploadHelper::addMedia($request->file, $weblink, "featured_image");
 
         return ResponseHelper::saveSuccess($request, $weblink);
     }

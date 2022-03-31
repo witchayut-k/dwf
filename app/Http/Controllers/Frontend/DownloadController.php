@@ -30,7 +30,7 @@ class DownloadController extends Controller
         $document->view_count++;
         $document->download_count++;
         $document->update();
-        
+
         return redirect(url($document->file->getFullUrl()));
         
     }
