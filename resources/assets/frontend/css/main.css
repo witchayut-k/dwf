@@ -2034,7 +2034,8 @@ a {
 
 .content-editor, .content-editor > * {
   font-family: "Sarabun";
-  line-height: 1.6; }
+  line-height: 1.6;
+  overflow: auto; }
   .content-editor img, .content-editor > * img {
     display: block !important;
     max-width: 100% !important;
@@ -5500,13 +5501,15 @@ select.selectpicker {
       padding-bottom: 35px; } }
   .box-tab .nav-tabs {
     display: block;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
     -ms-overflow-style: none;
     scrollbar-width: none; }
     .box-tab .nav-tabs::-webkit-scrollbar {
       display: none; }
+    @media only screen and (max-width: 767px) {
+      .box-tab .nav-tabs {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap; } }
     .box-tab .nav-tabs .nav-item {
       display: inline-block; }
       .box-tab .nav-tabs .nav-item .nav-link {
@@ -5591,9 +5594,11 @@ select.selectpicker {
           background-image: url("../images/icon/ic-bath-white.svg"); }
   .box-tab .nav-news {
     border-bottom: 2px solid #E84E72;
-    height: 50px;
     padding-left: 25px;
     padding-right: 25px; }
+    @media only screen and (max-width: 767px) {
+      .box-tab .nav-news {
+        height: 50px; } }
     .box-tab .nav-news .nav-item .nav-link {
       padding: 10px;
       height: 50px;

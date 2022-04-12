@@ -18,6 +18,13 @@
 		padding-bottom: 25%;
 		background: $white;
 	}
+	.slider {
+		.slick-dots {
+			@include max-screen(767px) {
+				display: none!important;
+			}
+		}
+	}
 }
 
 .tab-menu {
@@ -38,6 +45,9 @@
 		scrollbar-width: none;
 		&::-webkit-scrollbar {
 			display: none;
+		}
+		@include max-screen(767px) {
+
 		}
 		@include max-screen(575px) {
 			overflow-x: scroll;
@@ -140,9 +150,10 @@
 					text-align: left;
 					h1 {
 						@include font-size(16);
+						font-weight: $weight-bold;
 						color: $brand-color;
 						@include min-screen(576px) {
-							@include font-size(24);
+							@include font-size(18);
 						}
 					}
 				}
@@ -408,6 +419,11 @@
 					transform: scale(1);
 				}
 			}
+			video {
+				&.photo {
+					transform: none;
+				}
+			}
 		}
 		h2 {
 			color: $brand-color;
@@ -425,6 +441,26 @@
 			}
 		}
 	}
+	&.list {
+		display: flex;
+		align-items: center;
+		.photo-thumb {
+			flex: 0 0 39.4%;
+			max-width: 39.4%;
+			padding-bottom: 21.7%;
+		}
+		.box-item-dt {
+			flex: 0 0 60.6%;
+			max-width: 60.6%;
+			padding-left: 8px;
+			h3 {
+				@include  font-size(14);
+			}
+		}
+		&:hover {
+			color: $brand-color!important;
+		}
+	}
 }
 
 .box-tab {
@@ -436,13 +472,15 @@
 	}
 	.nav-tabs {
 		display: block;
-		overflow-x: scroll;
-		overflow-y: hidden;
-		white-space: nowrap;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 		&::-webkit-scrollbar {
 			display: none;
+		}
+		@include max-screen(767px) {
+			overflow-x: scroll;
+			overflow-y: hidden;
+			white-space: nowrap;
 		}
 		.nav-item {
 			display: inline-block;
@@ -566,9 +604,11 @@
 	}
 	.nav-news {
 		border-bottom: 2px solid #E84E72;
-		height: 50px;
 		padding-left: 25px;
 		padding-right: 25px;
+		@include max-screen(767px) {
+			height: 50px;
+		}
 		.nav-item {
 			.nav-link {
 				padding: 10px;
@@ -903,6 +943,8 @@
 	color: $basecolor;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px dashed rgba(68, 68, 68, 0.27);
 	&:hover {
 		color: $brand-color;
 	}
@@ -918,6 +960,33 @@
 		margin-right: 10px;
 		position: relative;
 		bottom: 2px;
+	}
+	&:last-child {
+		border-bottom: none!important;
+	}
+}
+
+.file-item-ic {
+	display: block;
+	@include font-size(14);
+	line-height: 1.6;
+	color: $basecolor!important;
+	margin-right: 10px;
+	margin-bottom: 2px;
+	&:before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		background-image: url("../images/icon/ic-file.svg");
+		background-repeat: no-repeat;
+		background-size: 13px 16px;
+		width: 13px;
+		height: 16px;
+		margin-right: 5px;
+		margin-bottom: 2px;
+	}
+	&:hover {
+		text-decoration: underline;
 	}
 }
 
@@ -1080,6 +1149,72 @@
 			background: #1c1e1f;
 		}
 	}
+	.board-item {
+		h2 {
+			color: $white!important;
+		}
+	}
+	.box-item {
+		&.list {
+			.photo-thumb {
+				background: $black;
+			}
+			.box-item-dt {
+				h3 {
+					color: $white;
+				}
+			}
+			&:hover {
+				.box-item-dt {
+					h3 {
+						color: $brand-color;
+					}
+				}
+			}
+		}
+	}
+	.calendar-custom {
+		.fc {
+			.fc-daygrid-day-frame {
+				background-color: #303030;
+			}
+			.fc-daygrid-day-number {
+				color: $white!important;
+			}
+			.fc-h-event {
+				background-color: $brand-color;
+				.fc-event-title {
+					color: $white;
+				}
+			}
+			.fc-button {
+				.fc-icon {
+					background: #303030;
+					color: $white;
+				}
+			}
+		}
+	}
+	.card-collapse {
+		background-color: $black;
+		.card-header {
+			.collapse-title {
+				color: $white;
+			}
+		}
+		.card-body {
+			background-color: #303030;
+			color: $white;
+		}
+	}
+	.file-item-ic {
+		color: $white!important;;
+	}
+	.vote-item {
+		.check-radio {
+			color: $white;
+		}
+	}
 }
 .dark-theme {
 	&.with-txt-yellow {
@@ -1113,6 +1248,56 @@
 		.form-search {
 			.form-control {
 				color: $yellow;
+			}
+		}
+		.board-item {
+			h2 {
+				color: $yellow!important;
+			}
+		}
+		.box-item {
+			&.list {
+				.box-item-dt {
+					h3 {
+						color: $yellow;
+					}
+				}
+				&:hover {
+					.box-item-dt {
+						h3 {
+							color: $brand-color;
+						}
+					}
+				}
+			}
+		}
+		.calendar-custom {
+			.fc {
+				.fc-h-event {
+					.fc-event-title {
+						color: $yellow;
+					}
+				}
+			}
+		}
+		.card-collapse {
+			.card-header {
+				.collapse-title {
+					color: $yellow;
+				}
+			}
+			.card-body {
+				color: $yellow;
+			}
+		}
+		.file-item-ic {
+			color: $yellow!important;
+		}
+		.vote-item {
+			&:not(.active) {
+				.check-radio {
+					color: $yellow;
+				}
 			}
 		}
 	}
@@ -1172,4 +1357,411 @@
 	p {
 		color: #C1C1C1;
 	}
+}
+
+.share-topic {
+	@include font-size(18);
+	@include max-screen(575px) {
+		@include font-size(14);
+	}
+}
+
+.share-list {
+	padding-left: 0;
+	list-style: none;
+	margin: 12px -5px 0;
+	display: flex;
+	justify-content: center;
+	padding-left: 5px;
+	li {
+		display: inline-block;
+		padding: 0 5px;
+		.facebook {
+			background: url("../images/icon/ic-facebook.svg");
+			display: block;
+			background-repeat: no-repeat;
+			background-size: 42px;
+			width: 42px;
+			height: 42px;
+			transition: all 0.3s ease;
+			@include max-screen(901px) {
+				background-size: 32px;
+				width: 32px;
+				height: 32px;
+			}
+			@include max-screen(767px) {
+				background-size: 42px;
+				width: 42px;
+				height: 42px;
+			}
+		}
+		.clipboard {
+			background: url("../images/icon/ic-clipboard.svg");
+			display: block;
+			background-repeat: no-repeat;
+			background-size: 42px;
+			width: 42px;
+			height: 42px;
+			transition: all 0.3s ease;
+			@include max-screen(901px) {
+				background-size: 32px;
+				width: 32px;
+				height: 32px;
+			}
+			@include max-screen(767px) {
+				background-size: 42px;
+				width: 42px;
+				height: 42px;
+			}
+		}
+		&:hover {
+			.facebook, .clipboard {
+				transform: scale(1.2);
+			}
+		}
+	}
+}
+
+.content-list {
+	list-style-type: none;
+	padding-left: 0;
+	li {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		border-bottom: 1px dashed #DADADA;
+		a {
+			h3 {
+				@include font-size(16);
+				line-height: 1.6;
+				color: $basecolor;
+				transition: all 0.3s ease;
+			}
+			p {
+				@include font-size(14);
+			}
+			&:hover {
+				h3 {
+					color: $brand-color;
+				}
+			}
+		}
+	}
+}
+
+.tag {
+	display: block;
+	background-color: #EDEDED;
+	padding: 5px 8px;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	font-family: 'Kanit', sans-serif;
+	@include font-size(14);
+	font-weight: $weight-light;
+	color: $basecolor;
+	margin-right: 8px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	transition: all 0.3s ease;
+	&:hover {
+		background-color: $brand-color;
+		color: $white;
+	}
+}
+
+.badge {
+	&.pink {
+		background: #FFCEE1;
+		box-shadow: 0px 3px 4px rgba(85, 86, 90, 0.04);
+		border-radius: 50px;
+		@include font-size(16);
+		font-weight: $weight-regular;
+		line-height: 1.4;
+		letter-spacing: 0.03em;
+		color: $brand-color;
+		padding: 5px 3%;
+		white-space: normal;
+		@include min-screen(768px) {
+			@include font-size(22);
+		}
+		@include max-screen(767px) {
+			display: block;
+		}
+	}
+}
+
+.board-item {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	img {
+		width: 220px;
+		border: 1px solid $brand-color;
+		box-sizing: border-box;
+		border-radius: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.list-info {
+		list-style-type: none;
+		text-align: center;
+		padding-left: 0;
+		li {
+			display: inline-block;
+			padding-left: 3px;
+			padding-right: 3px;
+			padding-top: 10px;
+			.list-icon {
+				display: block;
+				background-repeat: no-repeat;
+				background-size: 25px;
+				width: 25px;
+				height: 25px;
+				transition: all 0.3s ease;
+				@include min-screen(768px) {
+					background-size: 35px;
+					width: 35px;
+					height: 35px;
+				}
+				&.info {
+					background-image: url("../images/icon/ic-info.svg");
+				}
+				&.phone {
+					background-image: url("../images/icon/ic-phone.svg");
+				}
+				&.envelope {
+					background-image: url("../images/icon/ic-envelope.svg");
+				}
+				&:hover {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+	.list-inline {
+		&.team-social {
+			margin-top: 10px;
+			li {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+.file-item {
+	display: inline-block;
+	background-color: #EDEDED;
+	font-family: 'Kanit', sans-serif;
+	@include font-size(14);
+	color: $basecolor;
+	letter-spacing: 0.03em;
+	border-radius: 8px;
+	padding: 5px 8px;
+	transition: all 0.3s ease;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	&:hover {
+		background-color: $brand-color;
+		color: $white;
+	}
+}
+
+.row-album {
+	margin-left: -1rem;
+	margin-right: -1rem;
+}
+
+.vote-item {
+	border: 1px solid #F5A5B1;
+	border-radius: 10px;
+	padding: 20px 35px;
+	transition: all 0.3s ease;
+	/* check-radio */
+	.check-radio {
+		display: block;
+		position: relative;
+		padding-left: 45px;
+		padding-top: 5px;
+		margin-bottom: 0!important;
+		cursor: pointer;
+		font-family: $brandfont;
+		@include font-size(16);
+		font-weight: $weight-semibold;
+		line-height: 1.4;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	/* Hide the browser's default radio button */
+	.check-radio input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+	}
+	/* Create a custom radio button */
+	.check-radio .checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: $white;
+		border: 1px solid #DADADA;
+		border-radius: 50%;
+	}
+	/* When the radio button is checked, add a blue background */
+	.check-radio input:checked ~ .checkmark {
+		background-color: $white;
+	}
+	/* Create the indicator (the dot/circle - hidden when not checked) */
+	.check-radio .checkmark:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+	/* Show the indicator (dot/circle) when checked */
+	.check-radio input:checked ~ .checkmark:after {
+		display: block;
+	}
+	/* Style the indicator (dot/circle) */
+	.check-radio .checkmark:after {
+		top: 4px;
+		left: 4px;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: $brand-color;
+	}
+	&.active {
+		background: linear-gradient(0deg, #FFCEE1, #FFCEE1), #FFFFFF;
+		.check-radio {
+			color: $brand-color;
+		}
+	}
+}
+
+.modal-vote, .modal-calendar {
+	.modal-dialog {
+		@include min-screen(576px) {
+			max-width: 650px;
+		}
+	}
+	.modal-content {
+		.modal-body {
+			padding-bottom: 20px;
+			@include min-screen(576px) {
+				padding: 35px 60px;
+			}
+		}
+	}
+	.modal-title {
+		@include  font-size(30);
+	}
+	h6, p {
+		@include  font-size(16);
+		color: $basecolor;
+		&.c-gray {
+			color: #666666!important;
+		}
+	}
+}
+
+.modal-calendar {
+	font-family: $basefont;
+	.modal-content {
+		.modal-body {
+			padding-bottom: 20px;
+			@include min-screen(576px) {
+				padding: 20px 60px 30px;
+			}
+		}
+	}
+}
+
+.progress-item {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	h6 {
+		@include  font-size(16);
+		color: $basecolor;
+	}
+	.progress {
+		margin-top: 10px;
+		margin-bottom: 5px;
+		width: 75%;
+		@include min-screen(576px) {
+			width: 80%;
+		}
+		.progress-bar {
+			background-color: $brand-color;
+		}
+	}
+	.progress-num {
+		width: 25%;
+		text-align: right;
+		padding-left: 5px;
+		@include min-screen(576px) {
+			width: 20%;
+		}
+	}
+}
+
+.card-collapse {
+	border-bottom: 1px dashed rgba(68, 68, 68, 0.27);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	.card-header {
+		border-bottom: none;
+		background-color: transparent;
+		padding-left: 0;
+		.collapse-title {
+			@include font-size(18);
+			font-weight: $weight-medium;
+			line-height: 1.4;
+			color: $basecolor;
+			text-transform: uppercase;
+			text-decoration: none;
+			cursor: pointer;
+			&:after {
+				content: "";
+				display: block;
+				background-image: url("../images/icon/arrow-prev.svg");
+				background-repeat: no-repeat;
+				background-position: 50%;
+				background-size: 10px 15px;
+				width: 10px;
+				height: 15px;
+				float: right;
+				transform: rotate(90deg);
+				transition: all 0.3s ease;
+				margin-top: 8px;
+			}
+			span {
+				width: 95%;
+				display: inline-block;
+			}
+			&.collapsed {
+				&:after {
+					transform: rotate(270deg);
+				}
+			}
+		}
+	}
+	.card-body {
+		background-color: #EEEEEE;
+		padding: 20px 30px;
+		@include font-size(16);
+		line-height: 178.88%;
+		text-transform: uppercase;
+		color: $basecolor;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+
+.album-text {
+	@include font-size(12);
 }
