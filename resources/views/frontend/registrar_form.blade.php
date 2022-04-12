@@ -16,7 +16,7 @@
                         <h1 class="font-medium c-pink">{{ $form->title }}</h1>
                         <div class="d-flex flex-wrap mt-3">
                             <p class="date c-gray pr-4">{{ $form->created_at }}</p>
-                            <p class="view c-gray pr-4">{{ $form->author ? $form->author->name : "-" }}</p>
+                            <p class="person c-gray pr-4">{{ $form->author ? $form->author->name : "-" }}</p>
                         </div>
                     </div>
                     <div class="card-body">

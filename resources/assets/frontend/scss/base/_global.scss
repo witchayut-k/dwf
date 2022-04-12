@@ -1131,6 +1131,22 @@ a {
 	}
 }
 
+.person {
+	display: flex;
+	align-items: center;
+	&:before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		background-image: url("../images/icon/ic-person.svg");
+		background-repeat: no-repeat;
+		background-size: 12px 17px;
+		width: 13px;
+		height: 17px;
+		margin-right: 5px;
+	}
+}
+
 /* The radio-check */
 .radio-check {
 	display: block;

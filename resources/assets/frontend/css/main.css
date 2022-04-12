@@ -1496,6 +1496,24 @@ a {
     margin-right: 5px;
     margin-top: 1px; }
 
+.person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .person:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url("../images/icon/ic-person.svg");
+    background-repeat: no-repeat;
+    background-size: 12px 17px;
+    width: 13px;
+    height: 17px;
+    margin-right: 5px; }
+
 /* The radio-check */
 .radio-check {
   display: block;

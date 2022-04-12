@@ -17,7 +17,7 @@
                         <div class="d-flex flex-wrap mt-3">
                             <p class="date c-gray pr-4">{{ $profile->updated_at->addYear(543)->translatedFormat('j F Y') }}</p>
                             {{-- <p class="view c-gray pr-4">250 view</p> --}}
-                            <p class="view c-gray pr-4">{{ $profile->user->name }}</p>
+                            <p class="person c-gray pr-4">{{ $profile->user->name }}</p>
                         </div>
                     </div>
                     <div class="card-body">
